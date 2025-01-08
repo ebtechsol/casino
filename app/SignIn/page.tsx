@@ -50,7 +50,7 @@ const SignIn = () => {
             <button className={"mt-4 " + styles.submitBtn}>Sign In</button>
             <div className="row">
               <p className={styles.notAcc}>
-               Don’t have an account? <a href="#"> Sign up </a>{" "}
+               Don’t have an account? <a href="/SignUp"> Sign up </a>{" "}
               </p>
             </div>
 

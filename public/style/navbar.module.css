@@ -121,7 +121,7 @@
 }
 
 .casinoBanner {
-    height: 500px;
+    height: 748px;
     margin: 0 6px 30px 60px;
     background-image: url('/casinoBanner.svg');
     border-radius: 10px;
@@ -133,7 +133,7 @@
 .casinoTitle {
     font-size: 42px;
     color: white;
-    padding-top: 110px;
+    padding-top: 140px;
 }
 
 .complbtn {

@@ -1,16 +1,16 @@
-import styles from "@/public/style/signUp.module.css";
+import styles from "@/public/style/profile.module.css";
 import Image from "next/image";
 
-const SignUp = () => {
+const Profile = () => {
   return (
     <div className={"container-fluid " + styles.container}>
       <div className="row">
         <div className="col-md-4"></div>
-        <div className={"col-md-4 " + styles.signup}>
-          <h1 className={styles.title}>Sign up</h1>
-          <p className={styles.subtitle}>Let’s get Started!</p>
+        <div className={"col-md-4 " + styles.profile}>
+          <h1 className={styles.title}>Profile</h1>
+          <p className={styles.subtitle}>Profile photo</p>
 
-          <form className={styles.signUp_form}>
+          <form className={styles.profile_form}>
             <div className="row">
               <div className="col-md-6 col-sm-12 mt-2">
                 <label htmlFor="username">Username:</label>
@@ -45,7 +45,7 @@ const SignUp = () => {
             <button className={"mt-4 " + styles.submitBtn}>Sign up</button>
             <div className="row">
               <p className={styles.alreadyAcc}>
-                Already have an account? <a href="/SignIn"> Log in </a>{" "}
+                Already have an account? <a href="#"> Log in </a>{" "}
               </p>
             </div>
 
@@ -115,4 +115,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default Profile;
