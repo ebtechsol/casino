@@ -1,0 +1,141 @@
+.container {
+  padding: 40px;
+  background: #ffffff;
+  background-image: url("/icon/signup/bg.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.signin {
+  background: #ffffff;
+  padding: 20px;
+}
+
+.title {
+  font-family: Inter;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 38.73px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #000000;
+}
+
+.signin_form label {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #000000;
+  width: 100%;
+  padding: 7px 2px;
+}
+
+.signin_form input {
+  border: 1px solid #d9d9d9;
+  padding: 7px 13px 7px 13px;
+  gap: 10px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.submitBtn {
+  margin: 20px 0px 15px;
+  border: 0px;
+  padding: 7px 16px 7px 16px;
+  gap: 10px;
+  border-radius: 8px;
+  background-color: #d70000;
+  color: #ffffff;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 600;
+  width: 100%;
+}
+
+.notAcc {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 14.52px;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #666666;
+}
+
+.notAcc a {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.rowOR {
+  border-top: 2px solid rgba(217, 217, 217, 1);
+}
+
+.rowOR h3 {
+  background: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 14.52px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  width: auto;
+  margin: -10px auto 0px auto;
+}
+
+.googleBtn,
+.facebookBtn,
+.appleBtn {
+  padding: 12px 10px 12px 12px;
+  gap: 8px;
+  border-radius: 5px;
+  border: 1px solid rgba(217, 217, 217, 1);
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #ffffff;
+  line-height: 14.52px;
+  text-align: left;
+  padding-left: 35%;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(21, 21, 21, 1);
+  width: 100%;
+}
+
+.image {
+  margin: -3px 5px 0px;
+}
+
+.rembMe {
+  text-align: left;
+  width: auto;
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 14.52px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(0, 0, 0, 1);
+}
+.rembMe img {
+  padding: 0px 3px 3px 0px;
+}
+.fgpass {
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 14.52px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: rgba(0, 0, 0, 1);
+  width: auto;
+  margin-left: auto;
+}

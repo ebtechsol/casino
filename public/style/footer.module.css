@@ -1,0 +1,102 @@
+.foBg_black {
+    background: #151515 !important;
+    display: flex;
+    padding: 70px;
+}
+
+
+.foBg_black .ct1 h3 {
+    color: #ffffff;
+    font-family: Inter;
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 32.68px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #ffffff;
+}
+
+.foBg_black .ct1 p {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #ffffff;
+}
+
+.foBg_black .s-icon {
+    background: #d70000 !important;
+    color: #ffffff;
+}
+
+.foBg_black .ct2 ul {
+    list-style: none;
+}
+.foBg_black .ct2 li {
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 29px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #B9B9B9;
+}
+
+.foBg_black .ct3 h4{
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 29px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #ffffff;    
+    padding-left: 5px;
+}
+.foBg_black .form .d-flex{
+  display: flex;   
+}
+.foBg_black .form input {
+    font-family: Inter;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #151515;    
+    padding: 15px;
+    border-radius: 60px;
+    margin-right: 5px;
+    width: 100%;
+    border: 0px;
+}
+
+.foBg_black .form button {
+    margin-left: 5px;
+    background: #d70000 !important;
+    color: #ffffff;    
+    border-radius: 60px;
+    padding: 15px;
+    width: 100%;
+    border: 0px;
+}
+
+.foBg_red {
+    background: #d70000 !important;
+    text-align: center;
+    padding: 20px;
+}
+
+.foBg_red p {
+    font-family: Inter;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #ffffff;
+    margin:0px;
+}

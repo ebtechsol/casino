@@ -1,0 +1,149 @@
+.tooltip {
+    background-color: #D70000;
+    padding: 15px 30px 15px 30px;
+}
+
+.col {
+    color: white;
+    text-align: center;
+    font-size: 14px;
+    font-family: Inter;
+
+}
+
+.header {
+    margin: 20px 50px 20px 50px !important;
+}
+
+.signUp {
+    background-color: #151515;
+    border-radius: 50px;
+    color: white;
+    padding: 10px 20px 10px 20px;
+    border: none;
+    margin-left: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: Inter;
+}
+
+.nav {
+    font-size: 16px;
+    font-family: Inter;
+    font-weight: 500;
+    padding-right: 15px;
+    color: #151515;
+}
+
+/* home page */
+.banner {
+    background-image: url('/Banner.svg');
+    height: 600px;
+    margin-top: -70px;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.title {
+    font-size: 56px;
+    font-family: Inter;
+    font-weight: 600;
+    text-align: center;
+    padding-top: 140px;
+}
+
+.titlesColor {
+    color: #D70000;
+}
+
+.searchInput {
+    width: 43%;
+    padding: 25px;
+    border-radius: 50px;
+    border: 1px solid #D70000;
+}
+
+.search {
+    padding: 15px 30px 15px 30px;
+    border-radius: 50px;
+    background: #D70000;
+    color: #ffff;
+    border: none;
+    margin-left: -120px;
+}
+
+.brands {
+    background: black;
+    height: 400px;
+    margin: -80px 60px 30px 60px;
+    border-radius: 10px;
+}
+
+.brandTitleDiv {
+    margin-top: 30px !important;
+    padding-left: 32px !important;
+}
+
+.brandTitle {
+    font-size: 27px;
+    font-weight: 700;
+}
+
+.featureBtn {
+    float: right;
+    background: #D70000;
+    padding: 10px 20px 10px 20px;
+    color: #ffff;
+    border-radius: 50px;
+    margin-top: 25px;
+    border: none;
+    margin-right: 20px;
+}
+
+.sendBtn {
+    float: center;
+    background: #D70000;
+    padding: 10px 20px 10px 20px;
+    color: #ffff;
+    border-radius: 50px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: none;
+}
+
+.featCard {
+    background: #ffff;
+    margin-left: 40px;
+    margin-top: 25px !important;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.casinoBanner {
+    height: 500px;
+    margin: 0 6px 30px 60px;
+    background-image: url('/casinoBanner.svg');
+    border-radius: 10px;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.casinoTitle {
+    font-size: 42px;
+    color: white;
+    padding-top: 110px;
+}
+
+.complbtn {
+    padding: 10px 30px 10px 30px;
+    font-size: 22px;
+    letter-spacing: 1px;
+    background: #D70000;
+    border: none;
+    border-radius: 50px;
+    margin-top: 145px;
+    color: #ffff;
+    font-weight: 600;
+}
