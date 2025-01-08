@@ -6,7 +6,7 @@ export default function Home() {
     <div>
       <div className={styles.banner}>
         <h3 className={styles.title}>Discover <span className={styles.titlesColor}>Top Casino Deals &</span><br /> Boost Your Winnings!</h3>
-        <p className="text-center">Your ultimate destination for the best affiliate casino offers, exclusive bonuses, and top-notch<br /> gaming insights. Play smarter, win bigger—start your adventure today!"</p>
+        <p className="text-center">Your ultimate destination for the best affiliate casino offers, exclusive bonuses, and top-notch<br /> gaming insights. Play smarter, win bigger—start your adventure today!&quot;</p>
         <div className="text-center"> <input type="text" placeholder="Search casinos, games.." className={styles.searchInput} /><button className={styles.search}>Search</button></div>
       </div>
       <div className={styles.brands}>
@@ -123,7 +123,7 @@ export default function Home() {
       </div>
       <div className={styles.casinoBanner}>
         <div className="text-center">
-          <h4 className={styles.casinoTitle}>Can't find a Casino? Do the quiz!</h4>
+          <h4 className={styles.casinoTitle}>Can&apos;t find a Casino? Do the quiz!</h4>
           <p className="text-white">Answer a few questions and let us guide you to the best spot.</p>
           <button className={styles.complbtn}>
             <Image
