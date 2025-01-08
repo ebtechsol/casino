@@ -50,7 +50,7 @@ const Navbar = () => {
             </div>
             <nav className="navbar navbar-expand-lg">
                 <div className={"container-fluid " + styles.header}>
-                    <a className="navbar-brand" href="/Home">
+                    <a className="navbar-brand" href="./">
                         <b>Gambler.GG</b>
                     </a>
                     <button

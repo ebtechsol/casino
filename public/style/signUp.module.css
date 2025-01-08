@@ -9,6 +9,8 @@
 .signup {
   background: #ffffff;
   padding: 20px;
+  border: 2px solid white;
+  border-radius: 10px;  
 }
 
 .title {
