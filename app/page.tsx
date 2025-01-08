@@ -48,7 +48,7 @@ export default function Home() {
           </div>
           <div className={"col-md-2 " + styles.featCard}>
             <div className="text-center"><Image
-              src="/stack.svg"
+              src="/stake.svg"
               width={100}
               height={80}
               alt="Picture of the author"
