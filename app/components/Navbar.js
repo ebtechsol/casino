@@ -72,7 +72,7 @@ const Navbar = () => {
                                 </a>
                             </li>
                             <li className={"nav-item " + styles.nav}>
-                                <a className="nav-link active" aria-current="page" href="#">
+                                <a className="nav-link active" aria-current="page" href="/Blogs">
                                     News & Blogs
                                 </a>
                             </li>

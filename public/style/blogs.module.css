@@ -1,0 +1,60 @@
+.newsSection{
+    background: #D70000;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 42px;
+    font-weight: 600;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    margin-left: 50px !important;
+    margin-right: 50px !important;
+}
+.BlogSec{
+    margin-left: 50px !important;
+    margin-right: 50px !important;
+    margin-top: 50px !important;
+}
+.xblogTag {
+    background: #ffe5e5;
+    color: #d70000;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 50px;
+    margin-top: 10px;
+  }
+.blogTag {
+    background: #ffe5e5;
+    color: #d70000;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 50px;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+  .featureBtn {
+    background: #d70000;
+    padding: 10px 20px 10px 20px;
+    color: #ffff;
+    border-radius: 50px;
+    margin-top: 5px;
+    border: none;
+  }
+  .blogTitle {
+    font-size: 37px;
+    font-weight: 600;
+  }
+  .blogTextSec{
+    width:60%;
+  }
+  .blogDesc{
+    font-size: 15px;
+    line-height: 32px;
+    letter-spacing: 0.8px;
+    color: #1A1A1A;
+    padding-top: 20px;
+  }
+  .topSpace{
+    margin-top:150px;
+  }
