@@ -5,7 +5,6 @@ const SignIn = () => {
   return (
     <div className={"container-fluid " + styles.container}>
       <div className="row">
-        <div className="col-md-4"></div>
         <div className={"col-md-4 " + styles.signin}>
           <h1 className={styles.title}>Welcome Back!</h1>
 
@@ -90,7 +89,6 @@ const SignIn = () => {
             </button>
           </form>
         </div>
-        <div className="col-md-4"></div>
       </div>
     </div>
   );

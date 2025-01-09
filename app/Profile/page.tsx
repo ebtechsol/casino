@@ -5,13 +5,12 @@ const Profile = () => {
   return (
     <div className={"container-fluid " + styles.container}>
       <div className="row">
-        <div className="col-md-3"></div>
         <div className={"col-md-6 " + styles.profile}>
           <h1 className={styles.title}>Profile</h1>
           <p className={styles.subtitle}>Profile photo</p>
 
-          <div className="row">
-            <div className="col-md-3 col-sm-12 text-center">
+          <div className="row pt-3 pb-3">
+            <div className="col-md-3 col-sm-12">
               <Image
                 src="/icon/profile/profile_picture.svg"
                 width={120}
@@ -85,13 +84,12 @@ const Profile = () => {
                 <textarea id="aboutMe" name="aboutMe" rows={4} placeholder="Tell me about yourself"></textarea>
               </div>
             </div>
-            <div className="row mt-4 text-right">
+            <div className={"row mt-4 " + styles.actionBtns}>
               <button className={styles.cancelBtn}>Cancel</button>
               <button className={styles.submitBtn}>Save profile</button>
             </div>
           </form>
         </div>
-        <div className="col-md-3"></div>
       </div>
     </div>
   );
