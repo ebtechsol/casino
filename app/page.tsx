@@ -206,8 +206,8 @@ export default function Home() {
             </button>
           </div>
         </div>
-        <div className="row mt-4">
-          <div className={"col-md-3 " + styles.blogSection}>
+        <div className="row mt-2 mb-2">
+          <div className={"col-md-4 " + styles.blogSection}>
             <Image
               src="/prices_will.svg"
               width={370}
@@ -225,19 +225,20 @@ export default function Home() {
               <div className="col-lg-2">
                 <Image
                   src="/arrow-up-right.svg"
+                  className={styles.arrowImg}
                   width={30}
                   height={30}
                   alt="Picture of the author"
                 />
               </div>
             </div>
-            <div className="mt-2">
+            <div className="mt-4">
               <span className={styles.blogTag}>Crypto</span>
               <span className={styles.blogTag}>Bitcoin</span>
               <span className={styles.blogTag}>Casino</span>
             </div>
           </div>
-          <div className={"col-md-3 " + styles.blogSection}>
+          <div className={"col-md-4 " + styles.blogSection}>
             <Image
               src="/buying.svg"
               width={370}
@@ -256,19 +257,20 @@ export default function Home() {
               <div className="col-lg-2">
                 <Image
                   src="/arrow-up-right.svg"
+                  className={styles.arrowImg}
                   width={30}
                   height={30}
                   alt="Picture of the author"
                 />
               </div>
             </div>
-            <div className="mt-2">
+            <div className="mt-4">
               <span className={styles.blogTag}>Crypto</span>
               <span className={styles.blogTag}>Bitcoin</span>
               <span className={styles.blogTag}>Casino</span>
             </div>
           </div>
-          <div className={"col-md-3 " + styles.blogSection}>
+          <div className={"col-md-4 " + styles.blogSection}>
             <Image
               src="/prices_will.svg"
               width={370}
@@ -286,52 +288,22 @@ export default function Home() {
               <div className="col-lg-2">
                 <Image
                   src="/arrow-up-right.svg"
+                  className={styles.arrowImg}
                   width={30}
                   height={30}
                   alt="Picture of the author"
                 />
               </div>
             </div>
-            <div className="mt-2">
-              <span className={styles.blogTag}>Crypto</span>
-              <span className={styles.blogTag}>Bitcoin</span>
-              <span className={styles.blogTag}>Casino</span>
-            </div>
-          </div>
-          <div className={"col-md-3 " + styles.blogSection}>
-            <Image
-              src="/buying.svg"
-              width={370}
-              height={200}
-              className={styles.blogImg}
-              alt="Picture of the author"
-            />
-            <p className={styles.blogSubTitle}>Altcoin Buzz• 28 DEC 2024</p>
-            <div className="row">
-              <div className="col-lg-10">
-                <span className={styles.blogTitle}>
-                  Can PENGU Overtake DOGE? Pudgy Penguins VS Dogecoin Altcoins
-                  in 2025
-                </span>
-              </div>
-              <div className="col-lg-2">
-                <Image
-                  src="/arrow-up-right.svg"
-                  width={30}
-                  height={30}
-                  alt="Picture of the author"
-                />
-              </div>
-            </div>
-            <div className="mt-2">
+            <div className="mt-4">
               <span className={styles.blogTag}>Crypto</span>
               <span className={styles.blogTag}>Bitcoin</span>
               <span className={styles.blogTag}>Casino</span>
             </div>
           </div>
         </div>
-        <div className="row mt-4 mb-4">
-          <div className={"col-md-3 " + styles.blogSection}>
+        <div className="row mt-2 mb-2">
+          <div className={"col-md-4 " + styles.blogSection}>
             <Image
               src="/buying.svg"
               width={370}
@@ -349,19 +321,20 @@ export default function Home() {
               <div className="col-lg-2">
                 <Image
                   src="/arrow-up-right.svg"
+                  className={styles.arrowImg}
                   width={30}
                   height={30}
                   alt="Picture of the author"
                 />
               </div>
             </div>
-            <div className="mt-2">
+            <div className="mt-4">
               <span className={styles.blogTag}>Crypto</span>
               <span className={styles.blogTag}>Bitcoin</span>
               <span className={styles.blogTag}>Casino</span>
             </div>
           </div>
-          <div className={"col-md-3 " + styles.blogSection}>
+          <div className={"col-md-4 " + styles.blogSection}>
             <Image
               src="/prices_will.svg"
               width={370}
@@ -379,19 +352,20 @@ export default function Home() {
               <div className="col-lg-2">
                 <Image
                   src="/arrow-up-right.svg"
+                  className={styles.arrowImg}
                   width={30}
                   height={30}
                   alt="Picture of the author"
                 />
               </div>
             </div>
-            <div className="mt-2">
+            <div className="mt-4">
               <span className={styles.blogTag}>Crypto</span>
               <span className={styles.blogTag}>Bitcoin</span>
               <span className={styles.blogTag}>Casino</span>
             </div>
           </div>
-          <div className={"col-md-3 " + styles.blogSection}>
+          <div className={"col-md-4 " + styles.blogSection}>
             <Image
               src="/prices_will.svg"
               width={370}
@@ -409,43 +383,14 @@ export default function Home() {
               <div className="col-lg-2">
                 <Image
                   src="/arrow-up-right.svg"
+                  className={styles.arrowImg}
                   width={30}
                   height={30}
                   alt="Picture of the author"
                 />
               </div>
             </div>
-            <div className="mt-2">
-              <span className={styles.blogTag}>Crypto</span>
-              <span className={styles.blogTag}>Bitcoin</span>
-              <span className={styles.blogTag}>Casino</span>
-            </div>
-          </div>
-          <div className={"col-md-3 " + styles.blogSection}>
-            <Image
-              src="/buying.svg"
-              width={370}
-              height={200}
-              className={styles.blogImg}
-              alt="Picture of the author"
-            />
-            <p className={styles.blogSubTitle}>Crypto Lark • 28 DEC 2024</p>
-            <div className="row">
-              <div className="col-lg-10">
-                <span className={styles.blogTitle}>
-                  Crypto Holders! Here’s EXACTLY When To Sell For Max Profits
-                </span>
-              </div>
-              <div className="col-lg-2">
-                <Image
-                  src="/arrow-up-right.svg"
-                  width={30}
-                  height={30}
-                  alt="Picture of the author"
-                />
-              </div>
-            </div>
-            <div className="mt-2">
+            <div className="mt-4">
               <span className={styles.blogTag}>Crypto</span>
               <span className={styles.blogTag}>Bitcoin</span>
               <span className={styles.blogTag}>Casino</span>
