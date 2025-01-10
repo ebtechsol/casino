@@ -1,0 +1,105 @@
+.mainSection {
+    margin: 0px 80px;
+}
+
+.card1 {
+    background-image: url("/casino_card-1.svg");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 310px;
+    padding-right: 10px !important;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.card2 {
+    background-image: url("/casino-card-2.svg");
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 310px;
+    padding-left: 10px !important;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.cardColumn {
+    background: #F9F9F9;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.casinoTitle {
+    color: #ffff;
+    font-size: 40px;
+    font-weight: 900;
+    padding-top: 15%;
+}
+
+.casinobtn {
+    background: #d70000;
+    font-size: 14px;
+    color: #fff;
+    padding: 10px 15px;
+    width: 71%;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+.stakeImg {
+    margin-top: 25px;
+}
+
+.casinoCardRow {
+    margin: 20px 70px;
+}
+
+.wizardRating {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.wizardNum {
+    font-size: 21px;
+    color: #D70000;
+    font-weight: 700;
+}
+
+.ratingTitle {
+    font-size: 27px;
+    font-weight: 700;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.cardPrice {
+    border: 1px solid #D9D9D9;
+    margin: 20px 58px;
+    padding: 30px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: Inter;
+}
+
+.visitCasinoBtn {
+    background: #D70000;
+    font-size: 14px;
+    color: white;
+    padding: 15px;
+    width: 71%;
+    border: none;
+    border-radius: 50px;
+}
+
+.readCasinoBtn {
+    background: transparent;
+    font-size: 14px;
+    color: black;
+    padding: 15px;
+    width: 71%;
+    border: none;
+    border-radius: 50px;
+}
