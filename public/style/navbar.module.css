@@ -199,6 +199,17 @@
   .tooltip {
     display: none !important;
   }
+  .blogTitle{
+    font-size: 24px;
+    line-height: 33px;
+  }
+  .title{
+    font-size: 20px !important;
+  }
+  .titleText{
+    padding: 20px 10px;
+        font-size: 15px;
+  }
   .col {
     text-align: left;
     padding: 2px 10px;
@@ -209,15 +220,8 @@
   .signUp {
     margin-left: 0px;
   }
-  .title {
-    font-size: 42px;
-    padding-top: 100px;
-  }
-  .titleText {
-    padding: 20px 40px;
-  }
   .searchInput {
-    width: 80%;
+    width: 90%;
   }
   .brands {
     margin: 20px;
@@ -236,16 +240,19 @@
   }
   .casinoBanner {
     margin: 0px;
-    height: 600px;
+    height: 540px;
     padding: 20px 30px;
     background-size: cover;
   }
   .casinoTitle {
     padding-top: 80px;
     padding-bottom: 20px;
+    font-size: 28px;
   }
   .complbtn {
     margin-top: 30px;
+    padding: 10px 30px;
+    font-size: 14px;
   }
   .casinoBlog {
     margin: 0px 20px 20px;
@@ -264,5 +271,8 @@
   }
   .blogSection{
     padding: 10px 20px;
+  }
+  .banner{
+    height: 470px;
   }
 }

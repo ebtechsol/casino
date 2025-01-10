@@ -1,6 +1,108 @@
 import styles from "@/public/style/casino.module.css";
 import Image from "next/image";
+interface casinoData {
+    src: string;
+    wizardTitle: string;
+    WizardValue: string;
+    CriticTitle: string;
+    CriticValue: string;
+    bonusText: string;
+    Visitsource: string;
+    Reviewsource: string;
+}
 
+const casinoRecord: casinoData[] = [
+    {
+        src: "/casino_stake.svg",
+        wizardTitle: "Wizard Rating",
+        WizardValue: "6.9/10",
+        CriticTitle: "Critic Score",
+        CriticValue: "85%",
+        bonusText: "Get 100% up to €500 + 200 Bonus Spins",
+        Visitsource: "#",
+        Reviewsource: "#",
+    },
+    {
+        src: "/casino_stake.svg",
+        wizardTitle: "Wizard Rating",
+        WizardValue: "6.9/10",
+        CriticTitle: "Critic Score",
+        CriticValue: "85%",
+        bonusText: "Get 100% up to €500 + 200 Bonus Spins",
+        Visitsource: "#",
+        Reviewsource: "#",
+    },
+    {
+        src: "/casino_stake.svg",
+        wizardTitle: "Wizard Rating",
+        WizardValue: "6.9/10",
+        CriticTitle: "Critic Score",
+        CriticValue: "85%",
+        bonusText: "Get 100% up to €500 + 200 Bonus Spins",
+        Visitsource: "#",
+        Reviewsource: "#",
+    },
+    {
+        src: "/casino_stake.svg",
+        wizardTitle: "Wizard Rating",
+        WizardValue: "6.9/10",
+        CriticTitle: "Critic Score",
+        CriticValue: "85%",
+        bonusText: "Get 100% up to €500 + 200 Bonus Spins",
+        Visitsource: "#",
+        Reviewsource: "#",
+    },
+    {
+        src: "/casino_stake.svg",
+        wizardTitle: "Wizard Rating",
+        WizardValue: "6.9/10",
+        CriticTitle: "Critic Score",
+        CriticValue: "85%",
+        bonusText: "Get 100% up to €500 + 200 Bonus Spins",
+        Visitsource: "#",
+        Reviewsource: "#",
+    },
+    {
+        src: "/casino_stake.svg",
+        wizardTitle: "Wizard Rating",
+        WizardValue: "6.9/10",
+        CriticTitle: "Critic Score",
+        CriticValue: "85%",
+        bonusText: "Get 100% up to €500 + 200 Bonus Spins",
+        Visitsource: "#",
+        Reviewsource: "#",
+    },
+    {
+        src: "/casino_stake.svg",
+        wizardTitle: "Wizard Rating",
+        WizardValue: "6.9/10",
+        CriticTitle: "Critic Score",
+        CriticValue: "85%",
+        bonusText: "Get 100% up to €500 + 200 Bonus Spins",
+        Visitsource: "#",
+        Reviewsource: "#",
+    },
+    {
+        src: "/casino_stake.svg",
+        wizardTitle: "Wizard Rating",
+        WizardValue: "6.9/10",
+        CriticTitle: "Critic Score",
+        CriticValue: "85%",
+        bonusText: "Get 100% up to €500 + 200 Bonus Spins",
+        Visitsource: "#",
+        Reviewsource: "#",
+    },
+    {
+        src: "/casino_stake.svg",
+        wizardTitle: "Wizard Rating",
+        WizardValue: "6.9/10",
+        CriticTitle: "Critic Score",
+        CriticValue: "85%",
+        bonusText: "Get 100% up to €500 + 200 Bonus Spins",
+        Visitsource: "#",
+        Reviewsource: "#",
+    },
+];
 const Casino = () => {
     return (
         <div className={styles.mainSection}>
@@ -20,12 +122,13 @@ const Casino = () => {
                 </div>
             </div>
             <h1 className={styles.ratingTitle}>Top Rated Online Casinos</h1>
-            <div className="row gap-0 column-gap-0">
+            <div className={"row " + styles.casinobg}>
+            {casinoRecord.map((casino, index) => (
                 <div className="col-lg-4">
                     <div className={styles.cardColumn}>
                         <Image
-                            src="/casino_stake.svg"
-                            width={500}
+                            src={casino.src}
+                            width={400}
                             height={210}
                             className={styles.stakeImg}
                             alt="Stake"
@@ -38,9 +141,9 @@ const Casino = () => {
                                         width={20}
                                         height={20}
                                         alt="Stake"
-                                    /> <span className={styles.wizardRating}>Wizard Rating</span>
+                                    /> <span className={styles.wizardRating}>{casino.wizardTitle}</span>
                                     <div className={styles.wizardNum}>
-                                        6.9/10
+                                    {casino.WizardValue}
                                     </div>
                                 </div>
                             </div>
@@ -59,126 +162,24 @@ const Casino = () => {
                                         width={20}
                                         height={20}
                                         alt="Stake"
-                                    /> <span className={styles.wizardRating}>Critic Score</span>
+                                    /> <span className={styles.wizardRating}>{casino.CriticTitle}</span>
                                     <div className={styles.wizardNum}>
-                                        85%
+                                    {casino.WizardValue}
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className={styles.cardPrice}>
-                            Get 100% up to €500 + 200 Bonus Spins
+                        {casino.bonusText}
                         </div>
-                        <button className={styles.visitCasinoBtn}>Visit Stake Casino</button><br />
-                        <button className={styles.readCasinoBtn}>Read Stake Review</button>
+                        <a href={casino.Visitsource}><button className={styles.visitCasinoBtn}>Visit Stake Casino</button></a><br />
+                        <a href={casino.Reviewsource}><button className={styles.readCasinoBtn}>Read Stake Review</button></a>
                     </div>
                 </div>
-                <div className="col-lg-4">
-                    <div className={styles.cardColumn}>
-                        <Image
-                            src="/casino_stake.svg"
-                            width={500}
-                            height={210}
-                            className={styles.stakeImg}
-                            alt="Stake"
-                        />
-                        <div className={"row " + styles.casinoCardRow}>
-                            <div className="col-lg-5">
-                                <div className="text-center">
-                                    <Image
-                                        src="/wizard_rating.svg"
-                                        width={20}
-                                        height={20}
-                                        alt="Stake"
-                                    /> <span className={styles.wizardRating}>Wizard Rating</span>
-                                    <div className={styles.wizardNum}>
-                                        6.9/10
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-2">
-                                <Image
-                                    src="/Line.svg"
-                                    width={10}
-                                    height={40}
-                                    alt="Stake"
-                                />
-                            </div>
-                            <div className="col-lg-5">
-                                <div className="text-center">
-                                    <Image
-                                        src="/critic_score.svg"
-                                        width={20}
-                                        height={20}
-                                        alt="Stake"
-                                    /> <span className={styles.wizardRating}>Critic Score</span>
-                                    <div className={styles.wizardNum}>
-                                        85%
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.cardPrice}>
-                            Get 100% up to €500 + 200 Bonus Spins
-                        </div>
-                        <button className={styles.visitCasinoBtn}>Visit Stake Casino</button><br />
-                        <button className={styles.readCasinoBtn}>Read Stake Review</button>
-                    </div>
-                </div>
-                <div className="col-lg-4">
-                    <div className={styles.cardColumn}>
-                        <Image
-                            src="/casino_stake.svg"
-                            width={500}
-                            height={210}
-                            className={styles.stakeImg}
-                            alt="Stake"
-                        />
-                        <div className={"row " + styles.casinoCardRow}>
-                            <div className="col-lg-5">
-                                <div className="text-center">
-                                    <Image
-                                        src="/wizard_rating.svg"
-                                        width={20}
-                                        height={20}
-                                        alt="Stake"
-                                    /> <span className={styles.wizardRating}>Wizard Rating</span>
-                                    <div className={styles.wizardNum}>
-                                        6.9/10
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-2">
-                                <Image
-                                    src="/Line.svg"
-                                    width={10}
-                                    height={40}
-                                    alt="Stake"
-                                />
-                            </div>
-                            <div className="col-lg-5">
-                                <div className="text-center">
-                                    <Image
-                                        src="/critic_score.svg"
-                                        width={20}
-                                        height={20}
-                                        alt="Stake"
-                                    /> <span className={styles.wizardRating}>Critic Score</span>
-                                    <div className={styles.wizardNum}>
-                                        85%
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={styles.cardPrice}>
-                            Get 100% up to €500 + 200 Bonus Spins
-                        </div>
-                        <button className={styles.visitCasinoBtn}>Visit Stake Casino</button><br />
-                        <button className={styles.readCasinoBtn}>Read Stake Review</button>
-                    </div>
-                </div>
+                ))}
             </div>
             <br />
+            <div className={styles.topSpace}></div>
         </div>
     );
 };
