@@ -9,8 +9,10 @@
 .profile {
   background: #ffffff;
   padding: 40px;
-  border: 2px solid white;
+  border: 1px solid #fafafa;
   border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;  
 }
 
 .picture_text {
@@ -40,13 +42,14 @@
 }
 
 .btnChoosePhoto {
-  padding: 6px 10px 8px 10px;
+  padding: 8px 10px;
   font-size: 14px;
   font-weight: 400;
   line-height: 14.52px;
-  border-radius: 5px;
+  border-radius: 8px;
   background: rgba(21, 21, 21, 1);
   color: rgba(255, 255, 255, 1);
+  border: 0px;
 }
 
 .btnRemove{
@@ -125,7 +128,7 @@
 .submitBtn {
   display: flex;
   width: auto;
-  padding: 7px 16px 7px 16px;
+  padding: 8px 16px;
   gap: 10px;
   border-radius: 8px;
   opacity: 0px;
@@ -233,4 +236,31 @@
 
 .info img {
   padding: 0px 3px 3px 0px;
+}
+.actionBtns{
+  text-align: right;
+}
+@media only screen and (max-width: 600px) {
+  .profile {
+    padding: 20px;
+  }
+  .picture_img{
+    margin: 20px;
+  }  
+  .picture_text{
+    text-align: center;
+    padding: 20px;
+  }
+  .picture_text h4{
+    text-align: center;
+  }
+  .picture_text p{
+    text-align: center;
+  }
+  .actionBtns{
+    text-align: center;
+  }
+  .submitBtn{
+    margin-right: auto;
+  }
 }

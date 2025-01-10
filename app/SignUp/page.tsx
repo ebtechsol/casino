@@ -5,8 +5,7 @@ const SignUp = () => {
   return (
     <div className={"container-fluid " + styles.container}>
       <div className="row">
-        <div className="col-md-4"></div>
-        <div className={"col-md-4 " + styles.signup}>
+        <div className={"col-md-5 " + styles.signup}>
           <h1 className={styles.title}>Sign up</h1>
           <p className={styles.subtitle}>Let’s get Started!</p>
 
@@ -109,7 +108,6 @@ const SignUp = () => {
             </h3>
           </div>
         </div>
-        <div className="col-md-4"></div>
       </div>
     </div>
   );

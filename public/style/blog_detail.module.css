@@ -1,165 +1,130 @@
 .blogSubTitle {
-    font-size: 14px;
-    color: #d70000;
-    padding-top: 25px;
-    font-weight: 600;
-  }
-  .blogTitle {
-    font-size: 20px;
-    font-weight: 600;
-  }
-  .blogDesc{
-    font-size: 15px;
-    line-height: 32px;
-    letter-spacing: 0.8px;
-    color: #1A1A1A;
-    padding-top: 20px;
+  font-size: 14px;
+  color: #d70000;
+  padding-top: 25px;
+  font-weight: 600;
+}
+.blogTitle {
+  font-size: 20px;
+  font-weight: 600;
+}
+.blogDesc {
+  font-size: 15px;
+  line-height: 32px;
+  letter-spacing: 0.8px;
+  color: #1a1a1a;
+  padding-top: 20px;
+}
+.detailWidth {
+  width: 75%;
+  margin-left: 12%;
+  background-image: url("/detail_bg.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.socialList {
+  background: #d70000;
+  padding: 10px;
+  color: white;
+  border-radius: 10px;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.listText {
+  padding-top: 10px;
+}
+.socialIcon {
+  float: right;
+  margin-top: 9px;
+  margin-right: 10px;
+}
+.brandTitleDiv {
+  margin-top: 30px !important;
+}
+.commentMainTitle {
+  font-size: 19px;
+  font-weight: 600;
+}
+.commentBtn {
+  float: right;
+  background: none;
+  padding: 10px 20px;
+  color: #000;
+  border-radius: 50px;
+  margin-top: 19px;
+  border: none;
+}
+.commentTitleDiv {
+  margin-top: 30px !important;
+  padding-left: 32px !important;
+}
+.mainDev {
+  margin-top: 25px;
+}
+.commentHead {
+  font-size: 15px;
+  font-weight: 500;
+  padding-left: 10px;
+}
+.commentTime {
+  font-size: 11px;
+  color: #737373;
+  padding-left: 5px;
+}
+.commentParagh {
+  font-size: 13px;
+  line-height: 20px;
+  color: #737373;
+  padding-top: 10px;
+}
+
+.casinoBlog {
+  margin: 0 60px 40px 60px;
+}
+.blogTag {
+  background: #ffe5e5;
+  color: #d70000;
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 50px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+.blogSection {
+  padding: 0px 10px;
+}
+
+.blogImg {
+  width: -webkit-fill-available;
+  height: 250px;
+}
+.arrowImg {
+  margin-left: auto;
+  display: block;
+}
+.topSpace {
+  margin-top: 150px;
+}
+@media only screen and (max-width: 600px) {
+  .heroImg{
+    width: -webkit-fill-available;
+    height: auto;
   }
   .detailWidth{
-    width: 75%;
-    margin-left: 12%;
-    background-image: url('/detail_bg.svg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+    margin: 20px;
+    width: auto;
   }
-  .socialList{
-    background: #d70000;
-    padding: 10px;
-    color: white;
-    border-radius: 10px;
-    margin-top: 40px;
-    margin-bottom: 20px;
+  .commentTitleDiv{
+    padding: 10px !important;
   }
-  .listText{
-    padding-top: 10px;
-  }
-  .socialIcon{
-    float: right;
-    margin-top: 9px;
-    margin-right: 10px;
-  }
-  .brandTitleDiv {
-    margin-top: 30px !important;
-  }
-  .commentMainTitle {
-    font-size: 19px;
-    font-weight: 600;
-  }
-  .commentBtn {
-    float: right;
-    background: none;
-    padding: 10px 20px;
-    color: #000;
-    border-radius: 50px;
-    margin-top: 19px;
-    border: none;
-  }
-  .commentTitleDiv {
-    margin-top: 30px !important;
-    padding-left: 32px !important;
-  }
-  .mainDev{
-    margin-top: 25px;
-  }
-  .commentHead{
-    font-size: 15px;
-    font-weight: 500;
-    padding-left: 10px;
-  }
-  .commentTime{
-    font-size: 11px;
-    color: #737373;
-    padding-left: 5px;
-  }
-  .commentParagh{
-    font-size: 13px;
-    line-height: 20px;
-    color: #737373;
-    padding-top: 10px;
-  }
-
   .casinoBlog {
-    margin: 0 60px 40px 60px;
+    margin: 0px 20px 20px;
   }
-  .blogSubTitle {
-    font-size: 14px;
-    color: #d70000;
-    padding-top: 25px;
-    font-weight: 600;
+  .blogImg {
+    width: -webkit-fill-available;
   }
-  .blogTitle {
-    font-size: 20px;
-    font-weight: 600;
+  .blogSection {
+    padding: 10px 20px;
   }
-  .blogTag {
-    background: #ffe5e5;
-    color: #d70000;
-    font-size: 14px;
-    padding: 10px;
-    border-radius: 50px;
-    margin-right: 10px;
-    margin-top: 10px;
-  }
-    .brandTitleDiv {
-      margin-top: 30px !important;
-    }
-    .brandSubTitleDiv {
-      margin-top: 20px !important;
-    }
-    .blogMainTitle {
-      font-size: 42px;
-      font-weight: 700;
-    }
-    .blognesTitle {
-      font-size: 27px;
-      font-weight: 700;
-    }
-    .blogBtn {
-      float: right;
-      background: transparent;
-      padding: 10px 0px 0px 0px;
-      color: black;
-      border-radius: 50px;
-      margin-top: 20px;
-      border: none;
-    }
-    .blogSection {
-      padding: 10px;
-    }
-    
-    .blogImg {
-      width: -webkit-fill-available;
-      height: 250px;
-    }
-    .arrowImg{
-      margin-left: auto;
-      display: block;
-    }
-    .topSpace{
-      margin-top:150px;
-    }
-    @media only screen and (max-width: 600px) {
-      .casinoBlog {
-        margin: 0px 20px 20px;
-      }
-      .brandSubTitleDiv{
-        float: none;
-        text-align: center;
-      }
-      .blogBtn {
-        float: none;
-        text-align: center;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-        margin-top: 0px;
-      }
-    
-      .blogImg{
-        width: -webkit-fill-available;
-      }
-      .blogSection{
-        padding: 10px 20px;
-      }
-      }
+}
