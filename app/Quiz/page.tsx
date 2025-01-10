@@ -1,5 +1,6 @@
 "use client";
 import { useSearchParams, redirect } from "next/navigation";
+import { Suspense } from "react";
 
 import CasinoDeals from "@/app/components/CasinoDeals";
 import FeaturedCasino from "@/app/components/FeaturedCasino";
@@ -10,7 +11,7 @@ import Qz2 from "@/app/components/Quizzes/Qz2";
 import NewsAndBlogs from "@/app/components/NewsAndBlogs";
 import { useEffect } from "react";
 
-const Quiz = () => {
+function SelectQuiz() {
   const searchParams = useSearchParams();
   const quizType = searchParams.get("qt");
 
@@ -20,24 +21,26 @@ const Quiz = () => {
     }
   }, [quizType]);
 
-  function SelectQuiz() {
-    switch (quizType) {
-      case "1":
-        return <Qz1 />;
-      case "2":
-        return <Qz2 />;
-      default:
-        return <Start />;
-    }
+  switch (quizType) {
+    case "1":
+      return <Qz1 />;
+    case "2":
+      return <Qz2 />;
+    default:
+      return <Start />;
   }
+}
 
+const Quiz = () => {
   return (
     <>
       <CasinoDeals />
 
       <FeaturedCasino />
 
-      <SelectQuiz />
+      <Suspense>
+        <SelectQuiz />
+      </Suspense>
 
       <NewsAndBlogs />
     </>
