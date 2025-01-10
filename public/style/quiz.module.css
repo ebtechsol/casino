@@ -1,0 +1,43 @@
+.casinoBanner {
+  height: 650px;
+  margin: 50px 6px 0px 60px;
+  background-image: url("/casinoBanner.svg");
+  border-radius: 10px;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.casinoTitle {
+  font-size: 42px;
+  color: white;
+  padding-top: 140px;
+}
+
+.complbtn {
+  padding: 10px 30px 10px 30px;
+  font-size: 22px;
+  letter-spacing: 1px;
+  background: #d70000;
+  border: none;
+  border-radius: 50px;
+  margin-top: 145px;
+  color: #ffff;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 600px) {
+  .casinoBanner {
+    margin: 0px;
+    height: 600px;
+    padding: 20px 30px;
+    background-size: cover;
+  }
+  .casinoTitle {
+    padding-top: 80px;
+    padding-bottom: 20px;
+  }
+  .complbtn {
+    margin-top: 30px;
+  }
+}

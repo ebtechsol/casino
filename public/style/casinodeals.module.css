@@ -1,0 +1,50 @@
+/* home page */
+.banner {
+  background-image: url("/Banner.svg");
+  height: 600px;
+  margin-top: -70px;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.title {
+  font-size: 56px;
+  font-family: Inter;
+  font-weight: 600;
+  text-align: center;
+  padding-top: 140px;
+}
+
+.titlesColor {
+  color: #d70000;
+}
+
+.searchInput {
+  width: 43%;
+  padding: 25px;
+  border-radius: 50px;
+  border: 1px solid #d70000;
+}
+
+.search {
+  padding: 15px 30px 15px 30px;
+  border-radius: 50px;
+  background: #d70000;
+  color: #ffff;
+  border: none;
+  margin-left: -120px;
+}
+
+@media only screen and (max-width: 600px) {
+  .title {
+    font-size: 42px;
+    padding-top: 100px;
+  }
+  .titleText {
+    padding: 20px 40px;
+  }
+  .searchInput {
+    width: 80%;
+  }
+}
