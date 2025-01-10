@@ -124,7 +124,7 @@ const Casino = () => {
             <h1 className={styles.ratingTitle}>Top Rated Online Casinos</h1>
             <div className={"row " + styles.casinobg}>
             {casinoRecord.map((casino, index) => (
-                <div className="col-lg-4">
+                <div key={index} className="col-lg-4">
                     <div className={styles.cardColumn}>
                         <Image
                             src={casino.src}
