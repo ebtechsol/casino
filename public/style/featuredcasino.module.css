@@ -1,0 +1,62 @@
+.brands {
+  background: black;
+  height: 400px;
+  margin: -80px 60px 30px 60px;
+  border-radius: 10px;
+}
+.brandTitleDiv {
+  margin-top: 30px !important;
+}
+
+.brandTitle {
+  font-size: 27px;
+  font-weight: 700;
+}
+
+.featureBtn {
+  float: right;
+  background: #d70000;
+  padding: 10px 20px 10px 20px;
+  color: #ffff;
+  border-radius: 50px;
+  margin-top: 25px;
+  border: none;
+  margin-right: 20px;
+}
+
+.featCard {
+  background: #ffff;
+  margin-left: 40px;
+  margin-top: 25px !important;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.sendBtn {
+  float: center;
+  background: #d70000;
+  padding: 10px 20px 10px 20px;
+  color: #ffff;
+  border-radius: 50px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .brands {
+    margin: 20px;
+    height: auto;
+    padding: 20px 30px;
+  }
+  .brandTitleDiv {
+    margin-top: 10px !important;
+  }
+  .featureBtn {
+    margin-top: 10px;
+    margin-right: 2px;
+  }
+  .featCard {
+    margin: 20px 0px !important;
+  }
+}
