@@ -82,5 +82,20 @@
   .blogTextSec {
     width: 100%;
   }
+  .newsSection{
+    padding: 13px 18px;
+    margin: 0px 24px !important;
+  }
+  .newsSection{
+    font-size: 30px;
+  }
+  .blogTitle{
+    font-size: 24px;
+    line-height: 33px;
+  }
+  .blogDesc{
+    font-size: 12px;
+    text-align: justify;
+  }
 
 }

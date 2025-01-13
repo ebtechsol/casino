@@ -1,7 +1,16 @@
 .casinoBanner {
-  height: 650px;
-  margin: 50px 6px 0px 60px;
+  height: 680px;
+  margin: 50px 60px 0px 60px;
   background-image: url("/casinoBanner.svg");
+  border-radius: 10px;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.quizOneBanner {
+  height: 680px;
+  margin: 50px 60px 0px 60px;
+  background-image: url("/quiz_bg_new1.svg");
   border-radius: 10px;
   background-position: top;
   background-repeat: no-repeat;
@@ -11,7 +20,7 @@
 .casinoTitle {
   font-size: 42px;
   color: white;
-  padding-top: 140px;
+  padding-top: 120px;
 }
 
 .complbtn {
@@ -25,7 +34,34 @@
   color: #ffff;
   font-weight: 600;
 }
-
+.gameTilte{
+  color: white;
+    margin-right: 20%;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 50px;
+}
+.gameOptionRow{
+  width: 45%;
+  margin: auto;
+}
+.gameOptionTwoRow{
+  width: 60%;
+  margin: auto;
+}
+.gamecardTitle{
+  color: white;
+    font-size: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+.gameTwoTilte{
+  color: #fff;
+    margin-right: 33%;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 50px;
+}
 @media only screen and (max-width: 600px) {
   .casinoBanner {
     margin: 0px;
