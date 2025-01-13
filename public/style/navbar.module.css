@@ -26,6 +26,18 @@
   font-family: Inter;
 }
 
+.signIn {
+  background-color: #ffffff;
+  border-radius: 50px;
+  color: #151515;
+  border: 2px solid #151515;
+  padding: 10px 20px 10px 20px;
+  margin-left: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: Inter;
+}
+
 .nav {
   font-size: 16px;
   font-family: Inter;

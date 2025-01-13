@@ -1,47 +1,111 @@
+"use client";
+import React from "react";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
 import styles from "@/public/style/signUp.module.css";
 import Image from "next/image";
 
 const SignUp = () => {
+  const formSchema = z.object({
+    username: z.string().min(1, { message: "Username is required!" }),
+    email: z
+      .string()
+      .email({ message: "Please enter a valid email address!" })
+      .min(1, { message: "Email is required!" }),
+    password: z.string().min(1, { message: "Password is required!" }),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+      username: "",
+      password: "",
+    },
+  });
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values);
+  }
+
   return (
     <div className={"container-fluid " + styles.container}>
       <div className="row">
         <div className={"col-md-5 " + styles.signup}>
           <h1 className={styles.title}>Sign up</h1>
           <p className={styles.subtitle}>Let’s get Started!</p>
-
-          <form className={styles.signUp_form}>
+          <form
+            className={styles.signUp_form}
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <div className="row">
               <div className="col-md-6 col-sm-12 mt-2">
                 <label htmlFor="username">Username:</label>
                 <input
                   type="text"
                   id="username"
-                  name="username"
                   placeholder="Username"
+                  {...register("username")}
                 />
+                {errors.username?.message && (
+                  <small className="text-danger">
+                    {errors.username?.message}
+                  </small>
+                )}
               </div>
               <div className="col-md-6 col-sm-12 mt-2">
                 <label htmlFor="email">Email:</label>
+
                 <input
-                  type="email"
                   id="email"
-                  name="email"
+                  type="email"
                   placeholder="Email"
+                  {...register("email")}
                 />
+                {errors.email?.message && (
+                  <small className="text-danger">{errors.email?.message}</small>
+                )}
               </div>
             </div>
             <div className="row">
               <div className="col-md-12 col-sm-12 mt-2">
                 <label htmlFor="password">Password:</label>
                 <input
-                  type="password"
                   id="password"
-                  name="password"
+                  type="password"
                   placeholder="Password"
+                  {...register("password")}
                 />
+                {errors.password?.message && (
+                  <small className="text-danger">
+                    {errors.password?.message}
+                  </small>
+                )}
               </div>
             </div>
-            <button className={"mt-4 " + styles.submitBtn}>Sign up</button>
+            <button
+              type="submit"
+              disabled={
+                errors.username?.message ||
+                errors.email?.message ||
+                errors.password?.message
+                  ? true
+                  : false
+              }
+              className={"mt-4 " + styles.submitBtn}
+            >
+              {errors.username?.message ||
+              errors.email?.message ||
+              errors.password?.message
+                ? "Loading..."
+                : "Sign up"}
+            </button>
             <div className="row">
               <p className={styles.alreadyAcc}>
                 Already have an account? <a href="/SignIn"> Log in </a>{" "}
@@ -104,7 +168,7 @@ const SignUp = () => {
                 height={16}
                 alt="Check"
               />
-              By signing up, I agree with the Terms of Use & Privacy
+              By signing up, I agree with the Terms and Conditions and Privacy Policy
             </h3>
           </div>
         </div>

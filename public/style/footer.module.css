@@ -117,4 +117,9 @@
     .foBg_black .form button {
         margin-left: 15px;
     }
+
+    .foBg_black { display: flex; flex-direction: column; }
+    .ct1 { order: 1; }
+    .ct2 { order: 3; }
+    .ct3 { order: 2; }
 }

@@ -18,7 +18,7 @@ const Qz2 = () => {
             height={25}
             alt="Picture of the author"
           />
-          Complete The Quiz & Get Rewarded!
+          Start the quiz!
           <Image
             src="/pan.svg"
             width={25}

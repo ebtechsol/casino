@@ -66,7 +66,7 @@ const NewsAndBlogs = () => {
         <div className={styles.casinoBlog}>
             <div className="row">
                 <div className={"col-md-6 " + styles.brandTitleDiv}>
-                    <span className={styles.blogMainTitle}>News & Blogs</span>
+                    <span className={styles.blogMainTitle}>Blogs and News</span>
                 </div>
                 <div className="col-md-6">
                     <a href="/News">

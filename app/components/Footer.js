@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="container-fluid">
             <div className={"row foBg_black " + styles.foBg_black}>
                     <div className={"col-md-3 col-sm-12 ct1 " + styles.ct1}>
-                        <h3>Gambler.GG</h3>
+                        <h3 title="Gambler.GG">Gambler.GG</h3>
                         <p>Discover Top Casino Deals & <br /> Boost Your Winnings!</p>
                         <div className="row">
                             <div className="col-2 text-center p-0">
@@ -60,7 +60,7 @@ const Footer = () => {
                             <li> <a href="#">Contact</a> </li>
                         </ul>
                     </div>
-                    <div className={"col-md-4 col-sm-12 " + styles.ct3}>
+                    <div className={"col-md-4 col-sm-12 ct3 " + styles.ct3}>
                         <h4>Subscribe to our newsletter</h4>
                         <div className={styles.form}>
                             <div className="col-md-12 col-sm-12 d-flex">

@@ -8,10 +8,8 @@ const CasinoDeals = () => {
         <br /> Boost Your Winnings!
       </h3>
       <p className={"text-center " + styles.titleText}>
-        Your ultimate destination for the best affiliate casino offers,
-        exclusive bonuses, and top-notch
-        <br /> gaming insights. Play smarter, win bigger—start your adventure
-        today!&quot;
+        Your go-to source for the latest casino news, industry trends, and expert insights—plus the best casino offers and exclusive bonuses. 
+        <br /> Stay informed, play smarter, and make the most of your gaming experience.
       </p>
       <div className="text-center">
         {" "}

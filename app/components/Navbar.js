@@ -50,7 +50,7 @@ const Navbar = () => {
             </div>
             <nav className="navbar navbar-expand-lg">
                 <div className={"container-fluid " + styles.header}>
-                    <a className="navbar-brand" href="./">
+                    <a className="navbar-brand" href="./" title="Gambler.GG">
                         <b>Gambler.GG</b>
                     </a>
                     <button
@@ -73,7 +73,7 @@ const Navbar = () => {
                             </li>
                             <li className={"nav-item " + styles.nav}>
                                 <a className="nav-link active" aria-current="page" href="/Blogs">
-                                    News & Blogs
+                                    Blogs and News
                                 </a>
                             </li>
                             <li className={"nav-item " + styles.nav}>
@@ -85,11 +85,20 @@ const Navbar = () => {
                         <a href="/SignUp">
                             <button className={styles.signUp}><Image
                                 aria-hidden
-                                src="/user.svg"
+                                src="/sign_up.svg"
                                 alt="Window icon"
                                 width={20}
                                 height={20}
                             /> Sign Up</button>
+                        </a>
+                        <a href="/SignIn">
+                            <button className={styles.signIn}><Image
+                                aria-hidden
+                                src="/sign_in.svg"
+                                alt="Window icon"
+                                width={20}
+                                height={20}
+                            /> Sign In</button>
                         </a>
                     </div>
                 </div>

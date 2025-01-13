@@ -42,7 +42,7 @@ const SignIn = () => {
                   Remember me
               </p>
               <a href="#" className={styles.fgpass}>
-                  Forget password?
+                Forgot password?
               </a>
             </div>
 
