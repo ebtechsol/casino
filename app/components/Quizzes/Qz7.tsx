@@ -1,9 +1,9 @@
 import Image from "next/image";
 import styles from "@/public/style/quiz.module.css";
 
-const Qz1 = () => {
+const Qz7 = () => {
   return (
-    <div className={styles.quizOneBanner}>
+    <div className={styles.quizSevenBanner}>
       <div className="text-center">
         <h4 className={styles.casinoTitle}>
           Can&apos;t find a Casino? Do the quiz!
@@ -11,34 +11,45 @@ const Qz1 = () => {
         <p className="text-white">
           Answer a few questions and let us guide you to the best spot.
         </p>
-        <h2 className={styles.gameTilte}>1. What games do you like to play?</h2>
-        <div className={"row container " + styles.gameOptionRow}>
+        <div className={"row container " + styles.shuffleRow}>
           <div className="col-lg-4">
           <Image
-            src="/slot_game.svg"
-            width={200}
-            height={150}
+            src="/shuffleOne.svg"
+            width={400}
+            height={300}
             alt="Picture of the author"
           />
-          <h4 className={styles.gamecardTitle}>Slots & Table Games</h4>
           </div>
           <div className="col-lg-4">
           <Image
-            src="/just_slot.svg"
-            width={200}
-            height={150}
+            src="/shuffleTwo.svg"
+            width={400}
+            height={300}
             alt="Picture of the author"
           />
-          <h4 className={styles.gamecardTitle}>Just Slots</h4>
+          <button className={styles.shufflebtn}>
+          <Image
+            src="/pan.svg"
+            width={25}
+            height={25}
+            alt="Picture of the author"
+          />
+          SHUFFLE
+          <Image
+            src="/pan.svg"
+            width={25}
+            height={25}
+            alt="Picture of the author"
+          />
+        </button>
           </div>
           <div className="col-lg-4">
           <Image
-            src="/just_game.svg"
-            width={200}
-            height={150}
+            src="/shuffleThree.svg"
+            width={400}
+            height={300}
             alt="Picture of the author"
           />
-          <h4 className={styles.gamecardTitle}>Just Game Tables</h4>
           </div>
         </div>
       </div>
@@ -46,4 +57,4 @@ const Qz1 = () => {
   );
 };
 
-export default Qz1;
+export default Qz7;

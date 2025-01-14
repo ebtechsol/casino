@@ -7,14 +7,79 @@
   background-repeat: no-repeat;
   background-size: contain;
 }
+
 .quizOneBanner {
   height: 680px;
-  margin: 50px 60px 0px 60px;
-  background-image: url("/quiz_bg_new1.svg");
+  margin: 50px 0px 0px 0px;
+  background-image: url("/quz-bg.svg");
   border-radius: 10px;
   background-position: top;
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.shaffleCardOne {
+  height: 500px;
+  background-image: url("/shuffle-card-1.svg");
+  border-radius: 10px;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.shaffleCardTwo {
+  height: 500px;
+  background-image: url("/shuffle-card-2.svg");
+  border-radius: 10px;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.shaffleCardThree {
+  height: 500px;
+  background-image: url("/shuffle-card-3.svg");
+  border-radius: 10px;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.quizTreeBanner {
+  height: 1000px;
+  margin: 50px 0px 0px 0px;
+  background-image: url("/cant_find_a_casino.svg");
+  border-radius: 10px;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.quizSevenBanner {
+  height: 680px;
+  margin: 50px 60px 0px 60px;
+  background-image: url("/quiz_bg_news.svg");
+  border-radius: 10px;
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.shuffleRow {
+  margin: auto;
+}
+
+.shufflebtn {
+  padding: 10px 30px;
+  font-size: 22px;
+  letter-spacing: 1px;
+  background: #d70000;
+  border: none;
+  border-radius: 50px;
+  margin-top: 145px;
+  color: #fff;
+  font-weight: 600;
+  position: relative;
+  top: -62%;
+  border: 2px solid black;
 }
 
 .casinoTitle {
@@ -34,34 +99,113 @@
   color: #ffff;
   font-weight: 600;
 }
-.gameTilte{
+
+.gameTilte {
   color: white;
-    margin-right: 20%;
-    font-size: 20px;
-    font-weight: 600;
-    margin-top: 50px;
+  margin-right: 20%;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 100px;
 }
-.gameOptionRow{
+
+.redeemBtn {
+  padding: 10px 30px;
+  border-radius: 50px;
+  background: #D70000;
+  border: none;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.shuffleHeading {
+  font-size: 22px;
+  color: white;
+  font-weight: 700;
+  padding-top: 63px;
+}
+
+.shufflePara {
+  font-size: 14px;
+  color: #B9B9B9;
+  letter-spacing: 1px;
+}
+
+.gameOptionRow {
   width: 45%;
   margin: auto;
 }
-.gameOptionTwoRow{
+
+.gameOptionTwoRow {
   width: 60%;
   margin: auto;
 }
-.gamecardTitle{
+
+.gamecardTitle {
   color: white;
-    font-size: 15px;
-    text-align: left;
-    font-weight: 600;
+  font-size: 15px;
+  text-align: left;
+  font-weight: 600;
+  padding-left: 15px;
 }
-.gameTwoTilte{
+
+.gameTwoTilte {
   color: #fff;
-    margin-right: 33%;
-    font-size: 20px;
-    font-weight: 600;
-    margin-top: 50px;
+  margin-right: 38%;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 100px;
 }
+
+.gameThreeTilte {
+  color: #fff;
+  margin-right: 42%;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 100px;
+}
+
+.gameSixTilte {
+  color: #fff;
+  margin-right: 16%;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 100px;
+}
+
+.gamecardThreeTitle {
+  color: #fff;
+  font-size: 15px;
+  text-align: left;
+  font-weight: 600;
+  padding-left: 35px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.bettingBtnSec {
+  margin-right: 20%;
+  margin-top: 10px;
+}
+
+.bettingBtn {
+  padding: 15px 50px;
+  border: none;
+  border-radius: 10px;
+  background: #D70000;
+  color: #fff;
+  font-size: 22px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.bettingPlaceHolder {
+  color: #fff;
+  padding-top: 10px;
+  margin-right: 8%;
+}
+
 @media only screen and (max-width: 600px) {
   .casinoBanner {
     margin: 0px;
@@ -69,11 +213,35 @@
     padding: 20px 30px;
     background-size: cover;
   }
+
   .casinoTitle {
     padding-top: 80px;
     padding-bottom: 20px;
   }
+
   .complbtn {
+    margin-top: 30px;
+  }
+  .quizOneBanner{
+    background-size: cover;
+    height: 1000px;
+  } 
+  .casinoTitle{
+    padding-top: 135px;
+    font-size: 26px;
+  }
+  .gameTilte{
+    margin-top: 30px;
+    margin-right: 0%;
+  }
+  .gameOptionRow{
+    width:100%;
+  }
+  .gamecardTitle{
+    text-align: center;
+  }
+  .gameTwoTilte{
+    margin-right: 0%;
     margin-top: 30px;
   }
 }

@@ -5,6 +5,7 @@ import  Footer  from "./components/Footer";
 import  "bootstrap/dist/css/bootstrap.min.css";
 import AddBootstrap from './AddBootstrap';
 import "./globals.css";
+import Head from 'next/head';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,6 +34,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Head>
+         <meta name="darkreader-lock" />
+      </Head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${inter.variable}`}>
         <AddBootstrap />
       <Navbar />

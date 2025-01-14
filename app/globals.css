@@ -9,7 +9,9 @@
     --foreground: #ededed;
   }
 }
-
+html{
+  background-color: #ffff;
+}
 html,
 body {
   max-width: 100vw;
