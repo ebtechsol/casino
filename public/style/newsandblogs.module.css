@@ -62,4 +62,7 @@
   .blogSection {
     padding: 10px 20px;
   }
+  .blogMainTitle {
+    font-size: 25px;
+  }
 }

@@ -131,4 +131,7 @@
   .banner{
     height: 470px;
   }
+  .blogMainTitle {
+    font-size: 25px;
+  }
 }

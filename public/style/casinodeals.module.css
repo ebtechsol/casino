@@ -38,13 +38,20 @@
 
 @media only screen and (max-width: 600px) {
   .title {
-    font-size: 42px;
+    font-size: 22px;
     padding-top: 100px;
   }
   .titleText {
     padding: 20px 40px;
+    font-size: 13px;
   }
   .searchInput {
     width: 80%;
+  }
+  .banner {
+    height: 460px;
+  }
+  .blogMainTitle {
+    font-size: 25px;
   }
 }

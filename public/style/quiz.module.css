@@ -214,10 +214,6 @@
     background-size: cover;
   }
 
-  .casinoTitle {
-    padding-top: 80px;
-    padding-bottom: 20px;
-  }
 
   .complbtn {
     margin-top: 30px;
@@ -243,5 +239,41 @@
   .gameTwoTilte{
     margin-right: 0%;
     margin-top: 30px;
+  }
+  .quizTreeBanner{
+    height: 2200px;
+    background-size: cover;
+  }
+  .gameThreeTilte{
+    margin-right: 0%;
+    margin-top: 50px;
+  }
+  .bettingBtn{
+    margin-top: 10px;
+  }
+  .cardresp{
+    margin-bottom: -80%;
+    margin-top: -33%;
+  }
+  .shufflebtn{
+    font-size: 11px;
+  }
+  .quizSevenBanner{
+    height: 908px;
+    margin-bottom: 35px;
+    background-size: cover;
+    margin: 0%;
+  }
+  .shaffleImage{
+    width: -webkit-fill-available;
+  }
+  .redeemBtn{
+    font-size: 9px;
+  }
+  .shuffleHeading{
+    padding-top: 40px;
+  }
+  .shufflecardresp{
+    margin-top: -85%;
   }
 }

@@ -17,14 +17,16 @@ const Qz7 = () => {
             src="/shuffleOne.svg"
             width={400}
             height={300}
+            className={styles.shaffleImage}
             alt="Picture of the author"
           />
           </div>
-          <div className="col-lg-4">
+          <div className={"col-lg-4 " + styles.cardresp}>
           <Image
             src="/shuffleTwo.svg"
             width={400}
             height={300}
+            className={styles.shaffleImage}
             alt="Picture of the author"
           />
           <button className={styles.shufflebtn}>
@@ -39,6 +41,7 @@ const Qz7 = () => {
             src="/pan.svg"
             width={25}
             height={25}
+            className={styles.shaffleImage}
             alt="Picture of the author"
           />
         </button>
@@ -48,6 +51,7 @@ const Qz7 = () => {
             src="/shuffleThree.svg"
             width={400}
             height={300}
+            className={styles.shaffleImage}
             alt="Picture of the author"
           />
           </div>
