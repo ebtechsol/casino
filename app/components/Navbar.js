@@ -1,7 +1,34 @@
+"use client";
 import Image from "next/image";
+import React, { useState, useEffect } from "react";
+import authSignOut from "@/app/services/authentication/authSignOut";
+import { getAuthenticationUser } from "@/lib/authenticationSession";
+
 import styles from "./../../public/style/navbar.module.css";
 
+
 const Navbar = () => {
+    const [authenticationUserStatus, setAuthenticationUserStatus] = useState(false);
+    const [authenticationUserName, setAuthenticationUserName] = useState("");
+
+    useEffect(() => {
+        const authenticationUser = async () => {
+            const user = await getAuthenticationUser();
+            console.log(user);
+            if (user != null && user != "" && user?.id != "") {
+                setAuthenticationUserStatus(true)
+                setAuthenticationUserName(user?.user_name);
+            }
+        }
+        authenticationUser();
+    }, [])
+
+
+    const signOut = async () => {
+        console.log("navbar");
+        await authSignOut();
+    }
+
     return (
         <div>
             <div className={"row container-fluid " + styles.tooltip} >
@@ -82,28 +109,55 @@ const Navbar = () => {
                                 </a>
                             </li>
                         </ul>
-                        <a href="/SignUp">
-                            <button className={styles.signUp}><Image
-                                aria-hidden
-                                src="/sign_up.svg"
-                                alt="Window icon"
-                                width={20}
-                                height={20}
-                            /> Sign Up</button>
-                        </a>
-                        <a href="/SignIn">
-                            <button className={styles.signIn}><Image
-                                aria-hidden
-                                src="/sign_in.svg"
-                                alt="Window icon"
-                                width={20}
-                                height={20}
-                            /> Sign In</button>
-                        </a>
+                        {
+                            authenticationUserStatus == true ? (
+                                <>
+                                    <a href="/Profile">
+                                        <button className={styles.signProfile}><Image
+                                            aria-hidden
+                                            src="/sign_profile.svg"
+                                            alt="Profile"
+                                            width={20}
+                                            height={20}
+                                        /> {authenticationUserName} </button>
+                                    </a>
+                                    <button className={styles.signOut} onClick={() => signOut()}>
+                                        <Image
+                                            aria-hidden
+                                            src="/sign_out.svg"
+                                            alt="Sign Out"
+                                            width={20}
+                                            height={20}
+                                        /> Sign Out
+                                    </button>
+                                </>
+                            ) : (
+                                <>
+                                    <a href="/SignUp">
+                                        <button className={styles.signUp}><Image
+                                            aria-hidden
+                                            src="/sign_up.svg"
+                                            alt="Sign Up"
+                                            width={20}
+                                            height={20}
+                                        /> Sign Up</button>
+                                    </a>
+                                    <a href="/SignIn">
+                                        <button className={styles.signIn}><Image
+                                            aria-hidden
+                                            src="/sign_in.svg"
+                                            alt="Sign In"
+                                            width={20}
+                                            height={20}
+                                        /> Sign In</button>
+                                    </a>
+                                </>
+                            )
+                        }
                     </div>
-                </div>
-            </nav>
-        </div>
+                </div >
+            </nav >
+        </div >
     )
 }
 

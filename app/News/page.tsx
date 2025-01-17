@@ -1,64 +1,29 @@
+"use client";
+import React, { useEffect, useState } from "react";
 import styles from "@/public/style/news.module.css";
 import Image from "next/image";
+import NewsService from "../services/newsAndBlogs/newsService";
+import NewsDto from "../dto/newsAndBlogs/newsDto";
 
-interface BlogTags {
+interface BlogTag {
   value: string;
 }
 
-interface BlogData {
-  src: string;
-  title: string;
-  subTitle: string;
-  tags: BlogTags[];
-  source: string;
-}
-
-const blogRecord: BlogData[] = [
-  {
-    src: "/prices_will.svg",
-    title: "Crypto Holders! Here’s EXACTLY When To Sell For Max Profits",
-    subTitle: "Crypto Lark • 28 DEC 2024",
-    tags: [{ value: "Crypto" }, { value: "Bitcoin" }, { value: "Casino" }],
-    source: "/BlogDetail",
-  },
-  {
-    src: "/buying.svg",
-    title: "Can PENGU Overtake DOGE? Pudgy Penguins VS Dogecoin Altcoins in 2025",
-    subTitle: "Altcoin Buzz • 28 DEC 2024",
-    tags: [{ value: "Crypto" }, { value: "Bitcoin" }, { value: "Casino" }],
-    source: "/BlogDetail",
-  },
-  {
-    src: "/prices_will.svg",
-    title: "Crypto Holders! Here’s EXACTLY When To Sell For Max Profits",
-    subTitle: "Crypto Lark • 28 DEC 2024",
-    tags: [{ value: "Crypto" }, { value: "Bitcoin" }, { value: "Casino" }],
-    source: "/BlogDetail",
-  },
-  {
-    src: "/buying.svg",
-    title: "Can PENGU Overtake DOGE? Pudgy Penguins VS Dogecoin Altcoins in 2025",
-    subTitle: "Altcoin Buzz • 28 DEC 2024",
-    tags: [{ value: "Crypto" }, { value: "Bitcoin" }, { value: "Casino" }],
-    source: "/BlogDetail",
-  },
-  {
-    src: "/prices_will.svg",
-    title: "Crypto Holders! Here’s EXACTLY When To Sell For Max Profits",
-    subTitle: "Crypto Lark • 28 DEC 2024",
-    tags: [{ value: "Crypto" }, { value: "Bitcoin" }, { value: "Casino" }],
-    source: "/BlogDetail",
-  },
-  {
-    src: "/buying.svg",
-    title: "Can PENGU Overtake DOGE? Pudgy Penguins VS Dogecoin Altcoins in 2025",
-    subTitle: "Altcoin Buzz • 28 DEC 2024",
-    tags: [{ value: "Crypto" }, { value: "Bitcoin" }, { value: "Casino" }],
-    source: "/BlogDetail",
-  }
+const blogTagRecord: BlogTag[] = [
+  { value: "Crypto" },
+  { value: "Bitcoin" },
+  { value: "Casino" },
 ];
 
 const News = () => {
+  const [newsContent, setNewsContent] = useState<NewsDto[]>([]);
+
+  useEffect(() => {
+    NewsService().then((contentData) => {
+      setNewsContent(contentData);
+    });  
+  }, [setNewsContent]);
+
   return (
     <div className={styles.casinoBlog}>
       <div className="row">
@@ -87,22 +52,22 @@ const News = () => {
       </div>
 
       <div className="row mt-2 mb-2">
-        {blogRecord.map((blog, index) => (
+        {newsContent.map((news, index) => (
           <div key={index} className={"col-md-4 " + styles.blogSection}>
             <Image
-              src={blog.src}
+              src={news.image_url}
               width={370}
               height={200}
               className={styles.blogImg}
               alt="Picture of the author"
             />
-            <p className={styles.blogSubTitle}>{blog.subTitle}</p>
+            <p className={styles.blogSubTitle}>{news.author_name} . {news.publish_date}</p>
             <div className="row">
               <div className="col-lg-10">
-                <span className={styles.blogTitle}>{blog.title}</span>
+                <span className={styles.blogTitle}>{news.title}</span>
               </div>
               <div className="col-lg-2">
-                <a href={blog.source}>
+                <a href="/BlogDetail">
                   <Image
                     src="/arrow-up-right.svg"
                     className={styles.arrowImg}
@@ -114,7 +79,7 @@ const News = () => {
               </div>
             </div>
             <div className="mt-4">
-              {blog.tags.map((tag, i) => (
+              {blogTagRecord.map((tag, i) => (
                 <span className={styles.blogTag} key={i}>
                   {tag.value}
                 </span>
@@ -146,22 +111,22 @@ const News = () => {
       </div>
 
       <div className="row mt-2 mb-2">
-        {blogRecord.map((blog, index) => (
+        {newsContent.map((news, index) => (
           <div key={index} className={"col-md-4 " + styles.blogSection}>
             <Image
-              src={blog.src}
+              src={news.image_url}
               width={370}
               height={200}
               className={styles.blogImg}
               alt="Picture of the author"
             />
-            <p className={styles.blogSubTitle}>{blog.subTitle}</p>
+            <p className={styles.blogSubTitle}>{news.author_name}</p>
             <div className="row">
               <div className="col-lg-10">
-                <span className={styles.blogTitle}>{blog.title}</span>
+                <span className={styles.blogTitle}>{news.title}</span>
               </div>
               <div className="col-lg-2">
-                <a href={blog.source}>
+                <a href="/BlogDetail">
                   <Image
                     src="/arrow-up-right.svg"
                     className={styles.arrowImg}
@@ -173,7 +138,7 @@ const News = () => {
               </div>
             </div>
             <div className="mt-4">
-              {blog.tags.map((tag, i) => (
+              {blogTagRecord.map((tag, i) => (
                 <span className={styles.blogTag} key={i}>
                   {tag.value}
                 </span>

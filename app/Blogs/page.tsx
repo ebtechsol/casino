@@ -1,70 +1,29 @@
+
+"use client";
+import React, { useEffect, useState } from "react";
+import BlogService from "../services/newsAndBlogs/blogService";
+import BlogDto from "../dto/newsAndBlogs/blogDto";
 import styles from "@/public/style/blogs.module.css";
 import Image from "next/image";
 
-interface BlogTags {
+interface BlogTag {
   value: string;
 }
-
-interface BlogData {
-  src: string;
-  title: string;
-  tags: BlogTags[];
-  description: string;
-  source: string;
-}
-
-const blogRecord: BlogData[] = [
-  {
-    src: "/prices_will.svg",
-    title: "Crypto Holders! Here’s EXACTLY When To Sell For Max Profits",
-    tags: [{ value: "Crypto" }, { value: "Bitcoin" }, { value: "Casino" }],
-    description:
-      "Lorem ipsum dolor sit amet consectetur. Integer consectetur quis aenean mollis fames lectus. Eget curabitur quisque in facilisi luctus tellus. Scelerisque felis ut dui at ultrices fermentum volutpat. Turpis tempor id turpis pellentesque laoreet pellentesque.",
-    source: "/BlogDetail",
-  },
-  {
-    src: "/buying.svg",
-    title: "Crypto Holders! Here’s EXACTLY When To Sell For Max Profits",
-    tags: [{ value: "Crypto" }, { value: "Bitcoin" }, { value: "Casino" }],
-    description:
-      "Lorem ipsum dolor sit amet consectetur. Integer consectetur quis aenean mollis fames lectus. Eget curabitur quisque in facilisi luctus tellus. Scelerisque felis ut dui at ultrices fermentum volutpat. Turpis tempor id turpis pellentesque laoreet pellentesque.",
-    source: "/BlogDetail",
-  },
-  {
-    src: "/prices_will.svg",
-    title: "Crypto Holders! Here’s EXACTLY When To Sell For Max Profits",
-    tags: [{ value: "Crypto" }, { value: "Bitcoin" }, { value: "Casino" }],
-    description:
-      "Lorem ipsum dolor sit amet consectetur. Integer consectetur quis aenean mollis fames lectus. Eget curabitur quisque in facilisi luctus tellus. Scelerisque felis ut dui at ultrices fermentum volutpat. Turpis tempor id turpis pellentesque laoreet pellentesque.",
-    source: "/BlogDetail",
-  },
-  {
-    src: "/buying.svg",
-    title: "Crypto Holders! Here’s EXACTLY When To Sell For Max Profits",
-    tags: [{ value: "Crypto" }, { value: "Bitcoin" }, { value: "Casino" }],
-    description:
-      "Lorem ipsum dolor sit amet consectetur. Integer consectetur quis aenean mollis fames lectus. Eget curabitur quisque in facilisi luctus tellus. Scelerisque felis ut dui at ultrices fermentum volutpat. Turpis tempor id turpis pellentesque laoreet pellentesque.",
-    source: "/BlogDetail",
-  },
-  {
-    src: "/prices_will.svg",
-    title: "Crypto Holders! Here’s EXACTLY When To Sell For Max Profits",
-    tags: [{ value: "Crypto" }, { value: "Bitcoin" }, { value: "Casino" }],
-    description:
-      "Lorem ipsum dolor sit amet consectetur. Integer consectetur quis aenean mollis fames lectus. Eget curabitur quisque in facilisi luctus tellus. Scelerisque felis ut dui at ultrices fermentum volutpat. Turpis tempor id turpis pellentesque laoreet pellentesque.",
-    source: "/BlogDetail",
-  },
-  {
-    src: "/buying.svg",
-    title: "Crypto Holders! Here’s EXACTLY When To Sell For Max Profits",
-    tags: [{ value: "Crypto" }, { value: "Bitcoin" }, { value: "Casino" }],
-    description:
-      "Lorem ipsum dolor sit amet consectetur. Integer consectetur quis aenean mollis fames lectus. Eget curabitur quisque in facilisi luctus tellus. Scelerisque felis ut dui at ultrices fermentum volutpat. Turpis tempor id turpis pellentesque laoreet pellentesque.",
-    source: "/BlogDetail",
-  },
+const blogTagRecord: BlogTag[] = [
+  { value: "Crypto" },
+  { value: "Bitcoin" },
+  { value: "Casino" },
 ];
 
 const Blogs = () => {
+  const [blogContent, setBlogContent] = useState<BlogDto[]>([]);
+
+    useEffect(() => {
+      BlogService().then((contentData) => {
+        setBlogContent(contentData);
+      });
+    }, [setBlogContent]);
+
   return (
     <div>
       <a href="/News">
@@ -79,12 +38,12 @@ const Blogs = () => {
         </div>
       </a>
 
-      {blogRecord.map((blog, index) => (
+      {blogContent.map((blog, index) => (
         <div key={index}>
           <div className={"row mt-2 " + styles.blogSection}>
             <div className={"col-md-4 " + styles.blogImgSection}>
               <Image
-                src={blog.src}
+                src={blog.image_url}
                 width={370}
                 height={200}
                 className={styles.blogImg}
@@ -96,14 +55,14 @@ const Blogs = () => {
                 <h3 className={styles.blogTitle}>{blog.title}</h3>
                 <div className="mt-2">
                   <div className="mt-4">
-                    {blog.tags.map((tag, i) => (
-                      <span className={styles.blogTag} key={i}>
-                        {tag.value}
-                      </span>
-                    ))}
+                  {blogTagRecord.map((tag, i) => (
+                <span className={styles.blogTag} key={i}>
+                  {tag.value}
+                </span>
+              ))}
                   </div>
                   <p className={styles.blogDesc}>{blog.description}</p>
-                  <a href={blog.source}>
+                  <a href="/BlogDetail">
                     <button className={styles.featureBtn}>
                       Read More {" "}
                       <Image
