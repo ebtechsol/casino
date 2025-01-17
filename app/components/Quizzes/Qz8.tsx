@@ -18,14 +18,14 @@ const Qz8 = () => {
             <button className={styles.redeemBtn}>Redeem Now!</button>
           </div>
           </div>
-          <div className="col-lg-4">
+          <div className={"col-lg-4 " + styles.shufflecardresp}>
           <div className={styles.shaffleCardTwo}>
             <h4 className={styles.shuffleHeading}>$250 Free balance</h4>
             <p className={styles.shufflePara}>Deposit $2,000 & Wager $20,000+ in total!</p>
             <button className={styles.redeemBtn}>Redeem Now!</button>
           </div>
           </div>
-          <div className="col-lg-4">
+          <div className={"col-lg-4 " + styles.shufflecardresp}>
           <div className={styles.shaffleCardThree}>
             <h4 className={styles.shuffleHeading}>Join discord &<br />
             create support ticket</h4>
