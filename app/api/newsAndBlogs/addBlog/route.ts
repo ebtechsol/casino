@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 const POST = async (request: NextRequest) => {
   try {
-    const { title,description,long_description,is_active, image_url, createdAt,updatedAt } = await request.json();
+    const { title,description,long_description,is_active, image_url, created_at,updated_at } = await request.json();
    
 
     await prisma.blog.create({
@@ -14,8 +14,8 @@ const POST = async (request: NextRequest) => {
         long_description: long_description,
         is_active: is_active,
         image_url: image_url,
-        createdAt: createdAt,
-        updatedAt:updatedAt
+        created_at: created_at,
+        updated_at:updated_at
       },
     });
 

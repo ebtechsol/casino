@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 const POST = async (request: NextRequest) => {
   try {
-    const { title, image_url,author_name,publish_date, createdAt,updatedAt } = await request.json();
+    const { title, image_url,author_name,publish_date, created_at,updated_at } = await request.json();
    
 
     await prisma.news.create({
@@ -13,8 +13,8 @@ const POST = async (request: NextRequest) => {
         image_url: image_url,
         author_name: author_name,
         publish_date: publish_date,
-        createdAt: createdAt,
-        updatedAt:updatedAt
+        created_at: created_at,
+        updated_at:updated_at
       },
     });
 

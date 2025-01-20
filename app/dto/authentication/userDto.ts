@@ -6,8 +6,8 @@ type UserDto = {
   email: string;
   password: string;
   is_active: boolean;
-  createdAt: DateTime;
-  updatedAt: DateTime;
+  created_at: DateTime;
+  updated_at: DateTime;
 };
 
 export default UserDto;

@@ -1,5 +1,5 @@
 import NewsDto from '@/app/dto/newsAndBlogs/newsDto';
-import {NewRequestDto,NewResponseDto} from '@/app/dto/newsAndBlogs/newsDto';
+import {NewsRequestDto,NewsResponseDto} from '@/app/dto/newsAndBlogs/newsDto';
 import { GetApiSource } from '@/app/helpers/defaultHelper';
 
 const NewsService = async () : Promise<NewsDto[]> => 
@@ -21,9 +21,9 @@ const NewsService = async () : Promise<NewsDto[]> =>
 }
 
 export const AddNew = async (
-  request: NewRequestDto
-): Promise<NewResponseDto> => {
-  let addNewStatus: NewResponseDto = {
+  request: NewsRequestDto
+): Promise<NewsResponseDto> => {
+  let addNewStatus: NewsResponseDto = {
     status: false,
     msg: "",
   };
@@ -36,7 +36,7 @@ export const AddNew = async (
       },
       body: JSON.stringify(request),
     });
-    addNewStatus = (await response.json()) as NewResponseDto;
+    addNewStatus = (await response.json()) as NewsResponseDto;
   } catch (err) {
     console.log(err);
   }

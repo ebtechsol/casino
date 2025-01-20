@@ -7,23 +7,34 @@ type NewsDto = {
   image_url: string;
   author_name: string;
   publish_date: DateTime;
-  createdAt: DateTime;
-  updatedAt: DateTime;
+  is_active : boolean;
+  created_at: DateTime;
+  updated_at: DateTime;
+};
+export default NewsDto;
+
+export type NewsTagsDto = {
+  id: number;
+  name: string;
+  bg_color_code: string;
+  text_color_code: string;
+  created_at: DateTime;
+  news_id: number;
+  news: NewsDto
 };
 
-export type NewRequestDto = {
+export type NewsRequestDto = {
   title: string;
   description: string;
   image_url: string;
   author_name: string;
   publish_date: DateTime;
-  createdAt: DateTime;
-  updatedAt: DateTime;
+  created_at: DateTime;
+  updated_at: DateTime;
 };
 
-export type NewResponseDto = {
+export type NewsResponseDto = {
   status: boolean;
   msg: string;
 };
 
-export default NewsDto;

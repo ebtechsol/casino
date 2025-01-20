@@ -16,8 +16,8 @@ model User {
   email        String         @unique
   password     String
   is_active    Boolean        @default(false)
-  createdAt    DateTime       @default(now()) @map(name: "created_at")
-  updatedAt    DateTime       @updatedAt @map(name: "updated_at")
+  created_at   DateTime       @default(now()) @map(name: "created_at")
+  updated_at   DateTime       @updatedAt @map(name: "updated_at")
   blogComments BlogComments[]
 
   @@map(name: "users")
@@ -30,8 +30,8 @@ model Blog {
   long_description String?
   image_url        String?
   is_active        Boolean        @default(false)
-  createdAt        DateTime       @default(now()) @map(name: "created_at")
-  updatedAt        DateTime       @updatedAt @map(name: "updated_at")
+  created_at       DateTime       @default(now()) @map(name: "created_at")
+  updated_at       DateTime       @updatedAt @map(name: "updated_at")
   blogTags         BlogTags[]
   blogComments     BlogComments[]
 
@@ -43,7 +43,7 @@ model BlogTags {
   name            String
   bg_color_code   String   @default("#ffe5e5")
   text_color_code String   @default("#d70000")
-  createdAt       DateTime @default(now()) @map(name: "created_at")
+  created_at      DateTime @default(now()) @map(name: "created_at")
   blog_id         Int
   blog            Blog?    @relation(fields: [blog_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
@@ -53,8 +53,8 @@ model BlogTags {
 model BlogComments {
   id                Int      @id @unique(map: "sqlite_autoindex_blog_comments") @default(autoincrement())
   message           String
-  parent_comment_id String?
-  createdAt         DateTime @default(now()) @map(name: "created_at")
+  parent_comment_id Int?
+  created_at        DateTime @default(now()) @map(name: "created_at")
   blog_id           Int
   blog              Blog?    @relation(fields: [blog_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
   user_id           Int
@@ -71,8 +71,8 @@ model News {
   author_name  String
   publish_date DateTime   @default(now()) @map(name: "publish_date")
   is_active    Boolean    @default(false)
-  createdAt    DateTime   @default(now()) @map(name: "created_at")
-  updatedAt    DateTime   @updatedAt @map(name: "updated_at")
+  created_at   DateTime   @default(now()) @map(name: "created_at")
+  updated_at   DateTime   @updatedAt @map(name: "updated_at")
   newsTags     NewsTags[]
 
   @@map(name: "news")
@@ -83,7 +83,7 @@ model NewsTags {
   name            String
   bg_color_code   String   @default("#ffe5e5")
   text_color_code String   @default("#d70000")
-  createdAt       DateTime @default(now()) @map(name: "created_at")
+  created_at      DateTime @default(now()) @map(name: "created_at")
   news_id         Int
   news            News?    @relation(fields: [news_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
@@ -95,10 +95,10 @@ model Casino {
   title         String
   sub_tile      String
   description   String
-  image         String
+  image_url     String
   wizard_rating Decimal
   critic_score  Decimal
-  createdAt     DateTime        @default(now()) @map(name: "created_at")
+  created_at    DateTime        @default(now()) @map(name: "created_at")
   casinoTags    CasinoTags[]
   casinoReviews CasinoReviews[]
 
@@ -111,7 +111,7 @@ model CasinoTags {
   name            String
   bg_color_code   String   @default("#FFFFFF")
   text_color_code String   @default("#d70000")
-  createdAt       DateTime @default(now()) @map(name: "created_at")
+  created_at      DateTime @default(now()) @map(name: "created_at")
   casino_id       Int
   casino          Casino?  @relation(fields: [casino_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
@@ -122,7 +122,7 @@ model CasinoReviews {
   id           Int      @id @unique(map: "sqlite_autoindex_casino_reviews") @default(autoincrement())
   reviews_type String
   rating       Decimal
-  createdAt    DateTime @default(now()) @map(name: "created_at")
+  created_at   DateTime @default(now()) @map(name: "created_at")
   casino_id    Int
   casino       Casino?  @relation(fields: [casino_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
 
