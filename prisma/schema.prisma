@@ -5,40 +5,126 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
 model User {
-  id            String    @default(cuid()) @id
-  user_name     String
-  email         String    @unique
-  password      String
-  is_active     Boolean   @default(false)
-  createdAt     DateTime  @default(now()) @map(name: "created_at")
-  updatedAt     DateTime  @updatedAt @map(name: "updated_at")
+  id           Int            @id @unique(map: "sqlite_autoindex_user") @default(autoincrement())
+  user_name    String
+  email        String         @unique
+  password     String
+  is_active    Boolean        @default(false)
+  createdAt    DateTime       @default(now()) @map(name: "created_at")
+  updatedAt    DateTime       @updatedAt @map(name: "updated_at")
+  blogComments BlogComments[]
+
   @@map(name: "users")
 }
 
 model Blog {
-  id             String    @default(cuid()) @id
-  title          String
-  description    String?
-  image_url      String?
-  createdAt      DateTime  @default(now()) @map(name: "created_at")
-  updatedAt      DateTime  @updatedAt @map(name: "updated_at")
+  id               Int            @id @unique(map: "sqlite_autoindex_blog") @default(autoincrement())
+  title            String
+  description      String?
+  long_description String?
+  image_url        String?
+  is_active        Boolean        @default(false)
+  createdAt        DateTime       @default(now()) @map(name: "created_at")
+  updatedAt        DateTime       @updatedAt @map(name: "updated_at")
+  blogTags         BlogTags[]
+  blogComments     BlogComments[]
+
   @@map(name: "blogs")
 }
 
+model BlogTags {
+  id              Int      @id @unique(map: "sqlite_autoindex_blog_tags") @default(autoincrement())
+  name            String
+  bg_color_code   String   @default("#ffe5e5")
+  text_color_code String   @default("#d70000")
+  createdAt       DateTime @default(now()) @map(name: "created_at")
+  blog_id         Int
+  blog            Blog?    @relation(fields: [blog_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map(name: "blog_tags")
+}
+
+model BlogComments {
+  id                Int      @id @unique(map: "sqlite_autoindex_blog_comments") @default(autoincrement())
+  message           String
+  parent_comment_id String?
+  createdAt         DateTime @default(now()) @map(name: "created_at")
+  blog_id           Int
+  blog              Blog?    @relation(fields: [blog_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  user_id           Int
+  user              User?    @relation(fields: [user_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map(name: "blog_comments")
+}
+
 model News {
-  id             String    @default(cuid()) @id
-  title          String
-  description    String?    
-  image_url      String?
-  author_name    String
-  publish_date   DateTime  @default(now()) @map(name: "publish_date")
-  createdAt      DateTime  @default(now()) @map(name: "created_at")
-  updatedAt      DateTime  @updatedAt @map(name: "updated_at")
+  id           Int        @id @unique(map: "sqlite_autoindex_news") @default(autoincrement())
+  title        String
+  description  String?
+  image_url    String?
+  author_name  String
+  publish_date DateTime   @default(now()) @map(name: "publish_date")
+  is_active    Boolean    @default(false)
+  createdAt    DateTime   @default(now()) @map(name: "created_at")
+  updatedAt    DateTime   @updatedAt @map(name: "updated_at")
+  newsTags     NewsTags[]
+
   @@map(name: "news")
+}
+
+model NewsTags {
+  id              Int      @id @unique(map: "sqlite_autoindex_news_tags") @default(autoincrement())
+  name            String
+  bg_color_code   String   @default("#ffe5e5")
+  text_color_code String   @default("#d70000")
+  createdAt       DateTime @default(now()) @map(name: "created_at")
+  news_id         Int
+  news            News?    @relation(fields: [news_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map(name: "news_tags")
+}
+
+model Casino {
+  id            Int             @id @unique(map: "sqlite_autoindex_casino") @default(autoincrement())
+  title         String
+  sub_tile      String
+  description   String
+  image         String
+  wizard_rating Decimal
+  critic_score  Decimal
+  createdAt     DateTime        @default(now()) @map(name: "created_at")
+  casinoTags    CasinoTags[]
+  casinoReviews CasinoReviews[]
+
+  @@map(name: "casino")
+}
+
+model CasinoTags {
+  id              Int      @id @unique(map: "sqlite_autoindex_casino_tags") @default(autoincrement())
+  image           String
+  name            String
+  bg_color_code   String   @default("#FFFFFF")
+  text_color_code String   @default("#d70000")
+  createdAt       DateTime @default(now()) @map(name: "created_at")
+  casino_id       Int
+  casino          Casino?  @relation(fields: [casino_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map(name: "casino_tags")
+}
+
+model CasinoReviews {
+  id           Int      @id @unique(map: "sqlite_autoindex_casino_reviews") @default(autoincrement())
+  reviews_type String
+  rating       Decimal
+  createdAt    DateTime @default(now()) @map(name: "created_at")
+  casino_id    Int
+  casino       Casino?  @relation(fields: [casino_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map(name: "casino_reviews")
 }

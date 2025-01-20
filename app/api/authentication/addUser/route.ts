@@ -12,7 +12,7 @@ const POST = async (request: NextRequest) => {
         is_active: true,
       },
     });
-    if(userRecord != null && userRecord?.id != "") {
+    if(userRecord != null && userRecord?.id > 0) {
       return NextResponse.json({ status: false, msg: "Email address already exist!" });
     } 
 

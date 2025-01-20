@@ -1,7 +1,7 @@
 import { DateTime } from "next-auth/providers/kakao";
 
 type NewsDto = {
-  id: string;
+  id: number;
   title: string;
   description: string;
   image_url: string;

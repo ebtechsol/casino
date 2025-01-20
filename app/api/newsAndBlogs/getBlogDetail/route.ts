@@ -5,28 +5,27 @@ const prisma = new PrismaClient();
 const POST = async (request: NextRequest) => {
   try {
     const { id } = await request.json();
-    const userRecord = await prisma.user.findUnique({
+    const record = await prisma.blog.findUnique({
       where: {
         id: id,
         is_active: true,
       },
     });
-    if (userRecord != null && userRecord?.id > 0) {
+
+    if (record != null && record?.id > 0) {
       return NextResponse.json({
         status: true,
-        data: userRecord,
-        msg: "User data is exist!",
+        data: record,
+        msg: "Record exist!",
       });
     }
-
     return NextResponse.json({
       status: false,
       data: null,
-      msg: "User data is not exist!",
+      msg: "Record not exist!",
     });
   } catch {
     return NextResponse.json({ status: false, data: null, msg: "Bad Request!" });
   }
 };
-
 export { POST };
