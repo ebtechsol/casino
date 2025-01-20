@@ -4,13 +4,20 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Image from "next/image";
-import authSignIn from "@/app/services/authentication/authSignIn";
-import { redirect } from "next/navigation";
+import { AuthSignIn } from "@/app/services/authentication/authenticationService";
+import { useRouter } from "next/navigation";
 
 import styles from "@/public/style/signIn.module.css";
+import {
+  SignInRequestDto,
+  SignInResponseDto,
+} from "../dto/authentication/userDto";
 
 const SignIn = () => {
-  const [authenticationErrorMessage, setAuthenticationErrorMessage] = useState("");
+  const router = useRouter();
+  const [formSubmitLoading, setFormSubmitLoading] = useState(false);
+  const [authenticationErrorMessage, setAuthenticationErrorMessage] =
+    useState("");
   const formSchema = z.object({
     email: z
       .string()
@@ -32,17 +39,27 @@ const SignIn = () => {
   });
 
   async function onSubmitSignInForm(values: z.infer<typeof formSchema>) {
+    setFormSubmitLoading(true);
     setAuthenticationErrorMessage("");
     if (values.email && values.password) {
-      const authenticateStatus = authSignIn(
-        values.email,
-        values.password
-      );
-      if(await authenticateStatus == true) {
-        redirect("/");
-      } else {
-        setAuthenticationErrorMessage("Invalid Credential!");        
-      }
+      const request: SignInRequestDto = {
+        email: values.email,
+        password: values.password,
+      };
+      AuthSignIn(request)
+        .then((response: SignInResponseDto) => {
+          setFormSubmitLoading(false);
+          if (response.status == true) {
+            router.push("/");
+          } else {
+            setAuthenticationErrorMessage(response.msg);
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+          setFormSubmitLoading(false);
+          setAuthenticationErrorMessage("Something went wrong!");
+        });
     }
   }
 
@@ -113,7 +130,7 @@ const SignIn = () => {
               }
               className={"mt-4 " + styles.submitBtn}
             >
-              Sign In
+              {formSubmitLoading ? "Loading..." : "Sign In"}
             </button>
             <div className="row">
               <p className={styles.notAcc}>
@@ -121,7 +138,7 @@ const SignIn = () => {
               </p>
             </div>
 
-            <div className={"row mt-3 mb-3 ms-0 me-0 " + styles.rowOR}>
+            <div className={"row mt-3 mb-3 ms-0 me-0 d-none " + styles.rowOR}>
               <h3>Or</h3>
             </div>
 

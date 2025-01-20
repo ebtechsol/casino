@@ -118,7 +118,8 @@
     text-decoration-skip-ink: none;
     color: rgba(21, 21, 21, 1);
     width: 100%;
-}
+    display: none;
+  }
 
 .image {
     margin: -3px 5px 0px;
@@ -147,6 +148,7 @@
   .facebookBtn,
   .appleBtn {
     padding-left: 15%;
+    display: none;
   }
   .info h3{
     padding-top: 10px;

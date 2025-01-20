@@ -1,26 +1,34 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { AuthSignUp } from "@/app/services/authentication/authenticationService";
 
 import styles from "@/public/style/signUp.module.css";
 import Image from "next/image";
+import {
+  SignUpRequestDto,
+  SignUpResponseDto,
+} from "../dto/authentication/userDto";
 
 const SignUp = () => {
+  const [formSubmitLoading, setFormSubmitLoading] = useState(false);
+  const [addUserSuccessMessage, setAddUserSuccessMessage] = useState("");
+  const [addUserErrorMessage, setAddUserErrorMessage] = useState("");
   const formSchema = z.object({
-    username: z.string().min(1, { message: "Username is required!" }),
+    user_name: z.string().min(1, { message: "Username is required!" }),
     email: z
       .string()
       .email({ message: "Please enter a valid email address!" })
       .min(1, { message: "Email is required!" }),
     password: z
       .string()
-      .min(8, { message: 'Be at least 8 characters long' })
-      .regex(/[a-zA-Z]/, { message: 'Contain at least one letter.' })
-      .regex(/[0-9]/, { message: 'Contain at least one number.' })
+      .min(8, { message: "Be at least 8 characters long" })
+      .regex(/[a-zA-Z]/, { message: "Contain at least one letter." })
+      .regex(/[0-9]/, { message: "Contain at least one number." })
       .regex(/[^a-zA-Z0-9]/, {
-        message: 'Contain at least one special character.',
+        message: "Contain at least one special character.",
       })
       .trim(),
   });
@@ -28,18 +36,45 @@ const SignUp = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
+      user_name: "",
       email: "",
-      username: "",
       password: "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  async function onSubmitSignUpForm(values: z.infer<typeof formSchema>) {
+    setFormSubmitLoading(true);
+    setAddUserSuccessMessage("");
+    setAddUserErrorMessage("");
+    if (values.user_name && values.email && values.password) {
+      const request: SignUpRequestDto = {
+        user_name: values.user_name,
+        email: values.email,
+        password: values.password,
+      };
+      AuthSignUp(request)
+        .then((response: SignUpResponseDto) => {
+          setFormSubmitLoading(false);
+          if (response.status == true) {
+            setAddUserSuccessMessage(response.msg);
+            setAddUserErrorMessage("");
+            reset();            
+          } else {
+            setAddUserSuccessMessage("");
+            setAddUserErrorMessage(response.msg);
+          }
+        })
+        .catch(() => {
+          setFormSubmitLoading(false);
+          setAddUserSuccessMessage("");
+          setAddUserErrorMessage("Something went wrong!");
+        });
+    }
   }
 
   return (
@@ -50,20 +85,34 @@ const SignUp = () => {
           <p className={styles.subtitle}>Let’s get Started!</p>
           <form
             className={styles.signUp_form}
-            onSubmit={handleSubmit(onSubmit)}
+            onSubmit={handleSubmit(onSubmitSignUpForm)}
           >
+            {addUserSuccessMessage != "" ? (
+              <span className="alert alert-success p-2 m-0 d-block">
+                {addUserSuccessMessage}
+              </span>
+            ) : (
+              ""
+            )}
+            {addUserErrorMessage != "" ? (
+              <span className="alert alert-danger p-2 m-0 d-block">
+                {addUserErrorMessage}
+              </span>
+            ) : (
+              ""
+            )}
             <div className="row">
               <div className="col-md-6 col-sm-12 mt-2">
-                <label htmlFor="username">Username:</label>
+                <label htmlFor="user_name">Username:</label>
                 <input
                   type="text"
-                  id="username"
+                  id="user_name"
                   placeholder="Username"
-                  {...register("username")}
+                  {...register("user_name")}
                 />
-                {errors.username?.message && (
+                {errors.user_name?.message && (
                   <small className="text-danger">
-                    {errors.username?.message}
+                    {errors.user_name?.message}
                   </small>
                 )}
               </div>
@@ -100,7 +149,7 @@ const SignUp = () => {
             <button
               type="submit"
               disabled={
-                errors.username?.message ||
+                errors.user_name?.message ||
                 errors.email?.message ||
                 errors.password?.message
                   ? true
@@ -108,11 +157,7 @@ const SignUp = () => {
               }
               className={"mt-4 " + styles.submitBtn}
             >
-              {errors.username?.message ||
-              errors.email?.message ||
-              errors.password?.message
-                ? "Loading..."
-                : "Sign up"}
+              {formSubmitLoading ? "Loading..." : "Sign Up"}
             </button>
             <div className="row">
               <p className={styles.alreadyAcc}>
@@ -120,7 +165,7 @@ const SignUp = () => {
               </p>
             </div>
 
-            <div className={"row mt-3 mb-3 ms-0 me-0 " + styles.rowOR}>
+            <div className={"row mt-3 mb-3 ms-0 me-0 d-none " + styles.rowOR}>
               <h3>Or</h3>
             </div>
 
@@ -176,7 +221,8 @@ const SignUp = () => {
                 height={16}
                 alt="Check"
               />
-              By signing up, I agree with the Terms and Conditions and Privacy Policy
+              By signing up, I agree with the Terms and Conditions and Privacy
+              Policy
             </h3>
           </div>
         </div>

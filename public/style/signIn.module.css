@@ -110,6 +110,7 @@
   text-decoration-skip-ink: none;
   color: rgba(21, 21, 21, 1);
   width: 100%;
+  display: none;
 }
 
 .image {
@@ -149,5 +150,6 @@
   .facebookBtn,
   .appleBtn {
     padding-left: 15%;
+    display: none;
   }
 }

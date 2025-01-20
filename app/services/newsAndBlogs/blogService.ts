@@ -1,10 +1,11 @@
 import BlogDto from '@/app/dto/newsAndBlogs/blogDto';
+import { GetApiSource } from '@/app/helpers/defaultHelper';
 
 const BlogService = async () : Promise<BlogDto[]> => 
 {
     let blogContent : BlogDto[] = [];
     try {
-        const requestSource = "/api/newsAndBlogs/getBlogContent";
+        const requestSource = GetApiSource("/api/newsAndBlogs/getBlogContent");
         const response = await fetch(requestSource, {
             method: 'GET',
             headers: {
