@@ -1,4 +1,5 @@
 import BlogDto from '@/app/dto/newsAndBlogs/blogDto';
+import {BlogRequestDto,BlogResponseDto} from '@/app/dto/newsAndBlogs/blogDto';
 import { GetApiSource } from '@/app/helpers/defaultHelper';
 
 const BlogService = async () : Promise<BlogDto[]> => 
@@ -21,5 +22,28 @@ const BlogService = async () : Promise<BlogDto[]> =>
     }    
     return blogContent;
 }
+
+export const AddBlog = async (
+  request: BlogRequestDto
+): Promise<BlogResponseDto> => {
+  let addBlogStatus: BlogResponseDto = {
+    status: false,
+    msg: "",
+  };
+  try {
+    const requestSource = GetApiSource("/api/newsAndBlogs/addBlog");
+    const response = await fetch(requestSource, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(request),
+    });
+    addBlogStatus = (await response.json()) as BlogResponseDto;
+  } catch (err) {
+    console.log(err);
+  }
+  return addBlogStatus;
+};
 
 export default BlogService;
