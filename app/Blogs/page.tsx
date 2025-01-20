@@ -1,7 +1,7 @@
 
 "use client";
 import React, { useEffect, useState } from "react";
-import BlogService from "../services/newsAndBlogs/blogService";
+import BlogListService from "../services/newsAndBlogs/blogService";
 import BlogDto from "../dto/newsAndBlogs/blogDto";
 import styles from "@/public/style/blogs.module.css";
 import Image from "next/image";
@@ -19,7 +19,7 @@ const Blogs = () => {
   const [blogContent, setBlogContent] = useState<BlogDto[]>([]);
 
     useEffect(() => {
-      BlogService().then((contentData) => {
+      BlogListService().then((contentData) => {
         setBlogContent(contentData);
       });
     }, [setBlogContent]);

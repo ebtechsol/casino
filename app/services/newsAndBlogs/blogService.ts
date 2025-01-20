@@ -2,11 +2,11 @@ import BlogDto from '@/app/dto/newsAndBlogs/blogDto';
 import {BlogRequestDto,BlogResponseDto} from '@/app/dto/newsAndBlogs/blogDto';
 import { GetApiSource } from '@/app/helpers/defaultHelper';
 
-const BlogService = async () : Promise<BlogDto[]> => 
+const BlogListService = async () : Promise<BlogDto[]> => 
 {
-    let blogContent : BlogDto[] = [];
+    let blogList : BlogDto[] = [];
     try {
-        const requestSource = GetApiSource("/api/newsAndBlogs/getBlogContent");
+        const requestSource = GetApiSource("/api/blog/getBlogList");
         const response = await fetch(requestSource, {
             method: 'GET',
             headers: {
@@ -15,13 +15,14 @@ const BlogService = async () : Promise<BlogDto[]> =>
         })
         const responseJson = await response.json();
         if(responseJson.status == true){
-            blogContent = responseJson.data;
+            blogList = responseJson.data;
         }
     } catch (err) {
         console.log(err);
     }    
-    return blogContent;
+    return blogList;
 }
+export default BlogListService;
 
 export const AddBlog = async (
   request: BlogRequestDto
@@ -45,5 +46,3 @@ export const AddBlog = async (
   }
   return addBlogStatus;
 };
-
-export default BlogService;

@@ -2,23 +2,24 @@ import NewsDto from '@/app/dto/newsAndBlogs/newsDto';
 import {NewsRequestDto,NewsResponseDto} from '@/app/dto/newsAndBlogs/newsDto';
 import { GetApiSource } from '@/app/helpers/defaultHelper';
 
-const NewsService = async () : Promise<NewsDto[]> => 
+const NewsListService = async () : Promise<NewsDto[]> => 
 {
-    let newsContent : NewsDto[] = [];
+    let newsList : NewsDto[] = [];
     try {
-        const requestSource =  GetApiSource("/api/newsAndBlogs/getNewsContent");
+        const requestSource =  GetApiSource("/api/news/getNewsList");
         const response = await fetch(requestSource)
         const responseJson = await response.json();
 
         if(responseJson.status == true){
-            newsContent = responseJson.data;
+            newsList = responseJson.data;
         }
     } catch (err) {
         console.log("err");
         console.log(err);
     }    
-    return newsContent;
+    return newsList;
 }
+export default NewsListService;
 
 export const AddNew = async (
   request: NewsRequestDto
@@ -43,4 +44,3 @@ export const AddNew = async (
   return addNewStatus;
 };
 
-export default NewsService;
