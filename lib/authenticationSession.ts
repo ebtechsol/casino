@@ -1,23 +1,14 @@
 "use server";
+import UserDto from "@/app/dto/authentication/userDto";
 import { SignJWT, jwtVerify } from "jose";
-import { DateTime } from "next-auth/providers/kakao";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 const secretKey = process.env.AUTHENTICATION_SESSION_SECRET;
 const encodedKey = new TextEncoder().encode(secretKey);
 
-type AuthUser = {
-  id: string;
-  user_name: string;
-  email: string;
-  password: string;
-  is_active: boolean;
-  createdAt: DateTime;
-  updatedAt: DateTime;
-};
 
-export async function setAuthSession(userDetail: AuthUser) {
+export async function setAuthSession(userDetail: UserDto) {
   const expiresAt = new Date(Date.now() + 15 * 60 * 1000);
   const session = await encrypt({ userDetail, expiresAt });
 
@@ -66,12 +57,12 @@ export const verifyAuthenticationSession = async (): Promise<boolean> => {
   return true;
 };
 
-export const getAuthenticationUser = async () => {
+export const getAuthenticationUser = async () : Promise<UserDto | null> => {
   const cookie = (await cookies()).get("AUTHENTICATION_SESSION")?.value;
   const session = await decrypt(cookie);
   if (!session) return null;
   try {
-    return session?.userDetail;
+    return session?.userDetail as UserDto;
   } catch (error) {
     console.log(error);
     return null;
