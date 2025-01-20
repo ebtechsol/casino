@@ -1,8 +1,91 @@
 
+.reviewTags{
+  border: 1px solid #FFB8B8;
+  padding: 7px 10px;
+  border-radius: 50px;
+  font-size: 14px;
+  color: #D70000;
+}
+.reviewTagspac{
+  border: 1px solid #FFB8B8;
+  padding: 7px 10px;
+  border-radius: 50px;
+  font-size: 14px;
+  color: #D70000;
+  margin-left: 5px;
+
+}
+.colum{
+  padding: 30px !important;
+  width: 25%;
+}
+.ReviewRow{
+  margin: 40px 80px;
+  background-image: url("/detail_bg.svg");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.cardBg{
+  background-color: #F9F9F9;
+  border-radius: 20px;
+}
+.cardRow{
+  padding: 20px;
+}
+.visitBtn{
+  width: 100%;
+  padding: 10px;
+  border-radius: 50px;
+  background: #D70000;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 25px;
+  margin-bottom: 20px;
+}
+.stakeInnerSec{
+  border: 1px solid #DFDFDF;
+    border-radius: 10px;
+    padding: 27px;
+}
+.stakeBonusParagh{
+  font-size: 20px;
+  font-weight: 700;
+}
+.claimBtn{
+  width: 100%;
+  padding: 10px;
+  border-radius: 50px;
+  background: #000;
+  border: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+.mainDiv{
+  border: 1px solid #DFDFDF;
+    height: 850px;
+    border-radius: 20px;
+    padding: 40px 40px;
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+.childDev{
+  border: 1px solid #DFDFDF;
+    height: 200px;
+    border-radius: 20px;
+}
+.ratingSec{
+  padding: 22px 25px 0px 25px;
+}
+.ratingCopSec{
+  padding:5px 25px;
+}
+@media only screen and (max-width: 600px) {
   
-  @media only screen and (max-width: 600px) {
-    
+
   
-    
-  }
-  
+}
