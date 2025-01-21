@@ -32,7 +32,7 @@ export const AddBlog = async (
     msg: "",
   };
   try {
-    const requestSource = GetApiSource("/api/newsAndBlogs/addBlog");
+    const requestSource = GetApiSource("/api/blog/addBlog");
     const response = await fetch(requestSource, {
       method: "POST",
       headers: {

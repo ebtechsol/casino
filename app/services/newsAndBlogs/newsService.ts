@@ -29,7 +29,7 @@ export const AddNew = async (
     msg: "",
   };
   try {
-    const requestSource = GetApiSource("/api/newsAndBlogs/addNews");
+    const requestSource = GetApiSource("/api/news/addNews");
     const response = await fetch(requestSource, {
       method: "POST",
       headers: {

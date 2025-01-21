@@ -28,7 +28,7 @@ export type BlogCommentsDto = {
   parent_comment_id: number;
   created_at: DateTime;
   blog_id: number;
-  user_id: number;
+  user_id: string;
 };
 
 export type BlogCommentRequestDto = {
@@ -36,7 +36,7 @@ export type BlogCommentRequestDto = {
   parent_comment_id: number;
   created_at: DateTime;
   blog_id: number;
-  user_id: number;
+  user_id: string;
 };
 export type BlogCommentResponseDto = {
   status: boolean;
