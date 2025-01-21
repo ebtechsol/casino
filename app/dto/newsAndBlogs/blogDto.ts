@@ -1,5 +1,4 @@
 import { DateTime } from "next-auth/providers/kakao";
-import UserDto from "../authentication/userDto";
 
 type BlogDto = {
   id: number;
@@ -29,11 +28,20 @@ export type BlogCommentsDto = {
   parent_comment_id: number;
   created_at: DateTime;
   blog_id: number;
-  blog: BlogDto
   user_id: number;
-  user: UserDto
 };
 
+export type BlogCommentRequestDto = {
+  message: string;
+  parent_comment_id: number;
+  created_at: DateTime;
+  blog_id: number;
+  user_id: number;
+};
+export type BlogCommentResponseDto = {
+  status: boolean;
+  msg: string;
+};
 export type BlogRequestDto = {
   title: string;
   description: string;
