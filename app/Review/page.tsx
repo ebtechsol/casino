@@ -15,7 +15,7 @@ const Profile = () => {
             />
           </div>
           <div className="col-lg-9">
-            <h2>Stake Reviews</h2>
+            <h2 className={styles.mainTitle}>Stake Reviews</h2>
             <div>
               <span className={styles.reviewTags}>
                 <Image
@@ -61,6 +61,22 @@ const Profile = () => {
             </div>
           </div>
         </div>
+        <div className={styles.reviewDev}>
+          <span>
+          <Image
+                  src="/profile-img.svg"
+                  width={30}
+                  height={30}
+                  alt=""
+                /> Richard Jarvis 
+                <Image
+                  src="/certificate.svg"
+                  width={30}
+                  height={30}
+                  alt=""
+                /> US Casino Expert
+          </span>
+        </div>
         <h4>General Information about Stake</h4>
         <p>Stake.com is one of the most exciting online casinos out there, mainly because of its outstanding collection
           of games from top software providers. There are tons of progressive jackpots, easy banking transactions and
@@ -83,6 +99,12 @@ const Profile = () => {
           </div>
         </div>
       </div>
+      <button className={styles.overviewBtn}><Image
+                src="/home.svg"
+                width={25}
+                height={25}
+                alt="Picture of the author"
+              /> Overview</button>
       <div className={styles.mainDiv}>
         <div className="row">
           <div className="col-lg-8">
@@ -142,10 +164,18 @@ const Profile = () => {
             </div>
           </div>
           <div className="col-lg-4">
-            <div className={styles.childDev}></div>
+            <div className={styles.childDev}>
+              <div className={styles.percentDev}>
+              <p className={styles.lightParagh}>Payout percent</p>
+              <h2 className={styles.ratHeading}>96.5%</h2>
+              <hr/>
+              <p className={styles.lightParagh}>Payment Speed</p>
+              <h2 className={styles.ratHeading}>Instant</h2>
+              </div>
+            </div>
           </div>
         </div>
-        <table className="table table-bordered rounded-3">
+        <table className="table table-bordered rounded-3 mt-5">
   <tbody>
     <tr>
       <td className={styles.colum}><Image
@@ -153,94 +183,94 @@ const Profile = () => {
                     width={30}
                     height={30}
                     alt=""
-                  />Casino Name</td>
+                  /> Casino Name</td>
       <td className={styles.colum}>Stake</td>
       <td className={styles.colum}><Image
-                    src="/build.svg"
+                    src="/owner.svg"
                     width={30}
                     height={30}
                     alt=""
-                  />Owner</td>
+                  /> Owner</td>
       <td className={styles.colum}>Sweepstaked Limited</td>
     </tr>
     <tr>
       <td className={styles.colum}><Image
-                    src="/build.svg"
+                    src="/game.svg"
                     width={30}
                     height={30}
                     alt=""
-                  />Year Established</td>
+                  /> Year Established</td>
       <td className={styles.colum}>2024</td>
       <td className={styles.colum}><Image
-                    src="/build.svg"
+                    src="/number-of-game.svg"
                     width={30}
                     height={30}
                     alt=""
-                  />Owner</td>
+                  /> Number of Games</td>
       <td className={styles.colum}>Sweepstaked Limited</td>
     </tr>
     <tr>
       <td className={styles.colum}><Image
-                    src="/build.svg"
+                    src="/payoutPercent.svg"
                     width={30}
                     height={30}
                     alt=""
-                  />Games Offered</td>
+                  /> Games Offered</td>
       <td className={styles.colum}>Slots, Blackjack, Roulette, Baccarat, Live Casino</td>
       <td className={styles.colum}><Image
-                    src="/build.svg"
+                    src="/devices.svg"
                     width={30}
                     height={30}
                     alt=""
-                  />Owner</td>
+                  /> Compatible Devices</td>
       <td className={styles.colum}>Sweepstaked Limited</td>
     </tr>
     <tr>
       <td className={styles.colum}><Image
-                    src="/build.svg"
+                    src="/paymentCard.svg"
                     width={30}
                     height={30}
                     alt=""
-                  />Payout Percentage</td>
+                  /> Payout Percentage</td>
       <td className={styles.colum}>96.6%</td>
       <td className={styles.colum}><Image
-                    src="/build.svg"
+                    src="/payoutDays.svg"
                     width={30}
                     height={30}
                     alt=""
-                  />Owner</td>
+                  /> Payout Days</td>
       <td className={styles.colum}>Sweepstaked Limited</td>
     </tr>
     <tr>
       <td className={styles.colum}><Image
-                    src="/build.svg"
+                    src="/language.svg"
                     width={30}
                     height={30}
                     alt=""
-                  />Languages</td>
+                  /> Languages</td>
       <td className={styles.colum}>German, Spanish, English, French, Finish + 9 More</td>
       <td className={styles.colum}><Image
-                    src="/build.svg"
+                    src="/customer-support.svg"
                     width={30}
                     height={30}
                     alt=""
-                  />Owner</td>
+                  /> Customer Support</td>
       <td className={styles.colum}>Sweepstaked Limited</td>
     </tr>
     <tr>
-      <td className={styles.colum}><Image
-                    src="/build.svg"
+      <td className={styles.colum}><Image 
+                    src="/paymentCard.svg"
                     width={30}
                     height={30}
                     alt=""
-                  />Payment Methods</td>
+                  /> Payment Methods</td>
       <td className={styles.colum}>Visa, MasterCard, Bitcoin, Ethereum + More</td>
       <td className={styles.colum}><Image
-                    src="/build.svg"
+                    src="/softwareUsed.svg"
                     width={30}
                     height={30}
                     alt=""
-                  />Owner</td>
+                  /> Software Used</td>
       <td className={styles.colum}>Sweepstaked Limited</td>
     </tr>
   </tbody>
