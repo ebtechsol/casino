@@ -1,9 +1,6 @@
-import BlogDto from "@/app/dto/newsAndBlogs/blogDto";
-import {
-  BlogRequestDto,
-  BlogResponseDto,
-} from "@/app/dto/newsAndBlogs/blogDto";
-import { GetApiSource } from "@/app/helpers/defaultHelper";
+import BlogDto, { BlogCommentsDto } from '@/app/dto/newsAndBlogs/blogDto';
+import {BlogRequestDto,BlogResponseDto,BlogCommentResponseDto,BlogCommentRequestDto} from '@/app/dto/newsAndBlogs/blogDto';
+import { GetApiSource } from '@/app/helpers/defaultHelper';
 
 const BlogListService = async (ln?: number | null): Promise<BlogDto[]> => {
   let blogList: BlogDto[] = [];
@@ -38,7 +35,7 @@ export const AddBlogService = async (
     msg: "",
   };
   try {
-    const requestSource = GetApiSource("/api/newsAndBlogs/addBlog");
+    const requestSource = GetApiSource("/api/blog/addBlog");
     const response = await fetch(requestSource, {
       method: "POST",
       headers: {
@@ -72,3 +69,51 @@ export const BlogService = async (blog_id : number): Promise<BlogDto | null> => 
   }
   return blogDetail;
 };
+
+export const AddCommentService = async (
+  request: BlogCommentRequestDto
+): Promise<BlogCommentResponseDto> => {
+  let addCommentStatus: BlogCommentResponseDto = {
+    status: false,
+    msg: "",
+  };
+  try {
+    const requestSource = GetApiSource("/api/blogComments/addComment");
+    const response = await fetch(requestSource, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(request),
+    });
+    addCommentStatus = (await response.json()) as BlogCommentResponseDto;
+  } catch (err) {
+    console.log(err);
+  }
+  return addCommentStatus;
+};
+
+export const BlogCommentsListService = async (blog_id : number): Promise<BlogCommentsDto[]> => {
+  let commentList: BlogCommentsDto[] = [];
+  try {
+    let source = "/api/blogComments/getCommentList";
+    if (blog_id != null && blog_id > 0) {
+      source = source.concat("?blog_id=", blog_id.toString());
+    }
+    const requestSource = GetApiSource(source);
+    const response = await fetch(requestSource, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const responseJson = await response.json();
+    if (responseJson.status == true) {
+      commentList = responseJson.data;
+    }
+  } catch (err) {
+    console.log(err);
+  }
+  return commentList;
+};
+

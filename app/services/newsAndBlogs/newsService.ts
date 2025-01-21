@@ -27,15 +27,15 @@ const NewsListService = async (ln?: number | null): Promise<NewsDto[]> => {
 };
 export default NewsListService;
 
-export const AddNewService = async (
+export const AddNewsService = async (
   request: NewsRequestDto
 ): Promise<NewsResponseDto> => {
-  let addNewStatus: NewsResponseDto = {
+  let addNewsStatus: NewsResponseDto = {
     status: false,
     msg: "",
   };
   try {
-    const requestSource = GetApiSource("/api/newsAndBlogs/addNews");
+    const requestSource = GetApiSource("/api/news/addNews");
     const response = await fetch(requestSource, {
       method: "POST",
       headers: {
@@ -43,17 +43,17 @@ export const AddNewService = async (
       },
       body: JSON.stringify(request),
     });
-    addNewStatus = (await response.json()) as NewsResponseDto;
+    addNewsStatus = (await response.json()) as NewsResponseDto;
   } catch (err) {
     console.log(err);
   }
-  return addNewStatus;
+  return addNewsStatus;
 };
 
-export const NewsService = async (): Promise<NewsDto | null> => {
+export const NewsService = async (news_id : number): Promise<NewsDto | null> => {
   let newsDetail: NewsDto | null = null;
   try {
-    const requestSource = GetApiSource("/api/news/getNews");
+    const requestSource = GetApiSource(("/api/news/getNewsDetail?news_id=").concat(news_id.toString()));
     const response = await fetch(requestSource, {
       method: "GET",
       headers: {

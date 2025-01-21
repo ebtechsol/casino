@@ -2,8 +2,9 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "@/public/style/blog_detail.module.css";
-import BlogDto from "../dto/newsAndBlogs/blogDto";
+import BlogDto, { BlogCommentsDto } from "../dto/newsAndBlogs/blogDto";
 import BlogListService, {
+  BlogCommentsListService,
   BlogService,
 } from "../services/newsAndBlogs/blogService";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -22,6 +23,9 @@ const BlogDetail = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [blogList, setBlogList] = useState<BlogDto[]>([]);
+  const [blogCommentsList, setBlogCommentsList] = useState<BlogCommentsDto[]>(
+    []
+  );
   const [blogDetail, setBlogDetail] = useState<BlogDto>();
   const showBlogsCount = 3;
 
@@ -39,12 +43,23 @@ const BlogDetail = () => {
           setBlogDetail(blog as BlogDto);
         }
       });
+
+      BlogCommentsListService(Number(blog_id)).then((comment) => {
+        setBlogCommentsList(comment as BlogCommentsDto[]);
+      });
     }
 
     BlogListService(showBlogsCount).then((list) => {
       setBlogList(list);
     });
-  }, [searchParams, router, blogDetail, setBlogDetail, setBlogList]);
+  }, [
+    searchParams,
+    router,
+    blogDetail,
+    setBlogDetail,
+    setBlogList,
+    setBlogCommentsList,
+  ]);
 
   return (
     <div className="container">
@@ -108,138 +123,43 @@ const BlogDetail = () => {
               alt="Picture of the author"
             />
             {/* Comment Section */}
-            <div className={styles.mainDev}>
-              <Image src="/sms.svg" width={25} height={25} alt="" />
-              <span className={styles.commentHead}>Benjamin Wilderness</span>
-              <span className={styles.commentTime}>35 mins ago</span>
-              <p className={styles.commentParagh}>
-                Lorem ipsum dolor sit amet consectetur. Urna ultrices egestas
-                iaculis ultricies morbi viverra pharetra consectetur. Sed
-                ultricies leo amet id potenti at. Cursus tempus dolor aliquam
-                gravida ac tellus. Porttitor.
-              </p>
 
-              <div>
-                <Image
-                  src="/like.svg"
-                  width={15}
-                  height={15}
-                  alt="Picture of the author"
-                />
-                <Image
-                  src="/Line.svg"
-                  width={15}
-                  height={15}
-                  alt="Picture of the author"
-                />
-                <Image
-                  src="/reply_arraw.svg"
-                  width={15}
-                  height={15}
-                  alt="Picture of the author"
-                />{" "}
-                <span className={styles.commentParagh}>Reply</span>
-              </div>
-            </div>
-            <div className={styles.mainDev}>
-              <Image src="/sms.svg" width={25} height={25} alt="" />
-              <span className={styles.commentHead}>Benjamin Wilderness</span>
-              <span className={styles.commentTime}>35 mins ago</span>
-              <p className={styles.commentParagh}>
-                Lorem ipsum dolor sit amet consectetur. Urna ultrices egestas
-                iaculis ultricies morbi viverra pharetra consectetur. Sed
-                ultricies leo amet id potenti at. Cursus tempus dolor aliquam
-                gravida ac tellus. Porttitor.
-              </p>
+            {blogCommentsList.map((comment, index) => (
+              <div key={comment.id.toString().concat(index.toString())}>
+                <div className={styles.mainDev}>
+                  <Image src="/sms.svg" width={25} height={25} alt="" />
+                  <span className={styles.commentHead}>
+                    Benjamin Wilderness
+                  </span>
+                  <span className={styles.commentTime}>35 mins ago</span>
+                  <p className={styles.commentParagh}>
+                    {comment.message}
+                  </p>
 
-              <div>
-                <Image
-                  src="/like.svg"
-                  width={15}
-                  height={15}
-                  alt="Picture of the author"
-                />
-                <Image
-                  src="/Line.svg"
-                  width={15}
-                  height={15}
-                  alt="Picture of the author"
-                />
-                <Image
-                  src="/reply_arraw.svg"
-                  width={15}
-                  height={15}
-                  alt="Picture of the author"
-                />{" "}
-                <span className={styles.commentParagh}>Reply</span>
+                  <div>
+                    <Image
+                      src="/like.svg"
+                      width={15}
+                      height={15}
+                      alt="Picture of the author"
+                    />
+                    <Image
+                      src="/Line.svg"
+                      width={15}
+                      height={15}
+                      alt="Picture of the author"
+                    />
+                    <Image
+                      src="/reply_arraw.svg"
+                      width={15}
+                      height={15}
+                      alt="Picture of the author"
+                    />{" "}
+                    <span className={styles.commentParagh}>Reply</span>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className={styles.mainDev}>
-              <Image src="/sms.svg" width={25} height={25} alt="" />
-              <span className={styles.commentHead}>Benjamin Wilderness</span>
-              <span className={styles.commentTime}>35 mins ago</span>
-              <p className={styles.commentParagh}>
-                Lorem ipsum dolor sit amet consectetur. Urna ultrices egestas
-                iaculis ultricies morbi viverra pharetra consectetur. Sed
-                ultricies leo amet id potenti at. Cursus tempus dolor aliquam
-                gravida ac tellus. Porttitor.
-              </p>
-
-              <div>
-                <Image
-                  src="/like.svg"
-                  width={15}
-                  height={15}
-                  alt="Picture of the author"
-                />
-                <Image
-                  src="/Line.svg"
-                  width={15}
-                  height={15}
-                  alt="Picture of the author"
-                />
-                <Image
-                  src="/reply_arraw.svg"
-                  width={15}
-                  height={15}
-                  alt="Picture of the author"
-                />{" "}
-                <span className={styles.commentParagh}>Reply</span>
-              </div>
-            </div>
-            <div className={styles.mainDev}>
-              <Image src="/sms.svg" width={25} height={25} alt="" />
-              <span className={styles.commentHead}>Benjamin Wilderness</span>
-              <span className={styles.commentTime}>35 mins ago</span>
-              <p className={styles.commentParagh}>
-                Lorem ipsum dolor sit amet consectetur. Urna ultrices egestas
-                iaculis ultricies morbi viverra pharetra consectetur. Sed
-                ultricies leo amet id potenti at. Cursus tempus dolor aliquam
-                gravida ac tellus. Porttitor.
-              </p>
-
-              <div>
-                <Image
-                  src="/like.svg"
-                  width={15}
-                  height={15}
-                  alt="Picture of the author"
-                />
-                <Image
-                  src="/Line.svg"
-                  width={15}
-                  height={15}
-                  alt="Picture of the author"
-                />
-                <Image
-                  src="/reply_arraw.svg"
-                  width={15}
-                  height={15}
-                  alt="Picture of the author"
-                />{" "}
-                <span className={styles.commentParagh}>Reply</span>
-              </div>
-            </div>
+            ))}
           </div>
           <div className="col-md-6">
             <button className={styles.commentBtn}>
@@ -258,7 +178,7 @@ const BlogDetail = () => {
 
         <div className="row mt-2 mb-2">
           {blogList.map((blog, index) => (
-            <div key={index} className={"col-md-4 " + styles.blogSection}>
+            <div key={blog.id.toString().concat(index.toString())} className={"col-md-4 " + styles.blogSection}>
               <Image
                 src={blog.image_url}
                 width={370}

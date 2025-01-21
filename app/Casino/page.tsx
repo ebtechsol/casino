@@ -1,109 +1,21 @@
+"use client";
+import React, { useEffect, useState } from "react";
+import CasinoListService from "../services/casino/casinoService";
+
 import styles from "@/public/style/casino.module.css";
 import Image from "next/image";
-interface casinoData {
-    src: string;
-    wizardTitle: string;
-    WizardValue: string;
-    CriticTitle: string;
-    CriticValue: string;
-    bonusText: string;
-    Visitsource: string;
-    Reviewsource: string;
-}
+import CasinoDto from "../dto/casino/casinoDto";
 
-const casinoRecord: casinoData[] = [
-    {
-        src: "/casino_stake.svg",
-        wizardTitle: "Wizard Rating",
-        WizardValue: "6.9/10",
-        CriticTitle: "Critic Score",
-        CriticValue: "85%",
-        bonusText: "Get 100% up to €500 + 200 Bonus Spins",
-        Visitsource: "#",
-        Reviewsource: "#",
-    },
-    {
-        src: "/casino_stake.svg",
-        wizardTitle: "Wizard Rating",
-        WizardValue: "6.9/10",
-        CriticTitle: "Critic Score",
-        CriticValue: "85%",
-        bonusText: "Get 100% up to €500 + 200 Bonus Spins",
-        Visitsource: "#",
-        Reviewsource: "#",
-    },
-    {
-        src: "/casino_stake.svg",
-        wizardTitle: "Wizard Rating",
-        WizardValue: "6.9/10",
-        CriticTitle: "Critic Score",
-        CriticValue: "85%",
-        bonusText: "Get 100% up to €500 + 200 Bonus Spins",
-        Visitsource: "#",
-        Reviewsource: "#",
-    },
-    {
-        src: "/casino_stake.svg",
-        wizardTitle: "Wizard Rating",
-        WizardValue: "6.9/10",
-        CriticTitle: "Critic Score",
-        CriticValue: "85%",
-        bonusText: "Get 100% up to €500 + 200 Bonus Spins",
-        Visitsource: "#",
-        Reviewsource: "#",
-    },
-    {
-        src: "/casino_stake.svg",
-        wizardTitle: "Wizard Rating",
-        WizardValue: "6.9/10",
-        CriticTitle: "Critic Score",
-        CriticValue: "85%",
-        bonusText: "Get 100% up to €500 + 200 Bonus Spins",
-        Visitsource: "#",
-        Reviewsource: "#",
-    },
-    {
-        src: "/casino_stake.svg",
-        wizardTitle: "Wizard Rating",
-        WizardValue: "6.9/10",
-        CriticTitle: "Critic Score",
-        CriticValue: "85%",
-        bonusText: "Get 100% up to €500 + 200 Bonus Spins",
-        Visitsource: "#",
-        Reviewsource: "#",
-    },
-    {
-        src: "/casino_stake.svg",
-        wizardTitle: "Wizard Rating",
-        WizardValue: "6.9/10",
-        CriticTitle: "Critic Score",
-        CriticValue: "85%",
-        bonusText: "Get 100% up to €500 + 200 Bonus Spins",
-        Visitsource: "#",
-        Reviewsource: "#",
-    },
-    {
-        src: "/casino_stake.svg",
-        wizardTitle: "Wizard Rating",
-        WizardValue: "6.9/10",
-        CriticTitle: "Critic Score",
-        CriticValue: "85%",
-        bonusText: "Get 100% up to €500 + 200 Bonus Spins",
-        Visitsource: "#",
-        Reviewsource: "#",
-    },
-    {
-        src: "/casino_stake.svg",
-        wizardTitle: "Wizard Rating",
-        WizardValue: "6.9/10",
-        CriticTitle: "Critic Score",
-        CriticValue: "85%",
-        bonusText: "Get 100% up to €500 + 200 Bonus Spins",
-        Visitsource: "#",
-        Reviewsource: "#",
-    },
-];
+
 const Casino = () => {
+    const [casinoContent, setCasinoContent] = useState<CasinoDto[]>([]);
+
+    useEffect(() => {
+    CasinoListService().then((contentData) => {
+        setCasinoContent(contentData);
+      });
+    }, [setCasinoContent]);
+
     return (
         <div className={styles.mainSection}>
             <h1>Casino</h1>
@@ -123,11 +35,11 @@ const Casino = () => {
             </div>
             <h1 className={styles.ratingTitle}>Top Rated Online Casinos</h1>
             <div className={"row " + styles.casinobg}>
-            {casinoRecord.map((casino, index) => (
+            {casinoContent.map((casino, index) => (
                 <div key={index} className="col-lg-4">
                     <div className={styles.cardColumn}>
                         <Image
-                            src={casino.src}
+                            src={casino.image_url}
                             width={400}
                             height={210}
                             className={styles.stakeImg}
@@ -141,9 +53,9 @@ const Casino = () => {
                                         width={20}
                                         height={20}
                                         alt="Stake"
-                                    /> <span className={styles.wizardRating}>{casino.wizardTitle}</span>
+                                    /> <span className={styles.wizardRating}>Wizard Rating</span>
                                     <div className={styles.wizardNum}>
-                                    {casino.WizardValue}
+                                    {Number(casino.wizard_rating)} / 10
                                     </div>
                                 </div>
                             </div>
@@ -162,18 +74,18 @@ const Casino = () => {
                                         width={20}
                                         height={20}
                                         alt="Stake"
-                                    /> <span className={styles.wizardRating}>{casino.CriticTitle}</span>
+                                    /> <span className={styles.wizardRating}>Critic Score</span>
                                     <div className={styles.wizardNum}>
-                                    {casino.WizardValue}
+                                    {Number(casino.critic_score)} / 10
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className={styles.cardPrice}>
-                        {casino.bonusText}
+                            Get 100% up to €500 + 200 Bonus Spins
                         </div>
-                        <a href={casino.Visitsource}><button className={styles.visitCasinoBtn}>Visit Stake Casino</button></a><br />
-                        <a href={casino.Reviewsource}><button className={styles.readCasinoBtn}>Read Stake Review</button></a>
+                        <a href="#"><button className={styles.visitCasinoBtn}>Visit Stake Casino</button></a><br />
+                        <a href={("/Review?casino_id=").concat(casino.id.toString())}><button className={styles.readCasinoBtn}>Read Stake Review</button></a>
                     </div>
                 </div>
                 ))}

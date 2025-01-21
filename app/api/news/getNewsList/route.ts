@@ -12,11 +12,17 @@ const GET = async (request: NextRequest) => {
         where: {
           is_active: true,
         },
+        orderBy: {
+          id: 'desc',
+        },
       });
     } else {
       newsList = await prisma.news.findMany({
         where: {
           is_active: true,
+        },
+        orderBy: {
+          id: 'desc',
         },
       });
     }

@@ -65,7 +65,7 @@ const NewsAndBlogs = () => {
                 <span className={styles.blogTitle}>{news.title}</span>
               </div>
               <div className="col-lg-2">
-                <a href={"/BlogDetail?blog_id=".concat(news.id.toString())}>
+                <a href={"/NewsDetail?news_id=".concat(news.id.toString())}>
                   <Image
                     src="/arrow-up-right.svg"
                     className={styles.arrowImg}
