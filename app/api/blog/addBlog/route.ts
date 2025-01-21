@@ -8,10 +8,9 @@ const POST = async (request: NextRequest) => {
       title,
       description,
       long_description,
-      is_active,
       image_url,
-      created_at,
-      updated_at,
+      author_name,
+      publish_date
     } = await request.json();
 
     await prisma.blog.create({
@@ -20,9 +19,9 @@ const POST = async (request: NextRequest) => {
         description: description,
         long_description: long_description,
         image_url: image_url,
-        is_active: is_active,
-        created_at: created_at,
-        updated_at: updated_at,
+        author_name: author_name,
+        publish_date: publish_date,
+        is_active: true
       },
     });
 

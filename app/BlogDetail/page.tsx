@@ -1,101 +1,71 @@
+"use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import styles from "@/public/style/blog_detail.module.css";
+import BlogDto from "../dto/newsAndBlogs/blogDto";
+import BlogListService, {
+  BlogService,
+} from "../services/newsAndBlogs/blogService";
+import { useSearchParams, useRouter } from "next/navigation";
+import { setDateFormat } from "../helpers/defaultHelper";
 
-interface BlogTags {
+interface BlogTag {
   value: string;
 }
-
-interface BlogData {
-  src: string;
-  title: string;
-  subTitle: string;
-  tags: BlogTags[];
-  source: string;
-}
-
-const blogRecord: BlogData[] = [
-  {
-    src: "/prices_will.svg",
-    title: "Crypto Holders! Here’s EXACTLY When To Sell For Max Profits",
-    subTitle: "Crypto Lark • 28 DEC 2024",
-    tags: [{ value: "Crypto" }, { value: "Bitcoin" }, { value: "Casino" }],
-    source: "/BlogDetail",
-  },
-  {
-    src: "/buying.svg",
-    title:
-      "Can PENGU Overtake DOGE? Pudgy Penguins VS Dogecoin Altcoins in 2025",
-    subTitle: "Altcoin Buzz • 28 DEC 2024",
-    tags: [{ value: "Crypto" }, { value: "Bitcoin" }, { value: "Casino" }],
-    source: "/BlogDetail",
-  },
-  {
-    src: "/prices_will.svg",
-    title: "Crypto Holders! Here’s EXACTLY When To Sell For Max Profits",
-    subTitle: "Crypto Lark • 28 DEC 2024",
-    tags: [{ value: "Crypto" }, { value: "Bitcoin" }, { value: "Casino" }],
-    source: "/BlogDetail",
-  },
+const blogTagRecord: BlogTag[] = [
+  { value: "Crypto" },
+  { value: "Bitcoin" },
+  { value: "Casino" },
 ];
 
 const BlogDetail = () => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [blogList, setBlogList] = useState<BlogDto[]>([]);
+  const [blogDetail, setBlogDetail] = useState<BlogDto>();
+  const showBlogsCount = 3;
+
+  useEffect(() => {
+    const blog_id = searchParams.get("blog_id");
+    if (blog_id == null || blog_id == "" || Number(blog_id) <= 0) {
+      router.push("/");
+    }
+
+    if (blogDetail == null) {
+      BlogService(Number(blog_id)).then((blog) => {
+        if (blog == null) {
+          router.push("/");
+        } else {
+          setBlogDetail(blog as BlogDto);
+        }
+      });
+    }
+
+    BlogListService(showBlogsCount).then((list) => {
+      setBlogList(list);
+    });
+  }, [searchParams, router, blogDetail, setBlogDetail, setBlogList]);
+
   return (
     <div className="container">
       <Image
-        src="/blog.svg"
+        src={blogDetail?.image_url ? blogDetail?.image_url : "/blog.svg"}
         width={1300}
         className={styles.heroImg}
         height={550}
         alt="Picture of the author"
       />
       <div className={styles.detailWidth}>
-        <p className={styles.blogSubTitle}>Crypto Lark • 28 DEC 2024</p>
-        <h2 className={styles.blogTitle}>
-          Crypto Holders! Here’s EXACTLY When To Sell For Max Profits
-        </h2>
-        <p className={styles.blogDesc}>
-          Lorem ipsum dolor sit amet consectetur. Integer consectetur quis
-          aenean mollis fames lectus. Eget curabitur quisque in facilisi luctus
-          tellus. Scelerisque felis ut dui at ultrices fermentum volutpat.
-          Turpis tempor id turpis pellentesque laoreet pellentesque. Lorem ipsum
-          dolor sit amet consectetur. Integer consectetur quis aenean mollis
-          fames lectus.
+        <p className={styles.blogSubTitle}>
+          {blogDetail?.author_name} •{" "}
+          {blogDetail?.publish_date
+            ? setDateFormat(blogDetail?.publish_date)
+            : ""}
         </p>
-        <h2 className={styles.blogTitle}>Insights</h2>
-        <p className={styles.blogDesc}>
-          Lorem ipsum dolor sit amet consectetur. Integer consectetur quis
-          aenean mollis fames lectus. Eget curabitur quisque in facilisi luctus
-          tellus. Scelerisque felis ut dui at ultrices fermentum volutpat.
-          Turpis tempor id turpis pellentesque laoreet pellentesque.
-        </p>
-        <h2 className={styles.blogTitle}>Margin</h2>
-        <p className={styles.blogDesc}>
-          Lorem ipsum dolor sit amet consectetur. Integer consectetur quis
-          aenean mollis fames lectus. Eget curabitur quisque in facilisi luctus
-          tellus. Scelerisque felis ut dui at ultrices fermentum volutpat.
-          Turpis tempor id turpis pellentesque laoreet pellentesque.
-        </p>
-        <h2 className={styles.blogTitle}>Futures</h2>
-        <p className={styles.blogDesc}>
-          Lorem ipsum dolor sit amet consectetur. Integer consectetur quis
-          aenean mollis fames lectus. Eget curabitur quisque in facilisi luctus
-          tellus. Scelerisque felis ut dui at ultrices fermentum volutpat.
-          Turpis tempor id turpis pellentesque laoreet pellentesque.
-        </p>
-        <h2 className={styles.blogTitle}>Wen</h2>
-        <p className={styles.blogDesc}>
-          Lorem ipsum dolor sit amet consectetur. Integer consectetur quis
-          aenean mollis fames lectus. Eget curabitur quisque in facilisi luctus
-          tellus. Scelerisque felis ut dui at ultrices fermentum volutpat.
-          Turpis tempor id turpis pellentesque laoreet pellentesque.
-        </p>
-        <h2 className={styles.blogTitle}>Summary</h2>
-        <p className={styles.blogDesc}>
-          Lorem ipsum dolor sit amet consectetur. Integer consectetur quis
-          aenean mollis fames lectus. Eget curabitur quisque in facilisi luctus
-          tellus. Scelerisque felis ut dui at ultrices fermentum volutpat.
-          Turpis tempor id turpis pellentesque laoreet pellentesque.
-        </p>
+        <h2 className={styles.blogTitle}>{blogDetail?.title}</h2>
+        <div className={styles.blogDesc}>{blogDetail?.long_description}</div>
+      </div>
+      <div className={styles.detailWidth}>
         <div className={"row " + styles.socialList}>
           <div className={"col-lg-6 " + styles.listText}>
             <p>Like what you see? Share with a friend.</p>
@@ -287,22 +257,27 @@ const BlogDetail = () => {
         {/* Latest Article */}
 
         <div className="row mt-2 mb-2">
-          {blogRecord.map((blog, index) => (
+          {blogList.map((blog, index) => (
             <div key={index} className={"col-md-4 " + styles.blogSection}>
               <Image
-                src={blog.src}
+                src={blog.image_url}
                 width={370}
                 height={200}
                 className={styles.blogImg}
                 alt="Picture of the author"
               />
-              <p className={styles.blogSubTitle}>{blog.subTitle}</p>
+              <p className={styles.blogSubTitle}>
+                {blogDetail?.author_name} •{" "}
+                {blogDetail?.publish_date
+                  ? setDateFormat(blogDetail?.publish_date)
+                  : ""}
+              </p>
               <div className="row">
                 <div className="col-lg-10">
                   <span className={styles.blogTitle}>{blog.title}</span>
                 </div>
                 <div className="col-lg-2">
-                  <a href={blog.source}>
+                  <a href={"/BlogDetail?blog_id=".concat(blog.id.toString())}>
                     <Image
                       src="/arrow-up-right.svg"
                       className={styles.arrowImg}
@@ -314,7 +289,7 @@ const BlogDetail = () => {
                 </div>
               </div>
               <div className="mt-4">
-                {blog.tags.map((tag, i) => (
+                {blogTagRecord.map((tag, i) => (
                   <span className={styles.blogTag} key={i}>
                     {tag.value}
                   </span>

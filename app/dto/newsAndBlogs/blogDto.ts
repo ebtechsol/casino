@@ -7,6 +7,8 @@ type BlogDto = {
   description: string;
   long_description: string;
   image_url: string;
+  author_name: string;
+  publish_date: DateTime;
   is_active : boolean;
   created_at: DateTime;
   updated_at: DateTime;

@@ -4,6 +4,7 @@ import styles from "@/public/style/news.module.css";
 import Image from "next/image";
 import NewsListService from "../services/newsAndBlogs/newsService";
 import NewsDto from "../dto/newsAndBlogs/newsDto";
+import { setDateFormat } from "../helpers/defaultHelper";
 
 interface BlogTag {
   value: string;
@@ -21,7 +22,7 @@ const News = () => {
   useEffect(() => {
     NewsListService().then((contentData) => {
       setNewsContent(contentData);
-    });  
+    });
   }, [setNewsContent]);
 
   return (
@@ -61,13 +62,15 @@ const News = () => {
               className={styles.blogImg}
               alt="Picture of the author"
             />
-            <p className={styles.blogSubTitle}>{news.author_name} . {news.publish_date}</p>
+            <p className={styles.blogSubTitle}>
+              {news.author_name} . {setDateFormat(news.publish_date)}
+            </p>
             <div className="row">
               <div className="col-lg-10">
                 <span className={styles.blogTitle}>{news.title}</span>
               </div>
               <div className="col-lg-2">
-                <a href="/BlogDetail">
+                <a href={"/BlogDetail?blog_id=".concat(news.id.toString())}>
                   <Image
                     src="/arrow-up-right.svg"
                     className={styles.arrowImg}
@@ -120,13 +123,15 @@ const News = () => {
               className={styles.blogImg}
               alt="Picture of the author"
             />
-            <p className={styles.blogSubTitle}>{news.author_name}</p>
+            <p className={styles.blogSubTitle}>
+              {news.author_name} . {setDateFormat(news.publish_date)}
+            </p>
             <div className="row">
               <div className="col-lg-10">
                 <span className={styles.blogTitle}>{news.title}</span>
               </div>
               <div className="col-lg-2">
-                <a href="/BlogDetail">
+                <a href={"/BlogDetail?blog_id=".concat(news.id.toString())}>
                   <Image
                     src="/arrow-up-right.svg"
                     className={styles.arrowImg}

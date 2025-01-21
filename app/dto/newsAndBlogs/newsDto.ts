@@ -4,6 +4,7 @@ type NewsDto = {
   id: number;
   title: string;
   description: string;
+  long_description: string;
   image_url: string;
   author_name: string;
   publish_date: DateTime;

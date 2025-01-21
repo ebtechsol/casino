@@ -12,7 +12,7 @@ datasource db {
 
 model User {
   id           Int            @id @unique(map: "sqlite_autoindex_user") @default(autoincrement())
-  user_id      String         @unique(map: "sqlite_unique_userid")  @default(cuid())
+  user_id      String         @unique(map: "sqlite_unique_userid") @default(cuid())
   user_name    String
   email        String         @unique
   password     String
@@ -30,6 +30,8 @@ model Blog {
   description      String?
   long_description String?
   image_url        String?
+  author_name      String
+  publish_date     DateTime       @default(now()) @map(name: "publish_date")
   is_active        Boolean        @default(false)
   created_at       DateTime       @default(now()) @map(name: "created_at")
   updated_at       DateTime       @updatedAt @map(name: "updated_at")
@@ -65,16 +67,17 @@ model BlogComments {
 }
 
 model News {
-  id           Int        @id @unique(map: "sqlite_autoindex_news") @default(autoincrement())
-  title        String
-  description  String?
-  image_url    String?
-  author_name  String
-  publish_date DateTime   @default(now()) @map(name: "publish_date")
-  is_active    Boolean    @default(false)
-  created_at   DateTime   @default(now()) @map(name: "created_at")
-  updated_at   DateTime   @updatedAt @map(name: "updated_at")
-  newsTags     NewsTags[]
+  id               Int        @id @unique(map: "sqlite_autoindex_news") @default(autoincrement())
+  title            String
+  description      String?
+  long_description String?
+  image_url        String?
+  author_name      String
+  publish_date     DateTime   @default(now()) @map(name: "publish_date")
+  is_active        Boolean    @default(false)
+  created_at       DateTime   @default(now()) @map(name: "created_at")
+  updated_at       DateTime   @updatedAt @map(name: "updated_at")
+  newsTags         NewsTags[]
 
   @@map(name: "news")
 }
@@ -92,15 +95,15 @@ model NewsTags {
 }
 
 model Casino {
-  id            Int            @id @unique(map: "sqlite_autoindex_casino") @default(autoincrement())
+  id            Int             @id @unique(map: "sqlite_autoindex_casino") @default(autoincrement())
   title         String
   sub_tile      String
   description   String
   image_url     String
   wizard_rating Decimal
   critic_score  Decimal
-  is_active    Boolean        @default(false)
-  created_at    DateTime      @default(now()) @map(name: "created_at")
+  is_active     Boolean         @default(false)
+  created_at    DateTime        @default(now()) @map(name: "created_at")
   casinoTags    CasinoTags[]
   casinoReviews CasinoReviews[]
 

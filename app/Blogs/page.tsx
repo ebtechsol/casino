@@ -62,7 +62,7 @@ const Blogs = () => {
               ))}
                   </div>
                   <p className={styles.blogDesc}>{blog.description}</p>
-                  <a href="/BlogDetail">
+                  <a href={("/BlogDetail?blog_id=").concat(blog.id.toString())}>
                     <button className={styles.featureBtn}>
                       Read More {" "}
                       <Image
