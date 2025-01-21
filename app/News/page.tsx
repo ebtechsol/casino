@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "@/public/style/news.module.css";
 import Image from "next/image";
-import NewsService from "../services/newsAndBlogs/newsService";
+import NewsListService from "../services/newsAndBlogs/newsService";
 import NewsDto from "../dto/newsAndBlogs/newsDto";
 
 interface BlogTag {
@@ -19,7 +19,7 @@ const News = () => {
   const [newsContent, setNewsContent] = useState<NewsDto[]>([]);
 
   useEffect(() => {
-    NewsService().then((contentData) => {
+    NewsListService().then((contentData) => {
       setNewsContent(contentData);
     });  
   }, [setNewsContent]);

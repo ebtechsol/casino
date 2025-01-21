@@ -2,6 +2,7 @@ import { DateTime } from "next-auth/providers/kakao";
 
 type UserDto = {
   id: number;
+  user_id: string;
   user_name: string;
   email: string;
   password: string;

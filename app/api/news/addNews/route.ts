@@ -4,24 +4,31 @@ const prisma = new PrismaClient();
 
 const POST = async (request: NextRequest) => {
   try {
-    const { title,description,long_description,is_active, image_url, created_at,updated_at } = await request.json();
-   
+    const {
+      title,
+      image_url,
+      author_name,
+      publish_date,
+      created_at,
+      updated_at,
+    } = await request.json();
 
-    await prisma.blog.create({
+    await prisma.news.create({
       data: {
         title: title,
-        description: description,
-        long_description: long_description,
-        is_active: is_active,
+        description: "",
         image_url: image_url,
+        author_name: author_name,
+        publish_date: publish_date,
+        is_active: true,
         created_at: created_at,
-        updated_at:updated_at
+        updated_at: updated_at,
       },
     });
 
     return NextResponse.json({
       status: true,
-      msg: "Successfully add new Blog!",
+      msg: "Successfully add new News!",
     });
   } catch {
     return NextResponse.json({ status: false, msg: "Bad Request!" });
