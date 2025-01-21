@@ -1,6 +1,5 @@
 "use client";
-import { useEffect } from "react";
-import { Suspense } from "react";
+import { useEffect, Suspense } from "react";
 import { useSearchParams, redirect } from "next/navigation";
 
 import CasinoDeals from "@/app/components/CasinoDeals";
