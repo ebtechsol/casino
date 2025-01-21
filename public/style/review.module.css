@@ -15,9 +15,18 @@
   margin-left: 5px;
 
 }
+.reviewDev{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.mainTitle{
+  font-size: 42px;
+    font-weight: 600;
+}
 .colum{
-  padding: 30px !important;
+  padding: 30px !important; 
   width: 25%;
+  font-size: 14px;
 }
 .ReviewRow{
   margin: 40px 80px;
@@ -67,7 +76,7 @@
 }
 .mainDiv{
   border: 1px solid #DFDFDF;
-    height: 850px;
+    height: 920px;
     border-radius: 20px;
     padding: 40px 40px;
     margin-top: 40px;
@@ -78,11 +87,37 @@
     height: 200px;
     border-radius: 20px;
 }
+.percentDev{
+  padding: 40px 110px;
+    text-align: center;
+    line-height: 0px;
+}
+.overviewBtn{
+  width: 10%;
+    padding: 15px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    background: #151515;
+    color: white;
+    border: none;
+    margin-bottom: -40px;
+    margin-left: 45px;
+    font-size: 17px;
+    font-weight: 700;
+}
 .ratingSec{
   padding: 22px 25px 0px 25px;
 }
 .ratingCopSec{
   padding:5px 25px;
+}
+.ratHeading{
+  font-size: 20px;
+  font-weight: 700;
+}
+.lightParagh{
+font-size: 17px;
+color: #737373;
 }
 @media only screen and (max-width: 600px) {
   
