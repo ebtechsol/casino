@@ -1,18 +1,22 @@
 "use client";
 import React, { Suspense } from "react";
 import styles from "@/public/style/blog_detail.module.css";
-import NewsDetailViewSection from "./component/newsDetailViewSection";
-import NewsListViewSection from "./component/newsListViewSection";
+import DetailViewSection from "./component/detailViewSection";
+import ListViewSection from "./component/listViewSection";
+import CommentViewSection from "./component/commentViewSection";
 
-const NewsDetail = () => {
+const NewsAndBlogDetail = () => {
   return (
     <div className="container">
       <Suspense fallback={<div>Loading...</div>}>
-        <NewsDetailViewSection />
+        <DetailViewSection />
         <div className={styles.detailWidth}>
           <hr />
           <Suspense fallback={<div>Loading...</div>}>
-            <NewsListViewSection />
+            <CommentViewSection />
+          </Suspense>
+          <Suspense fallback={<div>Loading...</div>}>
+            <ListViewSection />
           </Suspense>
           <div className={styles.topSpace}></div>
         </div>
@@ -21,4 +25,4 @@ const NewsDetail = () => {
   );
 };
 
-export default NewsDetail;
+export default NewsAndBlogDetail;

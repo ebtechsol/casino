@@ -1,27 +1,19 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import BlogListService from "../services/newsAndBlogs/blogService";
-import BlogDto from "../dto/newsAndBlogs/blogDto";
+import GetListService from "../services/newsAndBlogs/newsAndBlogService";
+import NewsAndBlogDto from "../dto/newsAndBlogs/newsAndBlog";
 import styles from "@/public/style/blogs.module.css";
 import Image from "next/image";
-
-interface BlogTag {
-  value: string;
-}
-const blogTagRecord: BlogTag[] = [
-  { value: "Crypto" },
-  { value: "Bitcoin" },
-  { value: "Casino" },
-];
+import TagsElement from "../components/NewAndBlogTags";
 
 const Blogs = () => {
-  const [blogContent, setBlogContent] = useState<BlogDto[]>([]);
+  const [blogContent, setBlogContent] = useState<NewsAndBlogDto[]>([]);
 
-    useEffect(() => {
-      BlogListService().then((contentData) => {
-        setBlogContent(contentData);
-      });
-    }, [setBlogContent]);
+  useEffect(() => {
+    GetListService("B").then((contentData) => {
+      setBlogContent(contentData);
+    });
+  }, [setBlogContent]);
 
   return (
     <div>
@@ -54,16 +46,12 @@ const Blogs = () => {
                 <h3 className={styles.blogTitle}>{blog.title}</h3>
                 <div className="mt-2">
                   <div className="mt-4">
-                  {blogTagRecord.map((tag, i) => (
-                <span className={styles.blogTag} key={i}>
-                  {tag.value}
-                </span>
-              ))}
+                    <TagsElement tagString={blog.tags} />
                   </div>
                   <p className={styles.blogDesc}>{blog.description}</p>
-                  <a href={("/BlogDetail?blog_id=").concat(blog.id.toString())}>
+                  <a href={"/NewsAndBlogDetail?id=".concat(blog.id.toString(), "&t=", blog.type)}>
                     <button className={styles.featureBtn}>
-                      Read More {" "}
+                      Read More{" "}
                       <Image
                         src="/more.svg"
                         width={15}

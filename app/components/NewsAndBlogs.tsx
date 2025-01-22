@@ -3,26 +3,18 @@ import React, { useEffect, useState } from "react";
 import styles from "@/public/style/newsandblogs.module.css";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import NewsDto from "../dto/newsAndBlogs/newsDto";
-import NewsListService from "../services/newsAndBlogs/newsService";
+import GetListService from "../services/newsAndBlogs/newsAndBlogService";
+import NewsAndBlogDto from "../dto/newsAndBlogs/newsAndBlog";
 import { setDateFormat } from "../helpers/defaultHelper";
-
-interface BlogTag {
-  value: string;
-}
-const blogTagRecord: BlogTag[] = [
-  { value: "Crypto" },
-  { value: "Bitcoin" },
-  { value: "Casino" },
-];
+import TagsElement from "./NewAndBlogTags";
 
 const NewsAndBlogs = () => {
   const router = useRouter();
-  const [newsList, setNewsList] = useState<NewsDto[]>([]);
-  const showNewsCount = 6;
+  const [newsList, setNewsList] = useState<NewsAndBlogDto[]>([]);
+  const showCount = 6;
 
   useEffect(() => {
-    NewsListService(showNewsCount).then((list) => {
+    GetListService("N", showCount).then((list) => {
       setNewsList(list);
     });
   }, [router, setNewsList]);
@@ -48,7 +40,7 @@ const NewsAndBlogs = () => {
         </div>
       </div>
       <div className="row mt-2 mb-2">
-      {newsList.map((news, index) => (
+        {newsList.map((news, index) => (
           <div key={index} className={"col-md-4 " + styles.blogSection}>
             <Image
               src={news.image_url}
@@ -65,8 +57,8 @@ const NewsAndBlogs = () => {
                 <span className={styles.blogTitle}>{news.title}</span>
               </div>
               <div className="col-lg-2">
-                <a href={"/NewsDetail?news_id=".concat(news.id.toString())}>
-                  <Image
+              <a href={"/NewsAndBlogDetail?id=".concat(news.id.toString(), "&t=", news.type)}>
+              <Image
                     src="/arrow-up-right.svg"
                     className={styles.arrowImg}
                     width={30}
@@ -77,11 +69,7 @@ const NewsAndBlogs = () => {
               </div>
             </div>
             <div className="mt-4">
-              {blogTagRecord.map((tag, i) => (
-                <span className={styles.blogTag} key={i}>
-                  {tag.value}
-                </span>
-              ))}
+              <TagsElement tagString={news.tags} />
             </div>
           </div>
         ))}

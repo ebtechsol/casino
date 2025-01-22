@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { BlogCommentsListService } from "@/app/services/newsAndBlogs/blogService";
+import { GetCommentListService } from "@/app/services/newsAndBlogs/newsAndBlogService";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { BlogCommentsDto } from "@/app/dto/newsAndBlogs/blogDto";
+import { NewsAndBlogCommentDto } from "@/app/dto/newsAndBlogs/newsAndBlog";
 import styles from "@/public/style/blog_detail.module.css";
 
-const BlogCommentViewSection = () => {
+const CommentViewSection = () => {
     const searchParams = useSearchParams();
-    const blog_id = searchParams.get("blog_id");
-  const [blogCommentsList, setBlogCommentsList] = useState<BlogCommentsDto[]>(
+    const newsAndBlog_id = searchParams.get("id");
+  const [blogCommentsList, setBlogCommentsList] = useState<NewsAndBlogCommentDto[]>(
     []
   );
   const showBlogsCount = 3;
 
   useEffect(() => {
-    BlogCommentsListService(Number(blog_id)).then((comment) => {
-      setBlogCommentsList(comment as BlogCommentsDto[]);
+    GetCommentListService(Number(newsAndBlog_id)).then((comment) => {
+      setBlogCommentsList(comment as NewsAndBlogCommentDto[]);
     });
-  }, [showBlogsCount, blog_id]);
+  }, [showBlogsCount, newsAndBlog_id]);
 
   return (
     <div>
@@ -113,4 +113,4 @@ const BlogCommentViewSection = () => {
   );
 };
 
-export default BlogCommentViewSection;
+export default CommentViewSection;

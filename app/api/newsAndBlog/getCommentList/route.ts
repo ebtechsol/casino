@@ -4,11 +4,11 @@ const prisma = new PrismaClient();
 
 const GET = async (request: NextRequest) => {
   try {
-    const blog_id = request?.nextUrl?.searchParams.get("blog_id");
-    if (Number(blog_id) > 0) {
-      const record = await prisma.blogComments.findMany({
+    const newsAndBlog_id = request?.nextUrl?.searchParams.get("id");
+    if (Number(newsAndBlog_id) > 0) {
+      const record = await prisma.newsAndBlogComments.findMany({
         where: {
-          blog_id: Number(blog_id),
+          newsAndBlog_id: Number(newsAndBlog_id),
         },
       });
 
@@ -28,7 +28,7 @@ const GET = async (request: NextRequest) => {
       return NextResponse.json({
         status: false,
         data: null,
-        msg: "Blog Id [blog_id] is required!",
+        msg: "ID [id] is required!",
       });
     }
   } catch {

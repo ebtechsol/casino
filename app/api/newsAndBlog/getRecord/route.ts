@@ -4,11 +4,11 @@ const prisma = new PrismaClient();
 
 const GET = async (request: NextRequest) => {
   try {
-    const news_id = request?.nextUrl?.searchParams.get('news_id');
-    if(Number(news_id) > 0) {
-      const record = await prisma.news.findUnique({
+    const newsAndBlog_id = request?.nextUrl?.searchParams.get('id');
+    if(Number(newsAndBlog_id) > 0) {
+      const record = await prisma.newsAndBlog.findUnique({
         where: {
-          id: Number(news_id),
+          id: Number(newsAndBlog_id),
           is_active: true,
         },
       });
@@ -30,7 +30,7 @@ const GET = async (request: NextRequest) => {
       return NextResponse.json({
         status: false,
         data: null,
-        msg: "News Id [news_id] is required!",
+        msg: "ID [id] is required!",
       });
     }
   } catch {

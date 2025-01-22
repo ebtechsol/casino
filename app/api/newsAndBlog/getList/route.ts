@@ -4,34 +4,34 @@ const prisma = new PrismaClient();
 
 const GET = async (request: NextRequest) => {
   try {
+    const type = request?.nextUrl?.searchParams.get("t");
     const ln = request?.nextUrl?.searchParams.get("ln");
-    let blogList = null;
+    let newsAndBlogList = null;
+    let find = {
+      where: {
+        is_active: true,
+      },
+      orderBy: {
+        id: "desc",
+      },
+    };
+
     if (Number(ln) > 0) {
-      blogList = await prisma.blog.findMany({
-        take: Number(ln),
-        where: {
-          is_active: true,
-        },
-        orderBy: {
-          id: 'desc',
-        },
-      });
-    } else {
-      blogList = await prisma.blog.findMany({
-        where: {
-          is_active: true,
-        },
-        orderBy: {
-          id: 'desc',
-        },
+      find = Object.assign(find, { take: Number(ln) });
+    }
+
+    if (type != null && type != "") {
+      find = Object.assign(find, {
+        where: Object.assign(find.where, { type: type }),
       });
     }
 
-    if (blogList != null && blogList.length > 0) {
+    newsAndBlogList = await prisma.newsAndBlog.findMany(find as object);
+    if (newsAndBlogList != null && newsAndBlogList.length > 0) {
       return NextResponse.json({
         status: true,
-        data: blogList,
-        msg: "Record found successfully!",
+        data: newsAndBlogList,
+        msg: "Record found!",
       });
     } else {
       return NextResponse.json({

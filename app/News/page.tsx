@@ -2,25 +2,16 @@
 import React, { useEffect, useState } from "react";
 import styles from "@/public/style/news.module.css";
 import Image from "next/image";
-import NewsListService from "../services/newsAndBlogs/newsService";
-import NewsDto from "../dto/newsAndBlogs/newsDto";
+import GetListService from "../services/newsAndBlogs/newsAndBlogService";
+import NewsAndBlogDto from "../dto/newsAndBlogs/newsAndBlog";
 import { setDateFormat } from "../helpers/defaultHelper";
-
-interface BlogTag {
-  value: string;
-}
-
-const blogTagRecord: BlogTag[] = [
-  { value: "Crypto" },
-  { value: "Bitcoin" },
-  { value: "Casino" },
-];
+import TagsElement from "../components/NewAndBlogTags";
 
 const News = () => {
-  const [newsContent, setNewsContent] = useState<NewsDto[]>([]);
+  const [newsContent, setNewsContent] = useState<NewsAndBlogDto[]>([]);
 
   useEffect(() => {
-    NewsListService().then((contentData) => {
+    GetListService("N").then((contentData) => {
       setNewsContent(contentData);
     });
   }, [setNewsContent]);
@@ -70,8 +61,8 @@ const News = () => {
                 <span className={styles.blogTitle}>{news.title}</span>
               </div>
               <div className="col-lg-2">
-                <a href={"/NewsDetail?news_id=".concat(news.id.toString())}>
-                  <Image
+              <a href={"/NewsAndBlogDetail?id=".concat(news.id.toString(), "&t=", news.type)}>
+              <Image
                     src="/arrow-up-right.svg"
                     className={styles.arrowImg}
                     width={30}
@@ -82,11 +73,7 @@ const News = () => {
               </div>
             </div>
             <div className="mt-4">
-              {blogTagRecord.map((tag, i) => (
-                <span className={styles.blogTag} key={i}>
-                  {tag.value}
-                </span>
-              ))}
+              <TagsElement tagString={news.tags} />
             </div>
           </div>
         ))}
@@ -131,8 +118,8 @@ const News = () => {
                 <span className={styles.blogTitle}>{news.title}</span>
               </div>
               <div className="col-lg-2">
-                <a href={"/NewsDetail?news_id=".concat(news.id.toString())}>
-                  <Image
+              <a href={"/NewsAndBlogDetail?id=".concat(news.id.toString(), "&t=", news.type)}>
+              <Image
                     src="/arrow-up-right.svg"
                     className={styles.arrowImg}
                     width={30}
@@ -143,11 +130,7 @@ const News = () => {
               </div>
             </div>
             <div className="mt-4">
-              {blogTagRecord.map((tag, i) => (
-                <span className={styles.blogTag} key={i}>
-                  {tag.value}
-                </span>
-              ))}
+              <TagsElement tagString={news.tags} />
             </div>
           </div>
         ))}

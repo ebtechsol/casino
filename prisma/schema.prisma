@@ -11,87 +11,56 @@ datasource db {
 }
 
 model User {
-  id           Int            @id @unique(map: "sqlite_autoindex_user") @default(autoincrement())
-  user_id      String         @unique(map: "sqlite_unique_userid") @default(cuid())
-  user_name    String
-  email        String         @unique
-  password     String
-  is_active    Boolean        @default(false)
-  created_at   DateTime       @default(now()) @map(name: "created_at")
-  updated_at   DateTime       @updatedAt @map(name: "updated_at")
-  blogComments BlogComments[]
+  id                  Int                   @id @unique(map: "sqlite_autoindex_user") @default(autoincrement())
+  user_id             String                @unique(map: "sqlite_unique_userid") @default(cuid())
+  user_name           String
+  email               String                @unique
+  password            String
+  is_active           Boolean               @default(false)
+  created_at          DateTime              @default(now()) @map(name: "created_at")
+  updated_at          DateTime              @updatedAt @map(name: "updated_at")
+  newsAndBlogComments NewsAndBlogComments[]
 
   @@map(name: "users")
 }
 
-model Blog {
-  id               Int            @id @unique(map: "sqlite_autoindex_blog") @default(autoincrement())
-  title            String
-  description      String?
-  long_description String?
-  image_url        String?
-  author_name      String
-  publish_date     DateTime       @default(now()) @map(name: "publish_date")
-  is_active        Boolean        @default(false)
-  created_at       DateTime       @default(now()) @map(name: "created_at")
-  updated_at       DateTime       @updatedAt @map(name: "updated_at")
-  blogTags         BlogTags[]
-  blogComments     BlogComments[]
+model NewsAndBlog {
+  id                  Int                   @id @unique(map: "sqlite_autoindex_newsAndBlog") @default(autoincrement())
+  title               String
+  type                String
+  description         String?
+  long_description    String?
+  image_url           String?
+  author_name         String
+  tags                String
+  publish_date        DateTime              @default(now()) @map(name: "publish_date")
+  is_active           Boolean               @default(false)
+  created_at          DateTime              @default(now()) @map(name: "created_at")
+  updated_at          DateTime              @updatedAt @map(name: "updated_at")
+  newsAndBlogComments NewsAndBlogComments[]
 
-  @@map(name: "blogs")
+  @@map(name: "newsAndBlog")
 }
 
-model BlogTags {
-  id              Int      @id @unique(map: "sqlite_autoindex_blog_tags") @default(autoincrement())
-  name            String
-  bg_color_code   String   @default("#ffe5e5")
-  text_color_code String   @default("#d70000")
-  created_at      DateTime @default(now()) @map(name: "created_at")
-  blog_id         Int
-  blog            Blog?    @relation(fields: [blog_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-
-  @@map(name: "blog_tags")
-}
-
-model BlogComments {
-  id                Int      @id @unique(map: "sqlite_autoindex_blog_comments") @default(autoincrement())
+model NewsAndBlogComments {
+  id                Int          @id @unique(map: "sqlite_autoindex_newsAndBlog_comments") @default(autoincrement())
   message           String
   parent_comment_id Int?
-  created_at        DateTime @default(now()) @map(name: "created_at")
-  blog_id           Int
-  blog              Blog?    @relation(fields: [blog_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  created_at        DateTime     @default(now()) @map(name: "created_at")
+  newsAndBlog_id    Int
+  newsAndBlog       NewsAndBlog? @relation(fields: [newsAndBlog_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
   user_id           String
-  user              User?    @relation(fields: [user_id], references: [user_id], onDelete: Cascade, onUpdate: Cascade)
+  user              User?        @relation(fields: [user_id], references: [user_id], onDelete: Cascade, onUpdate: Cascade)
 
-  @@map(name: "blog_comments")
+  @@map(name: "newsAndBlog_comments")
 }
 
-model News {
-  id               Int        @id @unique(map: "sqlite_autoindex_news") @default(autoincrement())
-  title            String
-  description      String?
-  long_description String?
-  image_url        String?
-  author_name      String
-  publish_date     DateTime   @default(now()) @map(name: "publish_date")
-  is_active        Boolean    @default(false)
-  created_at       DateTime   @default(now()) @map(name: "created_at")
-  updated_at       DateTime   @updatedAt @map(name: "updated_at")
-  newsTags         NewsTags[]
+model SubscribeNewsLetter {
+  id         Int      @id @unique(map: "sqlite_autoindex_subscribeNewsLetter") @default(autoincrement())
+  email      String
+  created_at DateTime @default(now()) @map(name: "created_at")
 
-  @@map(name: "news")
-}
-
-model NewsTags {
-  id              Int      @id @unique(map: "sqlite_autoindex_news_tags") @default(autoincrement())
-  name            String
-  bg_color_code   String   @default("#ffe5e5")
-  text_color_code String   @default("#d70000")
-  created_at      DateTime @default(now()) @map(name: "created_at")
-  news_id         Int
-  news            News?    @relation(fields: [news_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-
-  @@map(name: "news_tags")
+  @@map(name: "subscribeNewsLetter")
 }
 
 model Casino {
@@ -104,23 +73,9 @@ model Casino {
   critic_score  Decimal
   is_active     Boolean         @default(false)
   created_at    DateTime        @default(now()) @map(name: "created_at")
-  casinoTags    CasinoTags[]
   casinoReviews CasinoReviews[]
 
   @@map(name: "casino")
-}
-
-model CasinoTags {
-  id              Int      @id @unique(map: "sqlite_autoindex_casino_tags") @default(autoincrement())
-  image           String
-  name            String
-  bg_color_code   String   @default("#FFFFFF")
-  text_color_code String   @default("#d70000")
-  created_at      DateTime @default(now()) @map(name: "created_at")
-  casino_id       Int
-  casino          Casino?  @relation(fields: [casino_id], references: [id], onDelete: Cascade, onUpdate: Cascade)
-
-  @@map(name: "casino_tags")
 }
 
 model CasinoReviews {
