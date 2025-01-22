@@ -117,3 +117,26 @@ export const BlogCommentsListService = async (blog_id : number): Promise<BlogCom
   return commentList;
 };
 
+
+export const AddComment = async (
+  request: BlogCommentRequestDto
+): Promise<BlogCommentResponseDto> => {
+  let commentStatus: BlogCommentResponseDto = {
+    status: false,
+    msg: "",
+  };
+  try {
+    const requestSource = GetApiSource("/api/blogComments/addComment");
+    const response = await fetch(requestSource, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(request),
+    });
+    commentStatus = (await response.json()) as BlogCommentResponseDto;
+  } catch (err) {
+    console.log(err);
+  }
+  return commentStatus;
+};

@@ -11,7 +11,7 @@ const QuizStart = () => {
         <p className="text-white">
           Answer a few questions and let us guide you to the best spot.
         </p>
-        <button className={styles.complbtn}>
+        <a href="/Quiz?qt=1"><button className={styles.complbtn}>
           <Image
             src="/pan.svg"
             width={25}
@@ -25,7 +25,7 @@ const QuizStart = () => {
             height={25}
             alt="Picture of the author"
           />
-        </button>
+        </button></a>
       </div>
     </div>
   );
