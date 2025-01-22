@@ -119,6 +119,7 @@ const CommentViewSection = () => {
         {addSuccessMessage != "" ? (
           <span className="alert alert-success p-2 m-0 d-block">
             {addSuccessMessage}
+            <br/>
           </span>
         ) : (
           ""
@@ -126,6 +127,7 @@ const CommentViewSection = () => {
         {addErrorMessage != "" ? (
           <span className="alert alert-danger p-2 m-0 d-block">
             {addErrorMessage}
+            <br/>
           </span>
         ) : (
           ""
