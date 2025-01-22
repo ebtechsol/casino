@@ -1,8 +1,9 @@
 import Image from "next/image";
 import styles from "@/public/style/review.module.css";
 
-const Profile = () => {
+const Review = () => {
   return (
+    
     <div className={"row " + styles.ReviewRow}>
       <div className="col-lg-8">
         <div className="row">
@@ -280,4 +281,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Review;
