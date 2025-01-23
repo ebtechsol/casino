@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "@/public/style/review.module.css";
 import {CasinoReviewsDto} from "@/app/dto/casino/casinoDto";
 import { CasinoReviewRatingService } from "@/app/services/casino/casinoService";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import React from "react";
 import { useEffect, useState } from "react";
 

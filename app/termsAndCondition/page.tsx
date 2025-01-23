@@ -1,5 +1,4 @@
 "use client";
-import styles from "@/public/style/blogs.module.css";
 
 const TermsAndCondition = () => {
 
@@ -18,13 +17,13 @@ const TermsAndCondition = () => {
             <p>For the purposes of these Terms and Conditions:</p>
             <ul>
                 <li>
-                    Affiliate means an entity that controls, is controlled by or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.
+                    Affiliate means an entity that controls, is controlled by or is under common control with a party, where &quot;control&quot; means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.
                 </li>
                 <li>
                     Country refers to: California, United States
                 </li>
                 <li>
-                    Company (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to Gambler GG.
+                    Company (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to Gambler GG.
                 </li>
                 <li>
                     Device means any device that can access the Service such as a computer, a cellphone or a digital tablet.
@@ -33,7 +32,7 @@ const TermsAndCondition = () => {
                     Service refers to the Website.
                 </li>
                 <li>
-                    Terms and Conditions (also referred as "Terms") mean these Terms and Conditions that form the entire agreement between You and the Company regarding the use of the Service. This Terms and Conditions agreement has been created with the help of the Free Terms and Conditions Generator.
+                    Terms and Conditions (also referred as &quot;Terms&quot;) mean these Terms and Conditions that form the entire agreement between You and the Company regarding the use of the Service. This Terms and Conditions agreement has been created with the help of the Free Terms and Conditions Generator.
                 </li>
                 <li>
                     Third-party Social Media Service means any services or content (including data, information, products or services) provided by a third-party that may be displayed, included or made available by the Service.
@@ -66,11 +65,11 @@ const TermsAndCondition = () => {
 
                 Upon termination, Your right to use the Service will cease immediately.</p>
             <h4>Limitation of Liability</h4>
-            <p>Notwithstanding any damages that You might incur, the entire liability of the Company and any of its suppliers under any provision of this Terms and Your exclusive remedy for all of the foregoing shall be limited to the amount actually paid by You through the Service or 100 USD if You haven't purchased anything through the Service.
+            <p>Notwithstanding any damages that You might incur, the entire liability of the Company and any of its suppliers under any provision of this Terms and Your exclusive remedy for all of the foregoing shall be limited to the amount actually paid by You through the Service or 100 USD if You haven&apos;t purchased anything through the Service.
 
                 To the maximum extent permitted by applicable law, in no event shall the Company or its suppliers be liable for any special, incidental, indirect, or consequential damages whatsoever (including, but not limited to, damages for loss of profits, loss of data or other information, for business interruption, for personal injury, loss of privacy arising out of or in any way related to the use of or inability to use the Service, third-party software and/or third-party hardware used with the Service, or otherwise in connection with any provision of this Terms), even if the Company or any supplier has been advised of the possibility of such damages and even if the remedy fails of its essential purpose.
 
-                Some states do not allow the exclusion of implied warranties or limitation of liability for incidental or consequential damages, which means that some of the above limitations may not apply. In these states, each party's liability will be limited to the greatest extent permitted by law.</p>
+                Some states do not allow the exclusion of implied warranties or limitation of liability for incidental or consequential damages, which means that some of the above limitations may not apply. In these states, each party&apos;s liability will be limited to the greatest extent permitted by law.</p>
         </div>
     );
 };

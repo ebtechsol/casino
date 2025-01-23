@@ -82,7 +82,7 @@ export const CasinoReviewRatingService = async (
     let source = "/api/casino/getCasinoReview";
     if (casino_id != null && casino_id > 0) {
       source = source.concat("?casino_id=", casino_id.toString());
-      const requestSource = GetApiSource(source);
+      const requestSource = getApiSource(source);
       const response = await fetch(requestSource, {
         method: "GET",
         headers: {
