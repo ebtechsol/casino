@@ -1,12 +1,12 @@
-
-.reviewTags{
+.reviewTags {
   border: 1px solid #FFB8B8;
   padding: 7px 10px;
   border-radius: 50px;
   font-size: 14px;
   color: #D70000;
 }
-.reviewTagspac{
+
+.reviewTagspac {
   border: 1px solid #FFB8B8;
   padding: 7px 10px;
   border-radius: 50px;
@@ -15,34 +15,41 @@
   margin-left: 5px;
 
 }
-.reviewDev{
+
+.reviewDev {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.mainTitle{
+
+.mainTitle {
   font-size: 42px;
-    font-weight: 600;
+  font-weight: 600;
 }
-.colum{
-  padding: 30px !important; 
+
+.colum {
+  padding: 30px !important;
   width: 25%;
   font-size: 14px;
 }
-.ReviewRow{
+
+.ReviewRow {
   margin: 40px 80px;
   background-image: url("/detail_bg.svg");
   background-position: top;
   background-repeat: no-repeat;
   background-size: contain;
 }
-.cardBg{
+
+.cardBg {
   background-color: #F9F9F9;
   border-radius: 20px;
 }
-.cardRow{
+
+.cardRow {
   padding: 20px;
 }
-.visitBtn{
+
+.visitBtn {
   width: 100%;
   padding: 10px;
   border-radius: 50px;
@@ -54,16 +61,19 @@
   margin-top: 25px;
   margin-bottom: 20px;
 }
-.stakeInnerSec{
+
+.stakeInnerSec {
   border: 1px solid #DFDFDF;
-    border-radius: 10px;
-    padding: 27px;
+  border-radius: 10px;
+  padding: 27px;
 }
-.stakeBonusParagh{
+
+.stakeBonusParagh {
   font-size: 20px;
   font-weight: 700;
 }
-.claimBtn{
+
+.claimBtn {
   width: 100%;
   padding: 10px;
   border-radius: 50px;
@@ -74,53 +84,81 @@
   font-weight: 600;
   margin-top: 10px;
 }
-.mainDiv{
+
+.mainDiv {
   border: 1px solid #DFDFDF;
-    height: 920px;
-    border-radius: 20px;
-    padding: 40px 40px;
-    margin-top: 40px;
-    margin-bottom: 50px;
+  height: 920px;
+  border-radius: 20px;
+  padding: 40px 40px;
+  margin-top: 40px;
+  margin-bottom: 50px;
 }
-.childDev{
+
+.childDev {
   border: 1px solid #DFDFDF;
-    height: 200px;
-    border-radius: 20px;
+  height: 200px;
+  border-radius: 20px;
 }
-.percentDev{
+
+.percentDev {
   padding: 40px 110px;
-    text-align: center;
-    line-height: 0px;
+  text-align: center;
+  line-height: 0px;
 }
-.overviewBtn{
+
+.overviewBtn {
   width: 10%;
-    padding: 15px;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    background: #151515;
-    color: white;
-    border: none;
-    margin-bottom: -40px;
-    margin-left: 45px;
-    font-size: 17px;
-    font-weight: 700;
+  padding: 15px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  background: #151515;
+  color: white;
+  border: none;
+  margin-left: 45px;
+  font-size: 17px;
+  font-weight: 700;
+  position: relative;
+  top: 40px;
 }
-.ratingSec{
-  padding: 22px 25px 0px 25px;
+
+.ratingSec {
+  padding: 10px 25px 0px 25px;
 }
-.ratingCopSec{
-  padding:5px 25px;
+
+.ratingCopSec {
+  padding: 5px 25px;
 }
-.ratHeading{
+
+.ratHeading {
   font-size: 20px;
   font-weight: 700;
 }
-.lightParagh{
-font-size: 17px;
-color: #737373;
-}
-@media only screen and (max-width: 600px) {
-  
 
-  
+.lightParagh {
+  font-size: 17px;
+  color: #737373;
+}
+
+@media only screen and (max-width: 600px) {
+  .ReviewRow {
+    margin: 40px 20px;
+  }
+
+  .mainTitle {
+    font-size: 30px;
+  }
+
+  .overviewBtn {
+    width: 40%;
+    padding: 10px;
+    margin-left: 23px;
+  }
+
+  .percentDev {
+    padding: 40px 30px;
+  }
+
+  .mainDiv {
+    height: 1450px;
+  }
 }

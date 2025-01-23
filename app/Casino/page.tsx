@@ -76,13 +76,14 @@ const Casino = () => {
                                         alt="Stake"
                                     /> <span className={styles.wizardRating}>Critic Score</span>
                                     <div className={styles.wizardNum}>
-                                    {Number(casino.critic_score)} / 10
+                                    {Number(casino.critic_score)}%
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className={styles.cardPrice}>
-                            Get 100% up to €500 + 200 Bonus Spins
+                            <span>Get 100% up to €500 + 200</span><br/>
+                            <span className={styles.alignLeftCasino}> Bonus Spins</span>
                         </div>
                         <a href="#"><button className={styles.visitCasinoBtn}>Visit Stake Casino</button></a><br />
                         <a href={("/Review?casino_id=").concat(casino.id.toString())}><button className={styles.readCasinoBtn}>Read Stake Review</button></a>
