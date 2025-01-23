@@ -112,7 +112,7 @@ const Footer = () => {
                 <div className={"col-md-3 col-sm-12 ct2 " + styles.ct2}>
                     <ul>
                         <li> <a href="#">FAQ</a> </li>
-                        <li> <a href="#">Terms of Service</a> </li>
+                        <li> <a href="/termsAndCondition">Terms of Service</a> </li>
                         <li> <a href="#">Privacy Policy</a> </li>
                         <li> <a href="#">Contact</a> </li>
                     </ul>

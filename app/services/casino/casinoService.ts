@@ -1,6 +1,7 @@
 import CasinoDto, {
   CasinoRequestDto,
   CasinoResponseDto,
+  CasinoReviewsDto
 } from "@/app/dto/casino/casinoDto";
 import { GetApiSource } from "@/app/helpers/defaultHelper";
 
@@ -71,4 +72,30 @@ export const CasinoService = async (
     console.log(err);
   }
   return casinoDetail;
+};
+
+export const CasinoReviewRatingService = async (
+  casino_id: number
+): Promise<CasinoReviewsDto[]> => {
+  let ratingList: CasinoReviewsDto[] = [];
+  try {
+    let source = "/api/casino/getCasinoReview";
+    if (casino_id != null && casino_id > 0) {
+      source = source.concat("?casino_id=", casino_id.toString());
+      const requestSource = GetApiSource(source);
+      const response = await fetch(requestSource, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const responseJson = await response.json();
+      if (responseJson.status == true) {
+        ratingList = responseJson.data;
+      }
+    }
+  } catch (err) {
+    console.log(err);
+  }
+  return ratingList;
 };

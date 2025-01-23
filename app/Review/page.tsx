@@ -1,105 +1,15 @@
+"use client"
 import Image from "next/image";
 import styles from "@/public/style/review.module.css";
-
+import React , { Suspense } from "react";
+import CasinoDetail from "./component/detailCasinoSection";
+import CasinoRatingSection from "./component/detailCasinoRating";
 const Review = () => {
   return (
-    
-    <div className={"row " + styles.ReviewRow}>
-      <div className="col-lg-8">
-        <div className="row">
-          <div className="col-lg-3">
-            <Image
-              src="/casino_stake.svg"
-              width={220}
-              height={150}
-              alt=""
-            />
-          </div>
-          <div className="col-lg-9">
-            <h2 className={styles.mainTitle}>Stake Reviews</h2>
-            <div>
-              <span className={styles.reviewTags}>
-                <Image
-                  src="/review-slots.svg"
-                  width={20}
-                  height={20}
-                  alt=""
-                /> Slots
-              </span>
-              <span className={styles.reviewTagspac}>
-                <Image
-                  src="/shaf-card.svg"
-                  width={20}
-                  height={20}
-                  alt=""
-                /> Blackjack
-              </span>
-              <span className={styles.reviewTagspac}>
-                <Image
-                  src="/lottery.svg"
-                  width={20}
-                  height={20}
-                  alt=""
-                /> Roulette
-              </span><br /><br />
-              <span className={styles.reviewTags}>
-                <Image
-                  src="/dice.svg"
-                  width={20}
-                  height={20}
-                  alt=""
-                /> Craps
-              </span>
-              <span className={styles.reviewTagspac}>
-
-                <Image
-                  src="/live-streaming.svg"
-                  width={20}
-                  height={20}
-                  alt=""
-                /> Live Games
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className={styles.reviewDev}>
-          <span>
-          <Image
-                  src="/profile-img.svg"
-                  width={30}
-                  height={30}
-                  alt=""
-                /> Richard Jarvis 
-                <Image
-                  src="/certificate.svg"
-                  width={30}
-                  height={30}
-                  alt=""
-                /> US Casino Expert
-          </span>
-        </div>
-        <h4>General Information about Stake</h4>
-        <p>Stake.com is one of the most exciting online casinos out there, mainly because of its outstanding collection
-          of games from top software providers. There are tons of progressive jackpots, easy banking transactions and
-          strong customer service, and you are left with a truly vibrant and authentic casino experience.</p>
-      </div>
-      <div className={"col-lg-4 " + styles.cardBg}>
-        <div className={styles.cardRow}>
-          <button className={styles.visitBtn}>Visit Stake Casino</button>
-          <div className={styles.stakeInnerSec}>
-            <p>Welcome Bonus</p>
-            <h2 className={styles.stakeBonusParagh}>100% up to €500 + 200 <br />Bonus Spins</h2>
-            <button className={styles.claimBtn}>
-              <Image
-                src="/pan.svg"
-                width={20}
-                height={20}
-                alt="Picture of the author"
-              />
-              Claim Offer & Play</button>
-          </div>
-        </div>
-      </div>
+    <div className={styles.ReviewRow}>
+      <Suspense fallback={<div>Loading...</div>}>
+      <CasinoDetail />
+      </Suspense>
       <button className={styles.overviewBtn}><Image
                 src="/home.svg"
                 width={25}
@@ -110,58 +20,9 @@ const Review = () => {
         <div className="row">
           <div className="col-lg-8">
             <div className={styles.childDev}>
-              <div className={"row " + styles.ratingSec}>
-                <div className="col-lg-6">
-                  <h5>Overall Rating</h5>
-                </div>
-                <div className="col-lg-6">
-                  <Image
-                    src="/rating.svg"
-                    width={650}
-                    height={20}
-                    alt="Picture of the author"
-                  />
-                </div>
-              </div>
-              <div className={"row " + styles.ratingCopSec}>
-                <div className="col-lg-6">
-                  <span>Bonuses & Offer</span>
-                </div>
-                <div className="col-lg-6">
-                  <Image
-                    src="/rating.svg"
-                    width={650}
-                    height={20}
-                    alt="Picture of the author"
-                  />
-                </div>
-              </div>
-              <div className={"row " + styles.ratingCopSec}>
-                <div className="col-lg-6">
-                  <span>Security</span>
-                </div>
-                <div className="col-lg-6">
-                  <Image
-                    src="/rating.svg"
-                    width={650}
-                    height={20}
-                    alt="Picture of the author"
-                  />
-                </div>
-              </div>
-              <div className={"row " + styles.ratingCopSec}>
-                <div className="col-lg-6">
-                  <span>Software & Games</span>
-                </div>
-                <div className="col-lg-6">
-                  <Image
-                    src="/rating.svg"
-                    width={650}
-                    height={20}
-                    alt="Picture of the author"
-                  />
-                </div>
-              </div>
+            <Suspense fallback={<div>Loading...</div>}>
+             <CasinoRatingSection />
+             </Suspense>
             </div>
           </div>
           <div className="col-lg-4">
@@ -176,7 +37,7 @@ const Review = () => {
             </div>
           </div>
         </div>
-        <table className="table table-bordered rounded-3 mt-5">
+        <table className="table table-bordered table-responsive rounded-3 mt-5">
   <tbody>
     <tr>
       <td className={styles.colum}><Image

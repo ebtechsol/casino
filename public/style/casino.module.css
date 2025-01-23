@@ -111,6 +111,9 @@
     border: none;
     border-radius: 50px;
 }
+.alignLeftCasino{
+    padding-right: 104px !important;
+  }
 @media only screen and (max-width: 600px) {
     .mainSection{
         margin: 0px 15px;
