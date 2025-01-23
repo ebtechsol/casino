@@ -5,6 +5,22 @@
   font-weight: 600;
 }
 
+.commentsCount{
+  background: #d70000;
+  padding: 10px;
+  color: white;
+  border-radius: 50%;
+  border: 0px;
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  align-self: center;
+  vertical-align: middle;
+  margin-left: 10px;
+  line-height: 10px;
+}
+
 .blogTitle {
   font-size: 20px;
   font-weight: 600;
@@ -61,6 +77,10 @@
   padding-top: 10px;
 }
 
+.commentRow{
+  width: 100%;
+  display: flex;
+}
 .socialIcon {
   float: right;
   margin-top: 9px;
@@ -74,21 +94,15 @@
 .commentMainTitle {
   font-size: 19px;
   font-weight: 600;
+  padding: 10px 0px;
 }
 
 .commentBtn {
   float: right;
   background: none;
-  padding: 10px 20px;
   color: #000;
   border-radius: 50px;
-  margin-top: 19px;
   border: none;
-}
-
-.commentTitleDiv {
-  margin-top: 30px !important;
-  padding-left: 32px !important;
 }
 
 .mainDev {

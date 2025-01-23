@@ -9,28 +9,49 @@ type UserDto = {
   is_active: boolean;
   created_at: DateTime;
   updated_at: DateTime;
+  authentication_access_token: string;
 };
 
-export default UserDto;
+type UserAuthenticationLogs = {
+  id: number;
+  user_id: string;
+  access_token: string;
+  authentication_at: DateTime;
+};
 
-export type SignInRequestDto = {
+type SignInRequestDto = {
   email: string;
   password: string;
 };
 
-export type SignInResponseDto = {
+type SignInResponseDto = {
   status: boolean;
   msg: string;
   data?: UserDto;
 };
 
-export type SignUpRequestDto = {
+type SignUpRequestDto = {
   user_name: string;
   email: string;
   password: string;
 };
 
-export type SignUpResponseDto = {
+type SignUpResponseDto = {
   status: boolean;
   msg: string;
+};
+
+type VerifyAccessTokenResponseDto = {
+  status: boolean;
+  msg: string;
+};
+
+export default UserDto;
+export type {
+  UserAuthenticationLogs,
+  SignInRequestDto,
+  SignInResponseDto,
+  SignUpRequestDto,
+  SignUpResponseDto,
+  VerifyAccessTokenResponseDto
 };

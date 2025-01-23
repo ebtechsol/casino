@@ -1,5 +1,5 @@
 
-const GetWindowLocation = () : string => {
+const getWindowLocation = () : string => {
     return (process.env.BASE_URL) ? process.env.BASE_URL.toString() : "";
 }
 
@@ -13,7 +13,7 @@ const setDateFormat = (stringDateValue: string): string => {
     return (date).concat(' ', month, ' ', year.toString());
 }
 
-const GetApiSource = (source : string) : string => {
-    return GetWindowLocation().concat(source);
+const getApiSource = (source : string) : string => {
+    return getWindowLocation().concat(source);
 }
-export { GetApiSource, setDateFormat };
+export { getApiSource, setDateFormat };

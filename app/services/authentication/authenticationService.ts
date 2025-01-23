@@ -4,7 +4,7 @@ import {
   SignUpRequestDto,
   SignUpResponseDto,
 } from "@/app/dto/authentication/userDto";
-import { GetApiSource } from "@/app/helpers/defaultHelper";
+import { getApiSource } from "@/app/helpers/defaultHelper";
 import { setAuthSession } from "@/lib/authenticationSession";
 import { deleteAuthSession } from "@/lib/authenticationSession";
 
@@ -16,7 +16,7 @@ const AuthSignIn = async (
     msg: "",
   };
   try {
-    const requestSource = GetApiSource("/api/authentication/authenticateUser");
+    const requestSource = getApiSource("/api/authentication/authenticateUser");
     const response = await fetch(requestSource, {
       method: "POST",
       headers: {
@@ -47,7 +47,7 @@ const AuthSignUp = async (
     msg: "",
   };
   try {
-    const requestSource = GetApiSource("/api/authentication/addUser");
+    const requestSource = getApiSource("/api/authentication/addUser");
     const response = await fetch(requestSource, {
       method: "POST",
       headers: {

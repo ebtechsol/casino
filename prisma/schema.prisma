@@ -11,17 +11,29 @@ datasource db {
 }
 
 model User {
-  id                  Int                   @id @unique(map: "sqlite_autoindex_user") @default(autoincrement())
-  user_id             String                @unique(map: "sqlite_unique_userid") @default(cuid())
-  user_name           String
-  email               String                @unique
-  password            String
-  is_active           Boolean               @default(false)
-  created_at          DateTime              @default(now()) @map(name: "created_at")
-  updated_at          DateTime              @updatedAt @map(name: "updated_at")
-  newsAndBlogComments NewsAndBlogComments[]
+  id                          Int                      @id @unique(map: "sqlite_autoindex_user") @default(autoincrement())
+  user_id                     String                   @unique(map: "sqlite_unique_userid") @default(cuid())
+  user_name                   String
+  email                       String                   @unique
+  password                    String
+  is_active                   Boolean                  @default(false)
+  created_at                  DateTime                 @default(now()) @map(name: "created_at")
+  updated_at                  DateTime                 @updatedAt @map(name: "updated_at")
+  authentication_access_token String?                  @default("")
+  newsAndBlogComments         NewsAndBlogComments[]
+  authentication_logs         UserAuthenticationLogs[]
 
   @@map(name: "users")
+}
+
+model UserAuthenticationLogs {
+  id                Int      @id @unique(map: "sqlite_autoindex_userAuthentication_logs") @default(autoincrement())
+  user_id           String
+  access_token      String?  @default("")
+  authentication_at DateTime @default(now()) @map(name: "authentication_at")
+  user              User?    @relation(fields: [user_id], references: [user_id], onDelete: Cascade, onUpdate: Cascade)
+
+  @@map(name: "userAuthentication_logs")
 }
 
 model NewsAndBlog {

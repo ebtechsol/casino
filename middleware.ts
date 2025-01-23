@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { decrypt } from '@/lib/authenticationSession'
 import { cookies } from 'next/headers'
+import { decrypt } from './app/helpers/encryptionHelper'
  
 // 1. Specify protected and public routes
 const protectedRoutes = ['/Profile']

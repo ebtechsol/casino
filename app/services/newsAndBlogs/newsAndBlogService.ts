@@ -5,7 +5,8 @@ import NewsAndBlogDto, {
   AddNewsAndBlogCommentRequestDto,
   AddNewsAndBlogCommentResponseDto,
 } from "@/app/dto/newsAndBlogs/newsAndBlog";
-import { GetApiSource } from "@/app/helpers/defaultHelper";
+import { getApiSource } from "@/app/helpers/defaultHelper";
+import { getAuthenticationAccessToken } from '@/lib/authenticationSession';
 
 const GetListService = async (
   type: string,
@@ -18,7 +19,7 @@ const GetListService = async (
     if (ln != null && ln > 0) {
       source = source.concat("&ln=", ln.toString());
     }
-    const requestSource = GetApiSource(source);
+    const requestSource = getApiSource(source);
     const response = await fetch(requestSource, {
       method: "GET",
       headers: {
@@ -43,7 +44,7 @@ const InsertRecordService = async (
     msg: "",
   };
   try {
-    const requestSource = GetApiSource("/api/newsAndBlog/insertRecord");
+    const requestSource = getApiSource("/api/newsAndBlog/insertRecord");
     const response = await fetch(requestSource, {
       method: "POST",
       headers: {
@@ -63,7 +64,7 @@ const GetRecordService = async (
 ): Promise<NewsAndBlogDto | null> => {
   let blogDetail: NewsAndBlogDto | null = null;
   try {
-    const requestSource = GetApiSource(
+    const requestSource = getApiSource(
       "/api/newsAndBlog/getRecord?id=".concat(newsAndBlog_id.toString())
     );
     const response = await fetch(requestSource, {
@@ -89,12 +90,15 @@ const InsertCommentService = async (
     status: false,
     msg: "",
   };
+  let accessToken : string | null = await getAuthenticationAccessToken();
+  if(accessToken == null) { accessToken = "";}
   try {
-    const requestSource = GetApiSource("/api/newsAndBlog/insertComment");
+    const requestSource = getApiSource("/api/newsAndBlog/insertComment");
     const response = await fetch(requestSource, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "authentication_access_token": accessToken
       },
       body: JSON.stringify(request),
     });
@@ -114,7 +118,7 @@ const GetCommentListService = async (
     let source = "/api/newsAndBlog/getCommentList";
     if (newsAndBlog_id != null && newsAndBlog_id > 0) {
       source = source.concat("?id=", newsAndBlog_id.toString());
-      const requestSource = GetApiSource(source);
+      const requestSource = getApiSource(source);
       const response = await fetch(requestSource, {
         method: "GET",
         headers: {

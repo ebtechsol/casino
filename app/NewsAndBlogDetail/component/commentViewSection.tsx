@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { GetCommentListService, InsertCommentService } from "@/app/services/newsAndBlogs/newsAndBlogService";
+import {
+  GetCommentListService,
+  InsertCommentService,
+} from "@/app/services/newsAndBlogs/newsAndBlogService";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -11,19 +14,28 @@ import {
   AddNewsAndBlogCommentResponseDto,
 } from "@/app/dto/newsAndBlogs/newsAndBlog";
 import styles from "@/public/style/blog_detail.module.css";
+import { getAuthenticationUserID } from "@/lib/authenticationSession";
+
 
 const CommentViewSection = () => {
+  
   const searchParams = useSearchParams();
   const newsAndBlog_id = searchParams.get("id");
+  const [allCommentsCount, setAllCommentsCount] = useState<number>(0);
+  const [blogCommentsListStatus, setBlogCommentsListStatus] = useState<boolean>(false);
   const [blogCommentsList, setBlogCommentsList] = useState<
     NewsAndBlogCommentDto[]
   >([]);
 
   useEffect(() => {
-    GetCommentListService(Number(newsAndBlog_id)).then((comment) => {
-      setBlogCommentsList(comment as NewsAndBlogCommentDto[]);
-    });
-  }, [newsAndBlog_id]);
+    if(blogCommentsListStatus == false) {
+      GetCommentListService(Number(newsAndBlog_id)).then((comment) => {
+        setBlogCommentsList(comment as NewsAndBlogCommentDto[]);
+        setAllCommentsCount(blogCommentsList.length);
+        setBlogCommentsListStatus(true);
+      });
+    }
+  }, [newsAndBlog_id, blogCommentsList, blogCommentsListStatus]);
 
   const [formSubmitLoading, setFormSubmitLoading] = useState(false);
   const [addSuccessMessage, setAddSuccessMessage] = useState("");
@@ -48,13 +60,14 @@ const CommentViewSection = () => {
     setFormSubmitLoading(true);
     setAddSuccessMessage("");
     setAddErrorMessage("");
-    if (values.message) {
+    const user_id: string | null = await getAuthenticationUserID();
+    if (values.message && user_id != null) {
       const request: AddNewsAndBlogCommentRequestDto = {
         message: values.message,
         parent_comment_id: 0,
         created_at: "",
         newsAndBlog_id: Number(newsAndBlog_id),
-        user_id: "cm65b23680000r7m089yj0fme",
+        user_id: user_id,
       };
       InsertCommentService(request)
         .then((response: AddNewsAndBlogCommentResponseDto) => {
@@ -75,6 +88,7 @@ const CommentViewSection = () => {
         });
     }
   }
+
   return (
     <div>
       <div className={"row " + styles.socialList}>
@@ -117,18 +131,22 @@ const CommentViewSection = () => {
       </div>
       <form onSubmit={handleSubmit(onSubmitCommentForm)}>
         {addSuccessMessage != "" ? (
-          <span className="alert alert-success p-2 m-0 d-block">
-            {addSuccessMessage}
-            <br/>
-          </span>
+          <>
+            <span className="alert alert-success p-2 m-0 d-block">
+              {addSuccessMessage}
+            </span>
+            <br />
+          </>
         ) : (
           ""
         )}
         {addErrorMessage != "" ? (
-          <span className="alert alert-danger p-2 m-0 d-block">
-            {addErrorMessage}
-            <br/>
-          </span>
+          <>
+            <span className="alert alert-danger p-2 m-0 d-block">
+              {addErrorMessage}
+            </span>
+            <br />
+          </>
         ) : (
           ""
         )}{" "}
@@ -145,18 +163,10 @@ const CommentViewSection = () => {
           {formSubmitLoading ? "Loading..." : "Submit"}
         </button>
       </form>
-      <div className="row">
-        <div className={"col-md-6 " + styles.commentTitleDiv}>
+      <div className={styles.commentRow}>
+        <div className={"col-md-6 "}>
           <span className={styles.commentMainTitle}>All Comments</span>
-          <Image
-            src="/rating_digit.svg"
-            width={25}
-            height={25}
-            className="ms-2"
-            alt="Picture of the author"
-          />
-          {/* Comment Section */}
-
+          <span className={styles.commentsCount}>{allCommentsCount}</span>
           {blogCommentsList.map((comment, index) => (
             <div key={comment.id.toString().concat(index.toString())}>
               <div className={styles.mainDev}>

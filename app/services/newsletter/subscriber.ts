@@ -1,5 +1,5 @@
 import {NewsLetterRequestDto,NewsLetterResponseDto} from '@/app/dto/newsLetter/newsletter';
-import { GetApiSource } from '@/app/helpers/defaultHelper';
+import { getApiSource } from '@/app/helpers/defaultHelper';
 
 
 
@@ -11,7 +11,7 @@ export const AddSubscriber = async (
       msg: "",
     };
     try {
-      const requestSource = GetApiSource("/api/newsletter");
+      const requestSource = getApiSource("/api/newsletter");
       const response = await fetch(requestSource, {
         method: "POST",
         headers: {

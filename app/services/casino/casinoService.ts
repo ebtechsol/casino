@@ -2,7 +2,7 @@ import CasinoDto, {
   CasinoRequestDto,
   CasinoResponseDto,
 } from "@/app/dto/casino/casinoDto";
-import { GetApiSource } from "@/app/helpers/defaultHelper";
+import { getApiSource } from "@/app/helpers/defaultHelper";
 
 const CasinoListService = async (ln?: number | null): Promise<CasinoDto[]> => {
   let casinoList: CasinoDto[] = [];
@@ -11,7 +11,7 @@ const CasinoListService = async (ln?: number | null): Promise<CasinoDto[]> => {
     if (ln != null && ln > 0) {
       source = source.concat("?ln=", ln.toString());
     }
-    const requestSource = GetApiSource(source);
+    const requestSource = getApiSource(source);
     const response = await fetch(requestSource);
     const responseJson = await response.json();
 
@@ -34,7 +34,7 @@ export const AddCasinoService = async (
     msg: "",
   };
   try {
-    const requestSource = GetApiSource("/api/casino/addCasino");
+    const requestSource = getApiSource("/api/casino/addCasino");
     const response = await fetch(requestSource, {
       method: "POST",
       headers: {
@@ -54,7 +54,7 @@ export const CasinoService = async (
 ): Promise<CasinoDto | null> => {
   let casinoDetail: CasinoDto | null = null;
   try {
-    const requestSource = GetApiSource(
+    const requestSource = getApiSource(
       "/api/casino/getCasinoDetail?casino_id=".concat(casino_id.toString())
     );
     const response = await fetch(requestSource, {
