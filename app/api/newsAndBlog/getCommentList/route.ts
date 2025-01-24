@@ -10,9 +10,20 @@ const GET = async (request: NextRequest) => {
         where: {
           newsAndBlog_id: Number(newsAndBlog_id),
         },
+        orderBy: {
+          id: "desc",
+        },
+        include: {
+          user: {
+            select: {
+              user_name: true
+            },
+          }
+        }
       });
 
       if (record != null && record.length > 0) {
+        console.log(record);
         return NextResponse.json({
           status: true,
           data: record,

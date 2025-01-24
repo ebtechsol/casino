@@ -26,23 +26,23 @@ const CommentViewSection = () => {
   const [blogCommentsList, setBlogCommentsList] = useState<
     NewsAndBlogCommentDto[]
   >([]);
-
-  useEffect(() => {
-    if(blogCommentsListStatus == false) {
-      GetCommentListService(Number(newsAndBlog_id)).then((comment) => {
-        setBlogCommentsList(comment as NewsAndBlogCommentDto[]);
-        setAllCommentsCount(blogCommentsList.length);
-        setBlogCommentsListStatus(true);
-      });
-    }
-  }, [newsAndBlog_id, blogCommentsList, blogCommentsListStatus]);
-
   const [formSubmitLoading, setFormSubmitLoading] = useState(false);
   const [addSuccessMessage, setAddSuccessMessage] = useState("");
   const [addErrorMessage, setAddErrorMessage] = useState("");
   const formSchema = z.object({
     message: z.string().min(1, { message: "Comment is required!" }).trim(),
   });
+
+  useEffect(() => {
+    if(blogCommentsListStatus == false) {
+      GetCommentListService(Number(newsAndBlog_id)).then((comment) => {
+        setBlogCommentsList(comment as NewsAndBlogCommentDto[]);
+        setAllCommentsCount(comment.length);
+        setBlogCommentsListStatus(true);
+      });
+    }
+  }, [newsAndBlog_id, blogCommentsList, blogCommentsListStatus]);
+
 
   const {
     register,
@@ -76,17 +76,34 @@ const CommentViewSection = () => {
             setAddSuccessMessage(response.msg);
             setAddErrorMessage("");
             reset();
+            updateCommentList();
           } else {
             setAddSuccessMessage("");
             setAddErrorMessage(response.msg);
           }
+          hideAlertMessage();
         })
         .catch(() => {
           setFormSubmitLoading(false);
           setAddSuccessMessage("");
           setAddErrorMessage("Something went wrong!");
+          hideAlertMessage();
         });
     }
+  }
+
+  const hideAlertMessage = () => {
+    setTimeout(() => {
+      setAddSuccessMessage("");
+      setAddErrorMessage("");        
+    }, 3000);
+  }
+
+  const updateCommentList = () => {
+    GetCommentListService(Number(newsAndBlog_id)).then((comment) => {
+      setBlogCommentsList(comment as NewsAndBlogCommentDto[]);
+      setAllCommentsCount(comment.length);
+    });
   }
 
   return (
@@ -171,7 +188,7 @@ const CommentViewSection = () => {
             <div key={comment.id.toString().concat(index.toString())}>
               <div className={styles.mainDev}>
                 <Image src="/sms.svg" width={25} height={25} alt="" />
-                <span className={styles.commentHead}>Benjamin Wilderness</span>
+                <span className={styles.commentHead}>{comment.user.user_name}</span>
                 <span className={styles.commentTime}>35 mins ago</span>
                 <p className={styles.commentParagh}>{comment.message}</p>
 

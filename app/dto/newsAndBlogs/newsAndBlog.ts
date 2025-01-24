@@ -1,4 +1,5 @@
 import { DateTime } from "next-auth/providers/kakao";
+import UserDto from "../authentication/userDto";
 
 type NewsAndBlogDto = {
   id: number;
@@ -22,6 +23,7 @@ type NewsAndBlogCommentDto = {
   created_at: DateTime;
   newsAndBlog_id: number;
   user_id: string;
+  user: UserDto;
 };
 
 type AddNewsAndBlogRequestDto = {
